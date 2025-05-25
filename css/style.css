@@ -24,8 +24,82 @@ Table of content:
 /* import fonts */
 /* ================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+/* font face Circe-Round woff */
+@font-face {
+  font-family: 'Circe Rounded Alt';
+  src: url('../fonts/circe-rounded/CirceRounded-ExtraBold.woff2') format('woff2'),
+      url('../fonts/circe-rounded/CirceRoundedAlt-Extrabold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../fonts/circe-rounded/CirceRounded-Light.woff2') format('woff2'),
+      url('../fonts/circe-rounded/CirceRounded-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circe Rounded Alt';
+  src: url('../fonts/circe-rounded/CirceRoundedAlt-Bold.woff2') format('woff2'),
+      url('../fonts/circe-rounded/CirceRoundedAlt-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../fonts/circe-rounded/CirceRounded-ExtraBold.woff2') format('woff2'),
+      url('../fonts/circe-rounded/CirceRounded-ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../fonts/circe-rounded/CirceRounded-Thin.woff2') format('woff2'),
+      url('../fonts/circe-rounded/CirceRounded-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../fonts/circe-rounded/CirceRounded.woff2') format('woff2'),
+      url('../fonts/circe-rounded/CirceRounded.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../fonts/circe-rounded/CirceRounded-ExtraLight.woff2') format('woff2'),
+      url('../fonts/circe-rounded/CirceRounded-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../fonts/circe-rounded/CirceRounded-Bold.woff2') format('woff2'),
+      url('../fonts/circe-rounded/CirceRounded-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 
 /* ================================================== */
 /* import icons */
@@ -51,10 +125,10 @@ Table of content:
   --body-font-color-dark: rgba(255, 255, 255, .6);
   --body-font-weight: 400;
   /* heading font */
-  --heading-font: "Urbanist", Helvetica, Arial, sans-serif;  
+  --heading-font: 'Circe Rounded', Helvetica, Arial, sans-serif;
   --heading-font-weight: 600;
   --heading-font-color: #10244b;
-  --heading-text-transform: none;
+  --heading-text-transform: none;;
   /* h1 */
   --h1-font-size: 60px;
   --h1-font-weight: var(--heading-font-weight);

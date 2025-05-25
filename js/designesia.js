@@ -6,7 +6,7 @@
 
      var rtl_mode = 'off'; // on - for enable RTL, off - for deactive RTL
      var preloader = 'on'; // on - for enable preloader, off - for disable preloader
-     var header_autoshow = "on"; // on - for enable fixed header, off - for disable fixed header
+     var header_autoshow = "off"; // on - for enable fixed header, off - for disable fixed header
      var topbar = "on"; // on - for enable fixed header, off - for disable fixed header
 
      /* predefined vars begin */

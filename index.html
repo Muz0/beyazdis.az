@@ -60,75 +60,72 @@
     <style>
       .doctors-row {
         display: flex;
-        flex-wrap: nowrap; /* all cards in one row */
-        gap: 20px; /* spacing between cards */
-        overflow-x: auto; /* horizontal scroll if needed */
+        flex-wrap: nowrap;
+        gap: 20px;
+        overflow-x: auto;
         padding: 10px 0;
+        scroll-snap-type: x mandatory;
+      }
+
+      .doctor-card-link {
+        flex: 0 0 18%;
+        min-width: 180px;
+        box-sizing: border-box;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        scroll-snap-align: start;
       }
 
       .doctor-card {
-        flex: 0 0 18%; /* fixed width ~18%, adjust for 5 cards */
-        box-sizing: border-box;
-        min-width: 180px; /* minimum width so cards don't shrink too much */
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: #fff;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       }
 
-      /* Responsive adjustments */
+      .doctor-card img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        display: block;
+      }
 
+      .doctor-card h4,
+      .doctor-card p {
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      /* Responsive tweaks */
       @media (max-width: 992px) {
         .doctors-row {
-          flex-wrap: wrap; /* wrap cards on medium screens */
+          flex-wrap: wrap;
           justify-content: center;
         }
-        .doctor-card {
-          flex: 0 0 45%; /* 2 cards per row */
+        .doctor-card-link {
+          flex: 0 0 45%;
           margin-bottom: 20px;
         }
       }
 
       @media (max-width: 576px) {
-        .doctor-card {
-          flex: 0 0 90%; /* 1 card per row */
+        .doctor-card-link {
+          flex: 0 0 90%;
         }
       }
 
-      /* Optional: hide horizontal scrollbar styling for webkit */
+      /* Scrollbar styling (optional) */
       .doctors-row::-webkit-scrollbar {
         height: 6px;
       }
       .doctors-row::-webkit-scrollbar-thumb {
         background-color: rgba(0, 0, 0, 0.2);
         border-radius: 3px;
-      }
-
-      .doctor-card h4,
-      .doctor-card p {
-        font-size: 0.8rem; /* smaller than default, adjust as needed */
-        /* optional for better appearance */
-        font-weight: 600;
-        margin-bottom: 0.25rem;
-      }
-
-      .doctor-card img {
-        width: 100%;
-        aspect-ratio: 4 / 5; /* or whatever ratio your images have */
-        object-fit: cover;
-        display: block;
-      }
-
-      /* Optional: Ensure icons are always top-aligned and spacing is consistent */
-      .fs-60 {
-        font-size: 60px;
-        line-height: 1;
-      }
-
-      @media (max-width: 767.98px) {
-        .d-flex.align-items-start {
-          align-items: flex-start;
-        }
-
-        .text-start {
-          text-align: left !important;
-        }
       }
     </style>
   </head>
@@ -191,8 +188,8 @@
                         </li>
                         <li>
                           <a href="service-pediatric-dentistry.html"
-                            >Uşaq stomatologiyası </a
-                          >
+                            >Uşaq stomatologiyası
+                          </a>
                         </li>
                         <li>
                           <a href="service-restorative-dentistry.html"
@@ -222,10 +219,14 @@
                       <a class="menu-item" href="blog.html">Blog</a>
                     </li>
                     <li>
-                      <a class="menu-item" href="packages.html">Xüssui təkliflər</a>
+                      <a class="menu-item" href="packages.html"
+                        >Xüssui təkliflər</a
+                      >
                     </li>
                     <li>
-                      <a href="lobaratory.html" class="menu-item">Laboratoriyamiz</a>
+                      <a href="lobaratory.html" class="menu-item"
+                        >Laboratoriyamiz</a
+                      >
                     </li>
                     <li>
                       <a class="menu-item" href="contact.html">Əlaqə</a>
@@ -235,9 +236,17 @@
                 </div>
                 <div class="de-flex-col">
                   <div class="menu_side_area">
-                    <a href="tel:+994105110801" class="btn-main fx-slide"
-                      ><span>+994 10 511 08 01</span></a
+                    <a
+                      href="https://wa.me/+994105115108"
+                      class="btn-main fx-slide"
+                      target="_blank"
+                      rel="noopener"
                     >
+                      <span>
+                        <i class="fa-brands fa-whatsapp"></i> +994 10 511 08
+                        01</span
+                      >
+                    </a>
                     <span id="menu-btn"></span>
                   </div>
                 </div>
@@ -245,7 +254,8 @@
             </div>
           </div>
         </div>
-      </header>      <!-- header end -->
+      </header>
+      <!-- header end -->
       <!-- content begin -->
       <div class="no-bottom no-top" id="content">
         <div id="top"></div>
@@ -265,10 +275,16 @@
                     </div>
                     <h1>Bəyaz Diş Stomatoloji klinika & laboratoriya</h1>
                     <a
-                      class="btn-main btn-line fx-slide"
-                      href="tel:+994105110801"
-                      ><span>+994 10 511 08 01</span></a
+                      href="https://wa.me/+994105115108"
+                      class="btn-main fx-slide"
+                      target="_blank"
+                      rel="noopener"
                     >
+                      <span>
+                        <i class="fa-brands fa-whatsapp"></i> +994 10 511 08
+                        01</span
+                      >
+                    </a>
                   </div>
                 </div>
               </div>
@@ -312,13 +328,19 @@
               <div class="col-lg-4 col-md-6 mb-sm-30">
                 <div class="d-flex align-items-start">
                   <i
-                    class="fs-60 id-color icon_phone me-3 text-center text-lg-start"
+                    class="fs-60 id-color fa-brands fa-whatsapp me-3 text-center text-lg-start"
                   ></i>
                   <div class="text-start">
-                    <h4 class="mb-1">Stomatoloqa ehtiyacınız var?</h4>
-                    <a href="tel:+994105110801" class="text-light"
-                      >+994 10 511 08 01</a
+                    <a
+                      href="https://wa.me/+994105115108"
+                      target="_blank"
+                      rel="noopener"
                     >
+                      <h4 class="mb-1">Stomatoloqa ehtiyacınız var?</h4>
+                      <h4 class="mb-1">
+                        <span> +994 10 511 08 01</span>
+                      </h4>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -387,10 +409,12 @@
                     Ramiz Cəlilov
                   </h2>
                   <p class="wow fadeInUp" data-wow-delay=".4s">
-                    Ailə üzvlərinizin hər biri üçün yüksək keyfiyyətli və fərdi
-                    stomatoloji xidmətlər təklif edirik. Müntəzəm müayinələrdən
-                    tutmuş, qabaqcıl müalicələrə qədər, mehriban komandamız
-                    sağlam və güvənli təbəssümünüzü təmin edir.
+                    1992-ci ildə Rusiyanın Kemerovo şəhərində dövlət tibbi
+                    kolecində ortopedik stomatolojiya fakultəsində diş
+                    texnikliyini bitirmiş, 2001-ci ildən etibarən Bəyaz Diş
+                    klinikasının təsisçi və direktor vəzifəsində çalışır. Qeyd
+                    edək ki, Ramiz Cəlilov 29 illik iş təcrübəsinə malikdir və
+                    Almaniyanın Bredent firmasının konsultantıdır.
                   </p>
                   <ul
                     class="ul-check text-dark cols-2 fw-600 mb-4 wow fadeInUp"
@@ -403,11 +427,16 @@
                   </ul>
 
                   <a
-                    class="btn-main fx-slide wow fadeInUp"
-                    data-wow-delay=".8s"
-                    href="tel:+994105110801"
-                    ><span>+994 10 511 08 01</span></a
+                    href="https://wa.me/+994105115108"
+                    class="btn-main fx-slide"
+                    target="_blank"
+                    rel="noopener"
                   >
+                    <span>
+                      <i class="fa-brands fa-whatsapp"></i> +994 10 511 08
+                      01</span
+                    >
+                  </a>
                 </div>
               </div>
             </div>
@@ -714,105 +743,115 @@
             </div>
 
             <div class="doctors-row">
-              <div class="doctor-card">
-                <div class="relative rounded-1 overflow-hidden">
-                  <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
-                    <img
-                      src="images/team/nijat.webp"
-                      class="w-100 wow scaleIn"
-                      alt=""
-                    />
-                  </div>
-                  <div class="abs w-100 start-0 bottom-0 z-3">
-                    <div
-                      class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
-                    >
-                      <h4 class="mb-0">Dr. Nicat Abbasov</h4>
-                      <p class="mb-2">Stomatoloq - Cərrah</p>
+              <a href="dentists.html#nijat" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="images/team/nijat.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Dr. Nicat Abbasov</h4>
+                        <p class="mb-2">Stomatoloq - Cərrah</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
+              <!-- </div> -->
 
-              <div class="doctor-card">
-                <div class="relative rounded-1 overflow-hidden">
-                  <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
-                    <img
-                      src="images/team/ilaha.webp"
-                      class="w-100 wow scaleIn"
-                      alt=""
-                    />
-                  </div>
-                  <div class="abs w-100 start-0 bottom-0 z-3">
-                    <div
-                      class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
-                    >
-                      <h4 class="mb-0">Dr. İlahə Məmmədli</h4>
-                      <p class="mb-2">Terapevt - Stomatoloq</p>
+              <a href="dentists.html#ilaha" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="images/team/ilaha.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Dr. İlahə Məmmədli</h4>
+                        <p class="mb-2">Terapevt - Stomatoloq</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
 
-              <div class="doctor-card">
-                <div class="relative rounded-1 overflow-hidden">
-                  <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
-                    <img
-                      src="images/team/telman.jpg"
-                      class="w-100 wow scaleIn"
-                      alt="New Doctor"
-                    />
-                  </div>
-                  <div class="abs w-100 start-0 bottom-0 z-3">
-                    <div
-                      class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
-                    >
-                      <h4 class="mb-0">Dr. Telman Hacı</h4>
-                      <p class="mb-2">Stomatoloq - Ortodont</p>
+              <a href="dentists.html#telman" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="images/team/telman.jpg"
+                        class="w-100 wow scaleIn"
+                        alt="New Doctor"
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Dr. Telman Hacı</h4>
+                        <p class="mb-2">Stomatoloq - Ortodont</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
+              <a href="dentists.html#nihad" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="images/team/nihad.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Dr. Nihad Abbasov</h4>
+                        <p class="mb-2">Stomatoloq - Ortoped</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
 
-              <div class="doctor-card">
-                <div class="relative rounded-1 overflow-hidden">
-                  <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
-                    <img
-                      src="images/team/nihad.webp"
-                      class="w-100 wow scaleIn"
-                      alt=""
-                    />
-                  </div>
-                  <div class="abs w-100 start-0 bottom-0 z-3">
-                    <div
-                      class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
-                    >
-                      <h4 class="mb-0">Dr. Nihad Abbasov</h4>
-                      <p class="mb-2">Stomatoloq - Ortoped</p>
+              <a href="dentists.html#orkhan" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="images/team/orkhan.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Dr. Orxan Novruzov</h4>
+                        <p class="mb-2">Həkim Stomatoloq</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="doctor-card">
-                <div class="relative rounded-1 overflow-hidden">
-                  <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
-                    <img
-                      src="images/team/orkhan.webp"
-                      class="w-100 wow scaleIn"
-                      alt=""
-                    />
-                  </div>
-                  <div class="abs w-100 start-0 bottom-0 z-3">
-                    <div
-                      class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
-                    >
-                      <h4 class="mb-0">Dr. Orxan Novruzov</h4>
-                      <p class="mb-2">Həkim Stomatoloq</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </a>
             </div>
             <!-- .doctors-row -->
           </div>
@@ -933,7 +972,11 @@
                 <!-- <a href="https://twitter.com" target="_blank" rel="noopener">
                   <i class="fa-brands fa-x-twitter"></i>
                 </a> -->
-                <a href="https://wa.me/+994105115108" target="_blank" rel="noopener">
+                <a
+                  href="https://wa.me/+994105115108"
+                  target="_blank"
+                  rel="noopener"
+                >
                   <i class="fa-brands fa-whatsapp"></i>
                 </a>
                 <a
@@ -1070,7 +1113,8 @@
             </div>
           </div>
         </div>
-      </footer>      <!-- footer end -->
+      </footer>
+      <!-- footer end -->
     </div>
 
     <!-- Javascript Files

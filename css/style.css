@@ -9537,13 +9537,16 @@ p.slider-teaser {
   font-weight: 600;
   position: relative;
   display: inline-block;
-  font-size: 16px;
+  font-size: 24px;
   font-family: var(--body-font);
   color: var(--primary-color);
   text-transform: none;
   letter-spacing: 0;
   line-height: 1.5em;
   margin-bottom: 20px;
+  &.wow.fadeInUp.mb-3.animated {
+    font-size: 32px;
+  }
 }
 
 .text-light .subtitle {

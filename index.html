@@ -114,6 +114,22 @@
         object-fit: cover;
         display: block;
       }
+
+      /* Optional: Ensure icons are always top-aligned and spacing is consistent */
+      .fs-60 {
+        font-size: 60px;
+        line-height: 1;
+      }
+
+      @media (max-width: 767.98px) {
+        .d-flex.align-items-start {
+          align-items: flex-start;
+        }
+
+        .text-start {
+          text-align: left !important;
+        }
+      }
     </style>
   </head>
 
@@ -293,34 +309,43 @@
         <section class="bg-dark text-light pt-50 pb-30">
           <div class="container relative">
             <div class="row g-4 grid-divider">
+              <!-- Phone -->
               <div class="col-lg-4 col-md-6 mb-sm-30">
-                <div class="d-flex justify-content-center">
-                  <i class="fs-60 id-color icon_phone"></i>
-                  <div class="ms-3">
-                    <h4 class="mb-0">Stomatoloqa ehtiyacınız var?</h4>
-                    <!-- <p>Call: +1 123 456 789</p> -->
-                    <a href="tel:+994105110801"> +994 10 511 08 01 </a>
+                <div class="d-flex align-items-start">
+                  <i
+                    class="fs-60 id-color icon_phone me-3 text-center text-lg-start"
+                  ></i>
+                  <div class="text-start">
+                    <h4 class="mb-1">Stomatoloqa ehtiyacınız var?</h4>
+                    <a href="tel:+994105110801" class="text-light"
+                      >+994 10 511 08 01</a
+                    >
                   </div>
                 </div>
               </div>
 
+              <!-- Working Hours -->
               <div class="col-lg-4 col-md-6 mb-sm-30">
-                <div class="d-flex justify-content-center">
-                  <i class="fs-60 id-color icon_clock"></i>
-                  <div class="ms-3">
-                    <h4 class="mb-0">İş saatlarımız</h4>
-                    <p>B. Ertəsi - Şənbə 09:00 - 19:00</p>
+                <div class="d-flex align-items-start">
+                  <i
+                    class="fs-60 id-color icon_clock me-3 text-center text-lg-start"
+                  ></i>
+                  <div class="text-start">
+                    <h4 class="mb-1">İş saatlarımız</h4>
+                    <p class="mb-0">B. Ertəsi - Şənbə 09:00 - 19:00</p>
                   </div>
                 </div>
               </div>
 
+              <!-- Email -->
               <div class="col-lg-4 col-md-6 mb-sm-30">
-                <div class="d-flex justify-content-center">
-                  <i class="fs-60 id-color icon_mail"></i>
-                  <div class="ms-3">
-                    <h4 class="mb-0">E-ünvan</h4>
-                    <!-- <p>contact@dentiaclinic.com</p> -->
-                    <a href="mailto:beyaz.dish@yahoo.com"
+                <div class="d-flex align-items-start">
+                  <i
+                    class="fs-60 id-color icon_mail me-3 text-center text-lg-start"
+                  ></i>
+                  <div class="text-start">
+                    <h4 class="mb-1">E-ünvan</h4>
+                    <a href="mailto:beyaz.dish@yahoo.com" class="text-light"
                       >beyaz.dish@yahoo.com</a
                     >
                   </div>

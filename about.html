@@ -29,6 +29,77 @@
       rel="stylesheet"
       type="text/css"
     />
+    <style>
+      .doctors-row {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 10px 0;
+        scroll-snap-type: x mandatory;
+      }
+
+      .doctor-card-link {
+        flex: 0 0 18%;
+        min-width: 180px;
+        box-sizing: border-box;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        scroll-snap-align: start;
+      }
+
+      .doctor-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: #fff;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .doctor-card img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        display: block;
+      }
+
+      .doctor-card h4,
+      .doctor-card p {
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      /* Responsive tweaks */
+      @media (max-width: 992px) {
+        .doctors-row {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .doctor-card-link {
+          flex: 0 0 45%;
+          margin-bottom: 20px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .doctor-card-link {
+          flex: 0 0 90%;
+        }
+      }
+
+      /* Scrollbar styling (optional) */
+      .doctors-row::-webkit-scrollbar {
+        height: 6px;
+      }
+      .doctors-row::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+      }
+    </style>
   </head>
 
   <body>
@@ -89,8 +160,8 @@
                         </li>
                         <li>
                           <a href="service-pediatric-dentistry.html"
-                            >Uşaq stomatologiyası </a
-                          >
+                            >Uşaq stomatologiyası
+                          </a>
                         </li>
                         <li>
                           <a href="service-restorative-dentistry.html"
@@ -120,10 +191,14 @@
                       <a class="menu-item" href="blog.html">Blog</a>
                     </li>
                     <li>
-                      <a class="menu-item" href="packages.html">Xüssui təkliflər</a>
+                      <a class="menu-item" href="packages.html"
+                        >Xüssui təkliflər</a
+                      >
                     </li>
                     <li>
-                      <a href="lobaratory.html" class="menu-item">Laboratoriyamiz</a>
+                      <a href="lobaratory.html" class="menu-item"
+                        >Laboratoriyamiz</a
+                      >
                     </li>
                     <li>
                       <a class="menu-item" href="contact.html">Əlaqə</a>
@@ -143,7 +218,8 @@
             </div>
           </div>
         </div>
-      </header>      <!-- header end -->
+      </header>
+      <!-- header end -->
       <!-- content begin -->
       <div class="no-bottom no-top" id="content">
         <div id="top"></div>
@@ -152,11 +228,11 @@
           <div class="container relative z-2">
             <div class="row align-items-center">
               <div class="col-lg-12">
-                <h1 class="wow fadeInUp">About Us</h1>
+                <h1 class="wow fadeInUp">Haqqımızda</h1>
                 <div class="border-bottom my-3"></div>
                 <ul class="crumb wow fadeInDown">
-                  <li><a href="index.html">Home</a></li>
-                  <li class="active">About Us</li>
+                  <li><a href="index.html">Əsas səhifə</a></li>
+                  <li class="active">Haqqımızda</li>
                 </ul>
               </div>
             </div>
@@ -166,35 +242,16 @@
         <section>
           <div class="container">
             <div class="row g-4 gx-5 align-items-center">
-              <div class="col-lg-6">
+              <div class="col-lg-4">
                 <div class="row g-4">
-                  <div class="col-sm-6">
+                  <div class="col-12">
                     <div class="row g-4">
                       <div class="col-lg-12">
                         <div class="rounded-1 overflow-hidden wow zoomIn">
                           <img
-                            src="images/misc/p1.webp"
+                            src="images/team/ramiz_jalilov.webp"
                             class="w-100 wow scaleIn"
                             alt=""
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="row g-4">
-                      <div class="spacer-single sm-hide"></div>
-
-                      <div class="col-lg-12">
-                        <div
-                          class="rounded-1 overflow-hidden wow zoomIn"
-                          data-wow-delay=".3s"
-                        >
-                          <img
-                            src="images/misc/p2.webp"
-                            class="w-100 wow scaleIn"
-                            alt=""
-                            data-wow-delay=".3s"
                           />
                         </div>
                       </div>
@@ -203,39 +260,50 @@
                 </div>
               </div>
 
-              <div class="col-lg-6">
+              <div class="col-lg-8">
                 <div class="me-lg-3">
                   <div
                     class="subtitle s2 mb-3 wow fadeInUp"
                     data-wow-delay=".0s"
                   >
-                    About Us
+                    Baş Həkim və Təsisçi
                   </div>
                   <h2 class="wow fadeInUp" data-wow-delay=".2s">
-                    Professionals and Personalized Dental Excellence
+                    Ramiz Cəlilov
                   </h2>
                   <p class="wow fadeInUp" data-wow-delay=".4s">
-                    We offer high-quality dental care tailored for the whole
-                    family. From routine checkups to advanced treatments, our
-                    compassionate team ensures your smile stays healthy and
-                    confident.
+                    1992-ci ildə Rusiyanın Kemerovo şəhərində dövlət tibbi
+                    kolecində ortopedik stomatolojiya fakultəsində diş
+                    texnikliyini bitirmiş, 2001-ci ildən etibarən Bəyaz Diş
+                    klinikasının təsisçi və direktor vəzifəsində çalışır. Qeyd
+                    edək ki, Ramiz Cəlilov 29 illik iş təcrübəsinə malikdir və
+                    Almaniyanın Bredent firmasının konsultantıdır.
                   </p>
                   <ul
                     class="ul-check text-dark cols-2 fw-600 mb-4 wow fadeInUp"
                     data-wow-delay=".6s"
                   >
-                    <li>Personalized Treatment Plans</li>
-                    <li>Gentle Care for Kids and Adults</li>
-                    <li>State-of-the-Art Technology</li>
-                    <li>Flexible Appointment Scheduling</li>
+                    <li>Fərdi Müalicə Planları</li>
+                    <li>Uşaqlar və Böyüklər üçün Zərif Qayğı</li>
+                    <li>Müasir Texnologiyalar</li>
+                    <li>Əlverişli Qəbul Vaxtları</li>
                   </ul>
 
                   <a
-                    class="btn-main fx-slide wow fadeInUp"
-                    data-wow-delay=".8s"
-                    href="contact.html"
-                    ><span>Book Appointment</span></a
+                    href="https://wa.me/+994105115108"
+                    class="btn-main fx-slide"
+                    target="_blank"
+                    rel="noopener"
+                    style="
+                      border: 1px solid white;
+                      box-shadow: 1px 1px 5px gray;
+                    "
                   >
+                    <span>
+                      <i class="fa-brands fa-whatsapp"></i> +994 10 511 08
+                      01</span
+                    >
+                  </a>
                 </div>
               </div>
             </div>
@@ -244,107 +312,130 @@
 
         <section class="bg-color-op-1">
           <div class="container">
-            <div class="row">
-              <div class="col-lg-6 offset-lg-3 text-center">
-                <div class="subtitle wow fadeInUp mb-3">
-                  Meet Our Dental Team
-                </div>
-                <h2 class="wow fadeInUp" data-wow-delay=".2s">
-                  Committed to Your Smile
-                </h2>
-                <p class="wow fadeInUp">
-                  Our experienced dental team is here to make every visit
-                  positive and personalized. With gentle hands and caring
-                  hearts.
-                </p>
-                <div class="spacer-single"></div>
-              </div>
+            <div class="header text-center">
+              <div class="subtitle wow fadeInUp mb-3">Komandamız:</div>
+              <h2 class="wow fadeInUp" data-wow-delay=".2s">
+                Həmişə xidmətinizdə
+              </h2>
+              <p class="wow fadeInUp">
+                Hər bir pasiyent bizim üçün əzizdir və tam unikal yanaşma tələb
+                etdiyini anlayırıq.
+              </p>
+              <div class="spacer-single"></div>
             </div>
-            <div class="row g-4">
-              <div class="col-lg-3">
-                <div class="relative rounded-1 overflow-hidden">
-                  <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
-                    <img
-                      src="images/team/1.webp"
-                      class="w-100 wow scaleIn"
-                      alt=""
-                    />
-                  </div>
 
-                  <div class="abs w-100 start-0 bottom-0 z-3">
-                    <div
-                      class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
-                    >
-                      <h4 class="mb-0">Dr. Sarah Bennett</h4>
-                      <p class="mb-2">Lead Dentist</p>
+            <div class="doctors-row">
+              <a href="dentists.html#nijat" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="images/team/nijat-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Dr. Nicat Abbasov</h4>
+                        <p class="mb-2">Stomatoloq - Cərrah</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
+              <!-- </div> -->
 
-              <div class="col-lg-3">
-                <div class="relative rounded-1 overflow-hidden">
-                  <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
-                    <img
-                      src="images/team/2.webp"
-                      class="w-100 wow scaleIn"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="abs w-100 start-0 bottom-0 z-3">
-                    <div
-                      class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
-                    >
-                      <h4 class="mb-0">Dr. Maya Lin</h4>
-                      <p class="mb-2">Cosmetic Dentist</p>
+              <a href="dentists.html#ilaha" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="images/team/ilaha-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Dr. İlahə Məmmədli</h4>
+                        <p class="mb-2">Terapevt - Stomatoloq</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
 
-              <div class="col-lg-3">
-                <div class="relative rounded-1 overflow-hidden">
-                  <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
-                    <img
-                      src="images/team/3.webp"
-                      class="w-100 wow scaleIn"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="abs w-100 start-0 bottom-0 z-3">
-                    <div
-                      class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
-                    >
-                      <h4 class="mb-0">Dr. Michael Reyes</h4>
-                      <p class="mb-2">Pediatric Specialist</p>
+              <a href="dentists.html#telman" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="images/team/telman.webp"
+                        class="w-100 wow scaleIn"
+                        alt="New Doctor"
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Dr. Telman Hacı</h4>
+                        <p class="mb-2">Stomatoloq - Ortodont</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-lg-3">
-                <div class="relative rounded-1 overflow-hidden">
-                  <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
-                    <img
-                      src="images/team/4.webp"
-                      class="w-100 wow scaleIn"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="abs w-100 start-0 bottom-0 z-3">
-                    <div
-                      class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
-                    >
-                      <h4 class="mb-0">Dr. James Carter</h4>
-                      <p class="mb-2">Dental Hygienist</p>
+              </a>
+              <a href="dentists.html#nihad" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="images/team/nihad-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Dr. Nihad Abbasov</h4>
+                        <p class="mb-2">Stomatoloq - Ortoped</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
+
+              <a href="dentists.html#orkhan" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="images/team/orkhan-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Dr. Orxan Novruzov</h4>
+                        <p class="mb-2">Stomatoloq - Terapevt</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
             </div>
+            <!-- .doctors-row -->
           </div>
         </section>
 
@@ -356,62 +447,63 @@
                   class="subtitle id-color wow fadeInUp"
                   data-wow-delay=".0s"
                 >
-                  Why Choose Our Dental Care
+                  Niyə Məhz Bizim Stomatoloji Klinikamızı Seçməlisiniz
                 </div>
                 <h2 class="wow fadeInUp" data-wow-delay=".2s">
-                  Exceptional Service With a Personal Touch
+                  Fərdi Yanaşma ilə Mükəmməl Xidmət
                 </h2>
                 <p class="wow fadeInUp" data-wow-delay=".4s">
-                  Choosing the right dental provider matters. We combine expert
-                  care, advanced technology, and a warm atmosphere to ensure
-                  every visit is comfortable, efficient, and tailored to your
-                  unique needs.
+                  Düzgün stomatoloji xidmət təminatçısını seçmək çox önəmlidir.
+                  Biz peşəkar qulluq, müasir texnologiyalar və isti, rahat
+                  mühitlə hər ziyarətin komfortlu, effektiv və sizə uyğun
+                  şəkildə keçməsini təmin edirik.
                 </p>
 
                 <div class="border-bottom mb-4"></div>
 
                 <div class="row g-4">
-                  <div class="col-lg-6">
+                  <div class="col-sm-6">
                     <div class="h-100">
                       <div class="relative wow fadeInUp">
-                        <h5>Experienced Dental</h5>
+                        <h5>Təcrübəli Həkimlər</h5>
                         <p class="mb-0">
-                          Skilled care backed by years of trusted dental
-                          experience.
+                          İllərlə etibar edilən peşəkar stomatoloji təcrübəyə
+                          əsaslanan xidmət.
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col-lg-6">
+                  <div class="col-sm-6">
                     <div class="h-100">
                       <div class="relative wow fadeInUp">
-                        <h5>Advanced Technology</h5>
+                        <h5>Müasir Texnologiyalar</h5>
                         <p class="mb-0">
-                          Modern tools ensure accurate and efficient treatments.
+                          Dəqiq və effektiv müalicə üçün qabaqcıl avadanlıqlar.
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col-lg-6">
+                  <div class="col-sm-6">
                     <div class="h-100">
                       <div class="relative wow fadeInUp">
-                        <h5>Personalized Treatment</h5>
+                        <h5>Fərdi Müalicə Planları</h5>
                         <p class="mb-0">
-                          Custom care plans made to fit your smile and
-                          lifestyle.
+                          Təbəssümünüzə və həyat tərzinizə uyğun hazırlanmış
+                          xüsusi qulluq planları.
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col-lg-6">
+                  <div class="col-sm-6">
                     <div class="h-100">
                       <div class="relative wow fadeInUp">
-                        <h5>Family-Friendly</h5>
+                        <h5>Ailə Üçün Uyğun</h5>
                         <p class="mb-0">
-                          Welcoming space for kids, teens, adults, and seniors.
+                          Uşaqlar, yeniyetmələr, böyüklər və yaşlılar üçün dost
+                          mühit.
                         </p>
                       </div>
                     </div>
@@ -421,12 +513,12 @@
 
               <div class="col-lg-6">
                 <div class="row g-4 align-items-center">
-                  <div class="col-sm-6 text-end">
+                  <div class="col-6 text-end">
                     <div
                       class="w-80 rounded-1 overflow-hidden mb-25 wow zoomIn d-inline-block"
                     >
                       <img
-                        src="images/misc/s2.webp"
+                        src="images/misc/inner-zip.webp"
                         class="w-100 wow scaleIn"
                         alt=""
                       />
@@ -435,19 +527,19 @@
                       class="w-100 rounded-1 overflow-hidden mb-25 wow zoomIn d-inline-block"
                     >
                       <img
-                        src="images/misc/s3.webp"
+                        src="images/misc/team-zip.webp"
                         class="w-100 wow scaleIn"
                         alt=""
                       />
                     </div>
                   </div>
 
-                  <div class="col-sm-6">
+                  <div class="col-6">
                     <div
                       class="w-100 rounded-1 overflow-hidden mb-25 wow zoomIn d-inline-block"
                     >
                       <img
-                        src="images/misc/p3.webp"
+                        src="images/misc/outer-zip.webp"
                         class="w-100 wow scaleIn"
                         alt=""
                       />
@@ -486,7 +578,11 @@
                 <!-- <a href="https://twitter.com" target="_blank" rel="noopener">
                   <i class="fa-brands fa-x-twitter"></i>
                 </a> -->
-                <a href="https://wa.me/+994105115108" target="_blank" rel="noopener">
+                <a
+                  href="https://wa.me/+994105115108"
+                  target="_blank"
+                  rel="noopener"
+                >
                   <i class="fa-brands fa-whatsapp"></i>
                 </a>
                 <a
@@ -623,7 +719,8 @@
             </div>
           </div>
         </div>
-      </footer>      <!-- footer end -->
+      </footer>
+      <!-- footer end -->
     </div>
 
     <!-- overlay content begin -->
@@ -700,6 +797,5 @@
     <script src="js/designesia.js"></script>
     <script src="js/swiper.js"></script>
     <script src="js/custom-swiper-1.js"></script>
-    
   </body>
 </html>

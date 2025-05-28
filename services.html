@@ -1,35 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Diş Klinikası | Bəyaz diş - Stomatoloji Klinika</title>
-    <link rel="icon" href="images/icon.webp" type="image/gif" sizes="16x16">
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" >
-    <meta content="Dentia — Dentist & Dental Clinic Website Template" name="description" >
-    <meta content="" name="keywords" >
-    <meta content="" name="author" >
+    <link rel="icon" href="images/icon.webp" type="image/gif" sizes="16x16" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta
+      content="Dentia — Dentist & Dental Clinic Website Template"
+      name="description"
+    />
+    <meta content="" name="keywords" />
+    <meta content="" name="author" />
     <!-- CSS Files
     ================================================== -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
-    <link href="css/plugins.css" rel="stylesheet" type="text/css" >
-    <link href="css/swiper.css" rel="stylesheet" type="text/css" >
-    <link href="css/style.css" rel="stylesheet" type="text/css" >
+    <link
+      href="css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+      id="bootstrap"
+    />
+    <link href="css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="css/swiper.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <!-- color scheme -->
-    <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css" >
+    <link
+      id="colors"
+      href="css/colors/scheme-01.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      /* Step 1: Set row as flex container */
+      .row.g-4 {
+        display: flex;
+        flex-wrap: wrap;
+      }
 
-</head>
+      /* Step 2: Make each column stretch */
+      .row.g-4 > [class*="col-"] {
+        display: flex;
+      }
 
-<body>
+      /* Step 3: Make .hover fill the column */
+      .hover {
+        flex: 1;
+        display: flex;
+      }
+
+      /* Step 4: Main box layout for content flow */
+      .bg-color-op-1 {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Step 5: Control inner content stacking */
+      .bg-color-op-1 img {
+        height: 100px; /* fixed uniform height for all images */
+        width: auto; /* keep aspect ratio */
+        display: block;
+        margin: 0 auto; /* center horizontally */
+        object-fit: contain; /* scale image without cropping */
+        background: transparent; /* optional: transparent background */
+      }
+
+      .relative {
+        margin-top: auto; /* pushes it to the bottom of .bg-color-op-1 */
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: flex-start;
+      }
+
+      /* Optional: align button at the bottom */
+      .btn-plus {
+        margin-top: auto;
+      }
+    </style>
+  </head>
+
+  <body>
     <div id="wrapper">
-        <a href="#" id="back-to-top"></a>
+      <a href="#" id="back-to-top"></a>
 
-        <!-- preloader begin -->
-        <div id="de-loader"></div>
-        <!-- preloader end -->
+      <!-- preloader begin -->
+      <div id="de-loader"></div>
+      <!-- preloader end -->
 
-        <!-- header begin -->
-              <header class="transparent header-light">
+      <!-- header begin -->
+      <header class="transparent header-light">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
@@ -78,8 +137,8 @@
                         </li>
                         <li>
                           <a href="service-pediatric-dentistry.html"
-                            >Uşaq stomatologiyası </a
-                          >
+                            >Uşaq stomatologiyası
+                          </a>
                         </li>
                         <li>
                           <a href="service-restorative-dentistry.html"
@@ -109,10 +168,14 @@
                       <a class="menu-item" href="blog.html">Blog</a>
                     </li>
                     <li>
-                      <a class="menu-item" href="packages.html">Xüssui təkliflər</a>
+                      <a class="menu-item" href="packages.html"
+                        >Xüssui təkliflər</a
+                      >
                     </li>
                     <li>
-                      <a href="lobaratory.html" class="menu-item">Laboratoriyamiz</a>
+                      <a href="lobaratory.html" class="menu-item"
+                        >Laboratoriyamiz</a
+                      >
                     </li>
                     <li>
                       <a class="menu-item" href="contact.html">Əlaqə</a>
@@ -132,147 +195,302 @@
             </div>
           </div>
         </div>
-      </header>        <!-- header end -->
-        <!-- content begin -->
-        <div class="no-bottom no-top" id="content">
+      </header>
+      <!-- header end -->
+      <!-- content begin -->
+      <div class="no-bottom no-top" id="content">
+        <div id="top"></div>
 
-            <div id="top"></div>
+        <section id="subheader" class="bg-color-op-1 text-center">
+          <div class="container relative z-2">
+            <div class="row align-items-center">
+              <div class="col-lg-12">
+                <h1 class="wow fadeInUp">Xidmətlərimiz</h1>
+                <div class="border-bottom my-3"></div>
+                <ul class="crumb wow fadeInDown">
+                  <li><a href="index.html">Əsas səhifə</a></li>
+                  <li class="active">Xidmətlərimiz</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <section id="subheader" class="bg-color-op-1 text-center">
-                <div class="container relative z-2">
-                    <div class="row align-items-center">
-                        <div class="col-lg-12">
-                            <h1 class="wow fadeInUp">Our Services</h1>
-                            <div class="border-bottom my-3"></div>
-                            <ul class="crumb wow fadeInDown">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Our Services</li>
-                            </ul>
-                        </div>
+        <section>
+          <div class="container">
+            <div class="row g-4">
+              <!-- Radioloji Müayinə -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/pc.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>Radioloji Müayinə</h4>
+                      <p>
+                        2D panoramik və 3D CBCT ilə dəqiq diaqnostika və
+                        planlama.
+                      </p>
+                      <a
+                        class="btn-plus"
+                        href="./service-general-dentistry.html"
+                      >
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
                     </div>
+                  </div>
                 </div>
-            </section>
-            
-            <section>
-                <div class="container">
+              </div>
 
-                    <div class="row g-4">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="hover">
-                                <div class="bg-color-op-1 h-100 p-40 rounded-1">
-                                    <img src="images/icons/tooth-1.png" class="w-70px mb-3 wow scaleIn" alt="">
-                                    <div class="relative mt-4 wow fadeInUp">
-                                        <h4>General Dentistry</h4>
-                                        <p>Complete oral care for every smile with cleanings, exams, and more.</p>
-                                        <a class="btn-plus" href="service-general-dentistry.html">
-                                            <i class="fa fa-plus"></i>
-                                            <span>Read more</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="hover">
-                                <div class="bg-color-op-1 h-100 p-40 rounded-1">
-                                    <img src="images/icons/tooth-2.png" class="w-70px mb-3 wow scaleIn" alt="">
-                                    <div class="relative mt-4 wow fadeInUp">
-                                        <h4>Cosmetic Dentistry</h4>
-                                        <p>Enhance your smile’s beauty with whitening, veneers, and more.</p>
-                                        <a class="btn-plus" href="service-cosmetic-dentistry.html">
-                                            <i class="fa fa-plus"></i>
-                                            <span>Read more</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="h-100 rounded-1" data-bgimage="url(images/misc/s3.webp) center">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="hover">
-                                <div class="bg-color-op-1 h-100 p-40 rounded-1">
-                                    <img src="images/icons/tooth-3.png" class="w-70px mb-3 wow scaleIn" alt="">
-                                    <div class="relative mt-4 wow fadeInUp">
-                                        <h4>Pediatric Dentistry</h4>
-                                        <p>Gentle and fun dental care for kids to grow healthy, happy smiles.</p>
-                                        <a class="btn-plus" href="service-pediatric-dentistry.html">
-                                            <i class="fa fa-plus"></i>
-                                            <span>Read more</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-3 col-md-6">
-                            <div class="hover">
-                                <div class="bg-color-op-1 h-100 p-40 rounded-1">
-                                    <img src="images/icons/tooth-4.png" class="w-70px mb-3 wow scaleIn" alt="">
-                                    <div class="relative mt-4 wow fadeInUp">
-                                        <h4>Restorative Dentistry</h4>
-                                        <p>Repair and restore your teeth for lasting comfort and function.</p>
-                                        <a class="btn-plus" href="service-restorative-dentistry.html">
-                                            <i class="fa fa-plus"></i>
-                                            <span>Read more</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="h-100 rounded-1" data-bgimage="url(images/misc/s2.webp) center">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="hover">
-                                <div class="bg-color-op-1 h-100 p-40 rounded-1">
-                                    <img src="images/icons/tooth-5.png" class="w-70px mb-3 wow scaleIn" alt="">
-                                    <div class="relative mt-4 wow fadeInUp">
-                                        <h4>Preventive Dentistry</h4>
-                                        <p>Protect your smile with checkups, cleanings, and early detection.</p>
-                                        <a class="btn-plus" href="service-preventive-dentistry.html">
-                                            <i class="fa fa-plus"></i>
-                                            <span>Read more</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="hover">
-                                <div class="bg-color-op-1 h-100 p-40 rounded-1">
-                                    <img src="images/icons/tooth-6.png" class="w-70px mb-3 wow scaleIn" alt="">
-                                    <div class="relative mt-4 wow fadeInUp">
-                                        <h4>Orthodontics</h4>
-                                        <p>Straighten your teeth with braces or aligners for a confident smile.</p>
-                                        <a class="btn-plus" href="service-orthodontics.html">
-                                            <i class="fa fa-plus"></i>
-                                            <span>Read more</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-
+              <!-- Profilaktik Stomatologiya -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/brush.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>Profilaktik Stomatologiya</h4>
+                      <p>
+                        Diş daşlarının təmizlənməsi, fluorid terapiyası və
+                        sealant.
+                      </p>
+                      <a
+                        class="btn-plus"
+                        href="./service-preventive-dentistry.html"
+                      >
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
                     </div>
+                  </div>
                 </div>
-            </section>         
+              </div>
 
-        </div>
-        <!-- content end -->
+              <!-- Terapevtik Stomatologiya -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/checklist.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>Terapevtik Stomatologiya</h4>
+                      <p>
+                        Diş çürümələrinin müalicəsi, kanal terapiyası və plomb
+                        qoyulması.
+                      </p>
+                      <a
+                        class="btn-plus"
+                        href="./service-general-dentistry.html"
+                      >
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        <!-- footer begin -->
-        <footer class="section-dark">
+              <!-- Estetik Stomatologiya -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/jewelry.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>Estetik Stomatologiya</h4>
+                      <p>
+                        Diş ağardılması, vinirlər və restavrasiya ilə gözəl
+                        gülüş.
+                      </p>
+                      <a class="btn-plus" href="service-aesthetic.html">
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ortodontiya -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/braces.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>Ortodontiya</h4>
+                      <p>Breket və şəffaf kapalarla düzgün diş düzülüşü.</p>
+                      <a class="btn-plus" href="./service-orthodontics.html">
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cərrahi Stomatologiya -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/instruments.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>Cərrahi Stomatologiya</h4>
+                      <p>Diş çəkimi, gömülü dişlər və toxuma əməliyyatları.</p>
+                      <a
+                        class="btn-plus"
+                        href="./service-general-dentistry.html"
+                      >
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- İmplantologiya və Protez -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/implants.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>İmplantologiya və Protez</h4>
+                      <p>İtirilmiş dişlərin implant və protezlə bərpası.</p>
+                      <a
+                        class="btn-plus"
+                        href="./service-general-dentistry.html"
+                      >
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Uşaq Stomatologiyası -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/calendar.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>Uşaq Stomatologiyası</h4>
+                      <p>
+                        Süd dişlərinin müalicəsi, sedasiya və profilaktik
+                        tədbirlər.
+                      </p>
+                      <a
+                        class="btn-plus"
+                        href="./service-pediatric-dentistry.html"
+                      >
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Parodontologiya -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/extraction.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>Parodontologiya</h4>
+                      <p>
+                        Diş əti xəstəliklərinin müalicəsi və kuretaj
+                        prosedurları.
+                      </p>
+                      <a class="btn-plus" href="service-periodontal.html">
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sinus Liftinq -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/instruments.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>Sinus Liftinq</h4>
+                      <p>Sümük həcmini artırmaq üçün açıq və qapalı üsullar.</p>
+                      <a
+                        class="btn-plus"
+                        href="./service-general-dentistry.html"
+                      >
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sedasiya -->
+              <div class="col-lg-3 col-md-6">
+                <div class="hover">
+                  <div class="bg-color-op-1 h-100 p-40 rounded-1">
+                    <img
+                      src="images/icons/like.png"
+                      class="w-70px mb-3 wow scaleIn"
+                      alt=""
+                    />
+                    <div class="relative mt-4 wow fadeInUp">
+                      <h4>Sedasiya</h4>
+                      <p>
+                        Ağrısız və stresssiz müalicə üçün rahatlaşdırıcı
+                        prosedur.
+                      </p>
+                      <a
+                        class="btn-plus"
+                        href="./service-general-dentistry.html"
+                      >
+                        <i class="fa fa-plus"></i><span>Ətraflı</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- content end -->
+
+      <!-- footer begin -->
+      <footer class="section-dark">
         <div class="container">
           <div class="row gx-5">
             <div class="col-lg-4 col-sm-6">
@@ -296,7 +514,11 @@
                 <!-- <a href="https://twitter.com" target="_blank" rel="noopener">
                   <i class="fa-brands fa-x-twitter"></i>
                 </a> -->
-                <a href="https://wa.me/+994105115108" target="_blank" rel="noopener">
+                <a
+                  href="https://wa.me/+994105115108"
+                  target="_blank"
+                  rel="noopener"
+                >
                   <i class="fa-brands fa-whatsapp"></i>
                 </a>
                 <a
@@ -433,51 +655,76 @@
             </div>
           </div>
         </div>
-      </footer>        <!-- footer end -->
+      </footer>
+      <!-- footer end -->
     </div>
 
     <!-- overlay content begin -->
     <div id="extra-wrap" class="text-light">
-        <div id="btn-close">
-            <span></span>
-            <span></span>
+      <div id="btn-close">
+        <span></span>
+        <span></span>
+      </div>
+
+      <div id="extra-content">
+        <img src="images/beyazdis-logo.png" class="w-150px" alt="" />
+
+        <div class="spacer-30-line"></div>
+
+        <h5>Our Services</h5>
+        <ul class="ul-check">
+          <li>
+            <a href="service-general-dentistry.html">General Dentistry</a>
+          </li>
+          <li>
+            <a href="service-cosmetic-dentistry.html">Cosmetic Dentistry</a>
+          </li>
+          <li>
+            <a href="service-pediatric-dentistry.html">Pediatric Dentistry</a>
+          </li>
+          <li>
+            <a href="service-restorative-dentistry.html"
+              >Restorative Dentistry</a
+            >
+          </li>
+          <li>
+            <a href="service-preventive-dentistry.html">Preventive Dentistry</a>
+          </li>
+          <li><a href="service-orthodontics.html">Orthodontics</a></li>
+        </ul>
+
+        <div class="spacer-30-line"></div>
+
+        <h5>Contact Us</h5>
+        <div>
+          <i class="icofont-clock-time me-2 op-5"></i>Monday - Friday 08.00 -
+          18.00
+        </div>
+        <div>
+          <i class="icofont-location-pin me-2 op-5"></i>100 S Main St, New York,
+        </div>
+        <div>
+          <i class="icofont-envelope me-2 op-5"></i>contact@dentiacare.com
         </div>
 
-        <div id="extra-content">
-            <img src="images/beyazdis-logo.png" class="w-150px" alt="">
+        <div class="spacer-30-line"></div>
 
-            <div class="spacer-30-line"></div>
+        <h5>About Us</h5>
+        <p>
+          At Dentia, we’re dedicated to providing high-quality, personalized
+          dental care for patients of all ages. Our skilled team uses the latest
+          technology to ensure comfortable, efficient treatments and beautiful,
+          healthy smiles for life.
+        </p>
 
-            <h5>Our Services</h5>
-            <ul class="ul-check">
-                <li><a href="service-general-dentistry.html">General Dentistry</a></li>
-                <li><a href="service-cosmetic-dentistry.html">Cosmetic Dentistry</a></li>
-                <li><a href="service-pediatric-dentistry.html">Pediatric Dentistry</a></li>
-                <li><a href="service-restorative-dentistry.html">Restorative Dentistry</a></li>
-                <li><a href="service-preventive-dentistry.html">Preventive Dentistry</a></li>
-                <li><a href="service-orthodontics.html">Orthodontics</a></li>
-            </ul>
-
-            <div class="spacer-30-line"></div>
-
-            <h5>Contact Us</h5>
-            <div><i class="icofont-clock-time me-2 op-5"></i>Monday - Friday 08.00 - 18.00</div>
-            <div><i class="icofont-location-pin me-2 op-5"></i>100 S Main St, New York, </div>
-            <div><i class="icofont-envelope me-2 op-5"></i>contact@dentiacare.com </div>
-
-            <div class="spacer-30-line"></div>
-
-            <h5>About Us</h5>
-            <p>At Dentia, we’re dedicated to providing high-quality, personalized dental care for patients of all ages. Our skilled team uses the latest technology to ensure comfortable, efficient treatments and beautiful, healthy smiles for life.</p>
-
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
+      </div>
     </div>
 
     <!-- Javascript Files
@@ -486,8 +733,5 @@
     <script src="js/designesia.js"></script>
     <script src="js/swiper.js"></script>
     <script src="js/custom-swiper-1.js"></script>
-    
-
-</body>
-
+  </body>
 </html>

@@ -450,6 +450,13 @@ header.header-center #mainmenu {
   display: inline-block;
 }
 
+#mainmenu,
+#mainmenu li,
+#mainmenu li a {
+  white-space: nowrap;
+}
+
+
 header.header-center {
   text-align: center;
 }

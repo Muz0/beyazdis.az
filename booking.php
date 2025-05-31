@@ -1,38 +1,35 @@
 <?php
 $subject = 'New Customer Order'; // Subject of your email
-$to = 'muzaffar.mustafaev1@gmail.com';  //Recipient's E-mail
+$to = 'muzaffar.mustafaev1@gmail.com';  // Recipient's E-mail
 
-$emailTo = $_POST['email'];
-$name = $_POST['name'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
-$msg = $_POST['message'];
-$service = $_POST['service'];
-$date = $_POST['date'];
-$time = $_POST['time'];
+// Get POST values
+$name = isset($_POST['name']) ? strip_tags(trim($_POST['name'])) : '';
+$email = isset($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
+$phone = isset($_POST['phone']) ? strip_tags(trim($_POST['phone'])) : '';
+$msg = isset($_POST['message']) ? strip_tags(trim($_POST['message'])) : '';
+$service = isset($_POST['service']) ? strip_tags(trim($_POST['service'])) : '';
+$date = isset($_POST['date']) ? strip_tags(trim($_POST['date'])) : '';
+$time = isset($_POST['time']) ? strip_tags(trim($_POST['time'])) : '';
 
-$email_from = $name. ' ' . '<'.$email.'>';
+// Prepare message body
+$message = '';
+$message .= 'Name: ' . $name . "\n";
+$message .= 'Email: ' . $email . "\n";
+$message .= 'Phone: ' . $phone . "\n";
+$message .= 'Service: ' . $service . "\n";
+$message .= 'Date & Time: ' . $date . " " . $time . "\n";
+$message .= 'Message: ' . $msg . "\n";
 
-$headers = "MIME-Version: 1.1";
-$headers .= "Content-type: text/html; charset=iso-8859-1";
-$headers .= "From: ".$name.'<'.$email.'>'."\r\n"; // Sender's E-mail
-$headers .= "Return-Path:"."From:" . $email;
+// Prepare headers
+$headers = "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$headers .= "From: " . $name . " <" . $email . ">\r\n";
+$headers .= "Reply-To: " . $email . "\r\n";
 
-$message .= 'Name : ' . $name . "\n";
-$message .= 'Email : ' . $email . "\n";
-$message .= 'Phone : ' . $phone . "\n";
-$message .= 'Service : ' . $service . "\n";
-$message .= 'Date & Time : ' . $date . " " . $time . "\n";
-$message .= 'Message : ' . $msg;
-
-if (@mail($to, $subject, $message, $email_from))
-{
-	// Transfer the value 'sent' to ajax function for showing success message.
-	echo 'sent';
-}
-else
-{
-	// Transfer the value 'failed' to ajax function for showing error message.
-	echo 'failed';
+// Send email
+if (mail($to, $subject, $message, $headers)) {
+    echo 'sent';
+} else {
+    echo 'failed';
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 $subject = 'New Customer Order'; // Subject of your email
-$to = 'contact@designesia.com';  //Recipient's E-mail
+$to = 'muzaffar.mustafaev1@gmail.com';  //Recipient's E-mail
 
 $emailTo = $_POST['email'];
 $name = $_POST['name'];

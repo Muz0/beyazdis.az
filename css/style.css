@@ -13113,7 +13113,7 @@ img {
   }
 
   header.header-mobile #mainmenu li a {
-    color: #ffffff;
+    color: var(--heading-font-color)
   }
 
   .dark-scheme header.header-mobile #mainmenu li a.menu-item {

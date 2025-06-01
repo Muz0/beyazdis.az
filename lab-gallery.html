@@ -29,7 +29,6 @@
       rel="stylesheet"
       type="text/css"
     />
-
   </head>
 
   <body>
@@ -623,8 +622,14 @@
         }
       }
 
-      // 7) Kick off everything once this script loads
-      loadGallery();
+      document.addEventListener("DOMContentLoaded", () => {
+        if (!sessionStorage.getItem("reloadedOnce")) {
+          sessionStorage.setItem("reloadedOnce", "true");
+          location.reload();
+        } else {
+          loadGallery();
+        }
+      });
     </script>
   </body>
 </html>

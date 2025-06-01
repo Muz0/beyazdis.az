@@ -456,6 +456,13 @@ header.header-center #mainmenu {
   white-space: nowrap;
 }
 
+.logo-main, .logo-mobile, .logo-scroll, .logo-footer{
+  border: 1px solid var(--bg-dark-1);
+  border-radius: 8px;
+  padding: 5px;
+  background-color: var(--bg-dark-1);
+}
+
 
 header.header-center {
   text-align: center;

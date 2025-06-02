@@ -32,6 +32,80 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/az.js"></script>
+    <style>
+      form .form-control {
+        width: 100%;
+        padding: 12px 14px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        appearance: none;
+        outline: none;
+        margin-bottom: 16px; /* 👈 Adds vertical spacing between elements */
+      }
+
+      form .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+      }
+
+      form select.form-control {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='%23666' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 16px;
+      }
+
+      form textarea.form-control {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      form input[type="submit"],
+      form .btn-main {
+        background-color: #007bff;
+        color: #fff;
+        font-weight: 600;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+      }
+
+      form input[type="submit"]:hover,
+      form .btn-main:hover {
+        background-color: #0056b3;
+      }
+
+      form .error,
+      form .success {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        display: none;
+      }
+
+      form .error {
+        background-color: #ffe5e5;
+        color: #c00;
+      }
+
+      form .success {
+        background-color: #e5ffe5;
+        color: #080;
+      }
+    </style>
   </head>
 
   <body>
@@ -133,7 +207,7 @@
                       >
                     </li>
                     <li>
-                      <a class="menu-item" href="#">Əlaqə</a>
+                      <a class="menu-item" href="booking.html">Əlaqə</a>
                     </li>
                   </ul>
                   <!-- mainmenu end -->
@@ -160,11 +234,11 @@
           <div class="container relative z-2">
             <div class="row align-items-center">
               <div class="col-lg-12">
-                <h1 class="wow fadeInUp">Book Appointment</h1>
+                <h1 class="wow fadeInUp">Əlaqə Formu</h1>
                 <div class="border-bottom my-3"></div>
                 <ul class="crumb wow fadeInDown">
-                  <li><a href="index.html">Home</a></li>
-                  <li class="active">Book Appointment</li>
+                  <li><a href="index.html">Əsas səhifə</a></li>
+                  <li class="active">Əlaqə Formu</li>
                 </ul>
               </div>
             </div>
@@ -176,90 +250,70 @@
             <div class="row g-4 gx-5 justify-content-between">
               <div class="col-lg-6">
                 <div class="relative">
-                  <div id="success_message_col" class="success p-40 h-100">
-                    <h3>Thank You For Your Order</h3>
+                  <div id="success_message_col" class="success">
+                    <h3>Sifarişiniz üçün təşəkkür edirik</h3>
                     <p>
-                      We have received your request and will be processing it
-                      shortly. Click button below if you want to make another
-                      order.
+                      Sorğunuzu qəbul etdik və qısa zamanda emal edəcəyik. Yeni
+                      müraciət etmək istəyirsinizsə, aşağıdakı düyməyə
+                      klikləyin.
                     </p>
-                    <a class="btn-main" href="booking.html">Re-order</a>
+                    <a class="btn-main" href="booking.html"
+                      >Yenidən müraciət et</a
+                    >
                   </div>
 
-                  <form
-                    name="bookingForm"
-                    id="booking_form"
-                    method="post"
-                    action="booking.php"
-                  >
+                  <form id="booking_form">
                     <div class="row g-4">
                       <div class="col-lg-12">
                         <h3 class="mb-3">
-                          <i class="fa fa-envelope-o id-color me-2"></i> Book
-                          Your Appointment
+                          <i class="fa fa-envelope-o id-color me-2"></i> Klinikada sıra götür
                         </h3>
-                        <p>
-                          Book your appointment today for expert dental care
-                          tailored to your needs. Healthy, beautiful smiles
-                          start with a simple step, schedule now!
-                        </p>
+                        <p>İstədiyiniz vaxtda!</p>
                         <div class="relative">
-                          <select
-                            name="service"
-                            id="service"
-                            class="form-control"
-                          >
+                          <select name="service" required class="form-control">
                             <option disabled selected value>
-                              Select Service
+                              Xidməti seçin
                             </option>
-                            <option value="General Dentistry">
-                              General Dentistry
+                            <option value="Radioloji Müayinə">
+                              Radioloji Müayinə
                             </option>
-                            <option value="Cosmetic Dentistry">
-                              Cosmetic Dentistry
+                            <option value="Profilaktik Stomatologiya">
+                              Profilaktik Stomatologiya
                             </option>
-                            <option value="Pediatric Dentistry">
-                              Pediatric Dentistry
+                            <option value="Terapevtik Stomatologiya">
+                              Terapevtik Stomatologiya
                             </option>
-                            <option value="Restorative Dentistry">
-                              Restorative Dentistry
+                            <option value="Estetik Stomatologiya">
+                              Estetik Stomatologiya
                             </option>
-                            <option value="Preventive Dentistry">
-                              Preventive Dentistry
+                            <option value="Ortodontiya">Ortodontiya</option>
+                            <option value="Cərrahi Stomatologiya">
+                              Cərrahi Stomatologiya
                             </option>
-                            <option value="Orthodontics">Orthodontics</option>
+                            <option value="İmplantologiya və Protez">
+                              İmplantologiya və Protez
+                            </option>
+                            <option value="Uşaq Stomatologiyası">
+                              Uşaq Stomatologiyası
+                            </option>
+                            <option value="Parodontologiya">
+                              Parodontologiya
+                            </option>
+                            <option value="Sinus Liftinq">Sinus Liftinq</option>
+                            <option value="Sedasiya">Sedasiya</option>
                           </select>
-                          <i
-                            class="absolute top-0 end-0 id-color pt-3 pe-3 icofont-simple-down"
-                          ></i>
-                        </div>
-                      </div>
 
-                      <div class="col-lg-6">
-                        <div
-                          id="date"
-                          class="relative input-group date"
-                          data-date-format="mm-dd-yyyy"
-                        >
-                          <i
-                            class="absolute top-0 end-0 id-color pt-3 pe-3 icofont-calendar"
-                          ></i>
                           <input
-                            class="form-control"
-                            value="Select Date"
-                            name="date"
                             type="text"
+                            name="date"
+                            id="date"
+                            class="form-control"
+                            placeholder="Tarixi seçin"
+                            required
                           />
-                          <span class="input-group-addon"
-                            ><i class="glyphicon glyphicon-calendar"></i
-                          ></span>
-                        </div>
-                      </div>
-
-                      <div class="col-lg-6">
-                        <div class="relative">
-                          <select name="time" id="time" class="form-control">
-                            <option disabled selected value>Select Time</option>
+                          <select name="time" required class="form-control">
+                            <option disabled selected value>Saatı seçin</option>
+                            <option value="9:00">9:00</option>
                             <option value="10:00">10:00</option>
                             <option value="11:00">11:00</option>
                             <option value="12:00">12:00</option>
@@ -269,74 +323,45 @@
                             <option value="16:00">16:00</option>
                             <option value="17:00">17:00</option>
                             <option value="18:00">18:00</option>
-                            <option value="19:00">19:00</option>
-                            <option value="20:00">20:00</option>
                           </select>
-                          <i
-                            class="absolute top-0 end-0 id-color pt-3 pe-3 icofont-simple-down"
-                          ></i>
-                        </div>
-                      </div>
 
-                      <div class="col-lg-4">
-                        <input
-                          type="text"
-                          name="name"
-                          id="name"
-                          placeholder="Name"
-                          class="form-control"
-                          placeholder=""
-                          required
-                        />
-                      </div>
-
-                      <div class="col-lg-4">
-                        <input
-                          type="text"
-                          name="email"
-                          id="email"
-                          placeholder="Email"
-                          class="form-control"
-                          placeholder=""
-                          required
-                        />
-                      </div>
-
-                      <div class="col-lg-4">
-                        <input
-                          type="text"
-                          name="phone"
-                          id="phone"
-                          placeholder="Phone"
-                          class="form-control"
-                          placeholder=""
-                          required
-                        />
-                      </div>
-
-                      <div class="col-lg-12">
-                        <textarea
-                          name="message"
-                          id="message"
-                          class="form-control"
-                          placeholder="Message"
-                        ></textarea>
-                      </div>
-
-                      <div class="col-lg-12">
-                        <div id="submit">
                           <input
-                            type="submit"
-                            id="send_message"
-                            value="Send Appointment"
-                            class="btn-main"
+                            name="name"
+                            placeholder="Ad Soyad"
+                            class="form-control"
+                            required
                           />
+                          <input
+                            name="email"
+                            placeholder="E-poçt"
+                            class="form-control"
+                            type="email"
+                          />
+                          <input
+                            name="phone"
+                            placeholder="Telefon"
+                            class="form-control"
+                            required
+                          />
+                          <textarea
+                            name="message"
+                            placeholder="Əlavə qeydlər"
+                            class="form-control"
+                          ></textarea>
                         </div>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <input
+                          type="submit"
+                          value="Görüş götür"
+                          class="btn-main"
+                        />
                       </div>
                     </div>
 
                     <div id="error_message" class="error">
-                      Sorry there was an error sending your form.
+                      Sorry, there was an error sending your form.
                     </div>
                   </form>
                 </div>
@@ -523,88 +548,48 @@
       <!-- footer end -->
     </div>
 
-    <div id="extra-wrap" class="text-light">
-      <div id="btn-close">
-        <span></span>
-        <span></span>
-      </div>
-
-      <div id="extra-content">
-        <img src="images/beyazdis-logo.png" class="w-150px" alt="" />
-
-        <div class="spacer-30-line"></div>
-
-        <h5>Our Services</h5>
-        <ul class="ul-check">
-          <li>
-            <a href="service-general-dentistry.html">General Dentistry</a>
-          </li>
-          <li><a href="service-aesthetic.html.html">Cosmetic Dentistry</a></li>
-          <li>
-            <a href="service-pediatric-dentistry.html">Pediatric Dentistry</a>
-          </li>
-          <li>
-            <a href="service-restorative-dentistry.html"
-              >Restorative Dentistry</a
-            >
-          </li>
-          <li>
-            <a href="service-preventive-dentistry.html">Preventive Dentistry</a>
-          </li>
-          <li><a href="service-orthodontics.html">Orthodontics</a></li>
-        </ul>
-
-        <div class="spacer-30-line"></div>
-
-        <h5>Contact Us</h5>
-        <div>
-          <i class="icofont-clock-time me-2 op-5"></i>Monday - Friday 08.00 -
-          18.00
-        </div>
-        <div>
-          <i class="icofont-location-pin me-2 op-5"></i>100 S Main St, New York,
-        </div>
-        <div>
-          <i class="icofont-envelope me-2 op-5"></i>contact@dentiacare.com
-        </div>
-
-        <div class="spacer-30-line"></div>
-
-        <h5>About Us</h5>
-        <p>
-          At Dentia, we’re dedicated to providing high-quality, personalized
-          dental care for patients of all ages. Our skilled team uses the latest
-          technology to ensure comfortable, efficient treatments and beautiful,
-          healthy smiles for life.
-        </p>
-
-        <div class="social-icons">
-          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-      </div>
-    </div>
-
     <!-- Javascript Files
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/designesia.js"></script>
     <script src="js/validation-booking.js"></script>
 
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("nRcyaeC5DNxmJsVVB"); // Replace with your public EmailJS key
+      })();
+    </script>
+
+    <script>
+      document
+        .getElementById("booking_form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          emailjs.sendForm("service_lczv3ho", "template_0wsqnhd", this).then(
+            function () {
+              document.getElementById("success_message_col").style.display =
+                "block";
+              document.getElementById("booking_form").reset();
+            },
+            function (error) {
+              console.error("EmailJS Error:", error);
+              document.getElementById("error_message").style.display = "block";
+            }
+          );
+        });
+    </script>
+
     <!-- datepicker begin -->
     <script>
-      $(function () {
-        $("#date")
-          .datepicker({
-            autoclose: true,
-            todayHighlight: true,
-          })
-          .datepicker("update", new Date());
+      flatpickr("#date", {
+        locale: "az",
+        dateFormat: "d-m-Y",
+        minDate: "today",
       });
     </script>
+
     <!-- datepicker close -->
   </body>
 </html>

@@ -59,8 +59,7 @@
           justify-content: space-between;
         }
       }
-    </style>
-    <style>
+
       .doctors-row {
         display: flex;
         flex-wrap: nowrap;
@@ -129,6 +128,11 @@
       .doctors-row::-webkit-scrollbar-thumb {
         background-color: rgba(0, 0, 0, 0.2);
         border-radius: 3px;
+      }
+      .w-70px {
+        width: 70px;
+        height: 70px; /* Add this */
+        object-fit: contain; /* Keeps aspect ratio */
       }
     </style>
   </head>

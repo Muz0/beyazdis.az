@@ -73,7 +73,9 @@ function renderGallery(dataArray) {
       // ─── IMAGE CARD ────────────────────────────────────────
       const link = document.createElement("a");
       link.href = item.url;
-      link.classList.add("image-popup"); // Magnific Popup will catch clicks
+      link.classList.add("glightbox");
+      link.setAttribute("data-gallery", "gallery");
+      link.setAttribute("data-title", item.title || "Image");
 
       const img = document.createElement("img");
       img.src = item.url;
@@ -161,19 +163,14 @@ function renderGallery(dataArray) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  3) Initialize Magnific Popup
+//  3) Initialize Glightbox
 // ─────────────────────────────────────────────────────────────────────────────
 function initializeLightbox() {
-  $(".image-popup").magnificPopup({
-    type: "image",
-    gallery: {
-      enabled: true,
-    },
-    image: {
-      titleSrc: "title",
-    },
+  GLightbox({
+    selector: ".glightbox"
   });
 }
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  4) Setup Filtering Logic

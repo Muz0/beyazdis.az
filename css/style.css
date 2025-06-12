@@ -1331,8 +1331,15 @@ section {
 #content.zebra section:nth-child(even) {
   background: #fcfcfc;
 }
-
-section:not(.relative) {
+.no-wrap{
+  white-space: no-wrap;
+}
+#mainmenu li ul {
+  white-space: nowrap; /* Keep this if you want items on one line */
+  /* min-width: 5550px; Example: set a minimum width for the dropdown */
+  /* Or a fixed width if you know the exact size needed: */
+  min-width: fit-content;
+  /* color: red; */
 }
 
 section.no-bg,

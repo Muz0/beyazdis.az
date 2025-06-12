@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="ru">
   <head>
-    <title>Diş Klinikası | Bəyaz diş - Stomatoloji Klinika</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <title>Bəyaz Diş - Стоматологическая клиника</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
+    <link rel="manifest" href="./site.webmanifest" />
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta
@@ -15,17 +29,17 @@
     <meta content="" name="keywords" />
     <meta content="" name="author" />
     <link
-      href="css/bootstrap.min.css"
+      href="../css/bootstrap.min.css"
       rel="stylesheet"
       type="text/css"
       id="bootstrap"
     />
-    <link href="css/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="css/swiper.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="../css/swiper.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
     <link
       id="colors"
-      href="css/colors/scheme-01.css"
+      href="../css/colors/scheme-01.css"
       rel="stylesheet"
       type="text/css"
     />
@@ -73,129 +87,170 @@
           font-size: 48px;
         }
       }
+
+      html,
+      body {
+        height: 100% !important; /* Forces html and body to take full viewport height */
+        min-height: 100vh !important; /* Ensures they are at least viewport height */
+        overflow: auto !important; /* Forces scrollbars if content overflows */
+        -webkit-overflow-scrolling: touch !important; /* Smoother scrolling on touch devices */
+      }
+
+      #wrapper,
+      #content {
+        /* These are common main containers in your HTML */
+        height: auto !important; /* Allow these containers to grow with content */
+        min-height: 100% !important; /* Ensure they fill their parent (html/body) */
+        overflow: visible !important; /* Crucially, forces content to be visible and allow page scroll */
+        position: relative !important; /* Sometimes needed for proper flow, overriding fixed/absolute if any */
+        display: block !important; /* Override potential flex/grid issues if they cause shrinking */
+      }
     </style>
   </head>
   <body>
-    <div id="wrapper">
-      <a href="#" id="back-to-top"></a>
-
-      <div id="de-loader"></div>
-      <header class="transparent header-light">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="de-flex sm-pt10">
-                <div class="de-flex-col">
-                  <div id="logo">
-                    <a href="index.html">
-                      <img
-                        class="logo-main"
-                        src="images/beyazdis-logo.png"
-                        alt=""
-                      />
-                      <img
-                        class="logo-scroll"
-                        src="images/beyazdis-logo.png"
-                        alt=""
-                      />
-                      <img
-                        class="logo-mobile"
-                        src="images/beyazdis-logo.png"
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  </div>
-                <div class="de-flex-col header-col-mid">
-                  <ul id="mainmenu">
-                    <li>
-                      <a class="menu-item" href="index.html">Əsas səhifə</a>
-                    </li>
-                    <li>
-                      <a class="menu-item" href="services.html">Xidmətlər</a>
-                      <ul>
-                        <li>
-                          <a href="service-surgical-dentistry.html"
-                            >Cərrahi stomatologiya</a
-                          >
-                        </li>
-                        <li>
-                          <a href="service-aesthetic.html.html"
-                            >Estetik stomatologiya</a
-                          >
-                        </li>
-                        <li>
-                          <a href="service-pediatric-dentistry.html"
-                            >Uşaq stomatologiyası
-                          </a>
-                        </li>
-                        <li>
-                          <a href="service-general-dentistry.html"
-                            >Terapevtik stomatologiya</a
-                          >
-                        </li>
-                        <li>
-                          <a href="service-preventive-dentistry.html"
-                            >Profilaktik stomatologiya</a
-                          >
-                        </li>
-                        <li>
-                          <a href="service-orthodontics.html">Ortodontiya</a>
-                        </li>
-                        <li>
-                          <a href="services.html">Hamısına bax</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a class="menu-item" href="dentists.html">Həkimlərimiz</a>
-                    </li>
-                    <li>
-                      <a class="menu-item" href="about.html">Haqqımızda</a>
-                    </li>
-                    <li>
-                      <a class="menu-item" href="blog.html">Blog</a>
-                    </li>
-                    <li>
-                      <a class="menu-item" href="packages.html"
-                        >Təkliflər</a
-                      >
-                    </li>
-                    <li>
-                      <a href="lobaratory.html" class="menu-item"
-                        >Laboratoriyamiz</a
-                      >
-                    </li>
-                    <li>
-                      <a class="menu-item" href="booking.html">Əlaqə</a>
-                    </li>
-                  </ul>
-                  </div>
-                <div class="de-flex-col">
-                  <div class="menu_side_area">
-                    <a href="tel:+994105110801" class="btn-main fx-slide"
-                      ><span>+994 10 511 08 01</span></a
+    <header class="header-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="de-flex sm-pt10">
+              <div class="de-flex-col">
+                <div id="logo">
+                  <a href="index.html">
+                    <img
+                      class="logo-main"
+                      src="../images/beyazdis-logo.png"
+                      alt=""
+                    />
+                    <img
+                      class="logo-scroll"
+                      src="../images/beyazdis-logo.png"
+                      alt=""
+                    />
+                    <img
+                      class="logo-mobile"
+                      src="../images/beyazdis-logo.png"
+                      alt=""
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="de-flex-col header-col-mid">
+                <ul id="mainmenu" style="white-space: nowrap">
+                  <li>
+                    <a
+                      class="menu-item"
+                      style="margin-left: 5px"
+                      href="index.html"
+                      >Главная</a
                     >
-                    <span id="menu-btn"></span>
-                  </div>
+                  </li>
+                  <li>
+                    <a class="menu-item" href="services.html">Услуги</a>
+                    <ul>
+                      <li>
+                        <a href="service-surgical-dentistry.html"
+                          >Хирургическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-aesthetic.html"
+                          >Эстетическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-pediatric-dentistry.html"
+                          >Детская стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-general-dentistry.html"
+                          >Терапевтическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-preventive-dentistry.html"
+                          >Профилактическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-orthodontics.html">Ортодонтия</a>
+                      </li>
+                      <li>
+                        <a href="services.html">Посмотреть все</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a class="menu-item" href="dentists.html">Наши врачи</a>
+                  </li>
+                  <li>
+                    <a class="menu-item" href="about.html">О нас</a>
+                  </li>
+                  <li>
+                    <a class="menu-item" href="blog.html">Блог</a>
+                  </li>
+                  <li>
+                    <a class="menu-item" href="packages.html"
+                      >Спец предложения</a
+                    >
+                  </li>
+                  <li>
+                    <a href="lobaratory.html" class="menu-item">Лаборатория</a>
+                  </li>
+                  <li>
+                    <a class="menu-item" href="booking.html">Контакты</a>
+                  </li>
+                  <li class="language-switcher">
+                    <a href="#" class="menu-item language-current"> Ру </a>
+                    <ul class="language-options">
+                      <li><a href="../en/" data-lang="en"> English</a></li>
+                      <li><a href="../" data-lang="az"> Azərbaycan</a></li>
+                      <li><a href="#" data-lang="ru"> Русский</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="de-flex-col">
+                <div class="menu_side_area">
+                  <a
+                    href="https://wa.me/+994105115108"
+                    class="btn-main fx-slide"
+                    target="_blank"
+                    rel="noopener"
+                    style="
+                      border: 1px solid white;
+                      box-shadow: 1px 1px 5px gray;
+                    "
+                  >
+                    <span>
+                      <i class="fa-brands fa-whatsapp"></i> +994 10 511 08
+                      01</span
+                    >
+                  </a>
+                  <span id="menu-btn"></span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
+    <div id="wrapper">
+      <a href="#" id="back-to-top"></a>
+
+      <div id="de-loader"></div>
       <div class="no-bottom no-top" id="content">
         <div id="top"></div>
 
-        <section id="subheader" class="bg-color-op-1 text-center">
+        <section id="subheader" style="margin-top: 50px;" class="bg-color-op-1 text-center">
           <div class="container relative z-2">
             <div class="row align-items-center">
               <div class="col-lg-12">
-                <h1 class="wow fadeInUp">Laboratoriyamiz</h1>
+                <h1 class="wow fadeInUp">Лаборатория</h1>
                 <div class="border-bottom my-3"></div>
                 <ul class="crumb wow fadeInDown">
-                  <li><a href="index.html">Əsas səhifə</a></li>
-                  <li class="active">Sənədlər</li>
+                  <li><a href="index.html">Главная страница</a></li>
+                  <li class="active">Лаборатория</li>
                 </ul>
               </div>
             </div>
@@ -211,96 +266,102 @@
                       <div class="col-lg-12">
                         <div class="rounded-1 overflow-hidden wow zoomIn">
                           <img
-                            src="images/team/ramiz_jalilov.webp"
+                            src="../images/team/ramiz_jalilov.webp"
                             class="w-100 wow scaleIn"
                             alt=""
                           />
                         </div>
-                      </div>
-                      <div style="display: flex">
-                        <a
-                          href="https://www.facebook.com/ramiz.celilov?mibextid=wwXIfr&mibextid=wwXIfr"
-                          target="_blank"
-                          rel="noopener"
-                          class="ramiz-f"
+                        <div style="display: flex">
+                          <a
+                            href="https://www.facebook.com/ramiz.celilov?mibextid=wwXIfr&mibextid=wwXIfr"
+                            target="_blank"
+                            rel="noopener"
+                            class="ramiz-f"
+                          >
+                            <i class="fa-brands fa-facebook-f"></i>
+                          </a>
+                          <a
+                            href="https://www.instagram.com/ramizcelilov/"
+                            target="_blank"
+                            rel="noopener"
+                            class="ramiz-f instagram"
+                          >
+                            <i class="fa-brands fa-instagram"></i>
+                          </a>
+                        </div>
+                        <div
+                          style="
+                            display: flex;
+                            flex-direction: column;
+                            margin: 0;
+                          "
                         >
-                          <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                        <a
-                          href="https://www.instagram.com/ramizcelilov/"
-                          target="_blank"
-                          rel="noopener"
-                          class="ramiz-f instagram"
-                        >
-                          <i class="fa-brands fa-instagram"></i>
-                        </a>
-                      </div>
-                      <div
-                        style="display: flex; flex-direction: column; margin: 0"
-                      >
-                        <a
-                          href="https://www.youtube.com/watch?v=BaD8xVyopTM&t=707s"
-                          style="font-size: 24px"
-                          target="_blank"
-                          rel="noopener"
-                          class="youtube"
-                        >
-                          <i class="fa-brands fa-youtube"></i>
-                          Beynəlxalq Konqres Bredent Akademiyası
-                        </a>
-                        <a
-                          href="https://www.youtube.com/watch?v=8P-QswoGLLw"
-                          style="font-size: 24px"
-                          target="_blank"
-                          rel="noopener"
-                          class="youtube"
-                        >
-                          <i class="fa-brands fa-youtube"></i>
-                          İmplant üzərində protezlər vebinar Bredent Group GMBH
-                        </a>
+                          <a
+                            href="https://www.youtube.com/watch?v=BaD8xVyopTM&t=707s"
+                            style="font-size: 24px"
+                            target="_blank"
+                            rel="noopener"
+                            class="youtube"
+                          >
+                            <i class="fa-brands fa-youtube"></i>
+                            Международный Конгресс Bredent Академии
+                          </a>
+                          <a
+                            href="https://www.youtube.com/watch?v=8P-QswoGLLw"
+                            style="font-size: 24px"
+                            target="_blank"
+                            rel="noopener"
+                            class="youtube"
+                          >
+                            <i class="fa-brands fa-youtube"></i>
+                            Вебинар "Протезы на имплантатах" Bredent Group GMBH
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
               <div class="col-lg-8">
                 <div class="me-lg-3">
                   <div
                     class="subtitle s2 mb-3 wow fadeInUp"
                     data-wow-delay=".0s"
                   >
-                    Təsisçi və Direktor
+                    Основатель и Директор
                   </div>
                   <h2 class="wow fadeInUp" data-wow-delay=".2s">
-                    Ramiz Cəlilov
+                    Рамиз Джалилов
                   </h2>
                   <p class="wow fadeInUp" data-wow-delay=".4s">
-                    1992-ci ildə Rusiyanın Kemerovo şəhərində Dövlət Tibbi
-                    Kollecinin ortopedik stomatologiya fakültəsini bitirərək diş
-                    texniki ixtisasını əldə etmiş Ramiz Cəlilov, 2001-ci ildən
-                    etibarən "Bəyaz Diş" klinikasının təsisçisi və direktorudur.
+                    Рамиз Джалилов окончил факультет ортопедической стоматологии
+                    Государственного медицинского колледжа в городе Кемерово
+                    (Россия) в 1992 году, получив квалификацию зубного техника.
+                    С 2001 года он является основателем и директором клиники
+                    «Bəyaz Diş».
                     <br />
                     <br />
-                    33 illik peşəkar iş təcrübəsinə malik olan Ramiz Cəlilov,
-                    Almaniyanın tanınmış Bredent firmasının sertifikatlı sistem
-                    konsultantıdır. Onun rəhbərlik etdiyi laboratoriya, Bredent
-                    şirkətinin rəsmi pilot laboratoriyası və tədris mərkəzi kimi
-                    tanınır.
+                    Обладая 33-летним профессиональным опытом, Рамиз Джалилов
+                    является сертифицированным системным консультантом известной
+                    немецкой компании Bredent. Руководимая им лаборатория
+                    признана официальной пилотной лабораторией и учебным центром
+                    компании Bredent.
                     <br />
                     <br />
-                    Zəngin təcrübəsi, beynəlxalq əməkdaşlıqları və ixtisaslaşmış
-                    biliyi sayəsində Ramiz Cəlilov Azərbaycanda ortopedik
-                    stomatologiyanın inkişafına mühüm töhfələr verməyə davam
-                    edir.
+                    Благодаря богатому опыту, международному сотрудничеству и
+                    глубоким специализированным знаниям, Рамиз Джалилов
+                    продолжает вносить значительный вклад в развитие
+                    ортопедической стоматологии в Азербайджане.
                   </p>
                   <ul
                     class="ul-check text-dark cols-2 fw-600 mb-4 wow fadeInUp"
                     data-wow-delay=".6s"
                   >
-                    <li>Fərdi Müalicə Planları</li>
-                    <li>Uşaqlar və Böyüklər üçün Zərif Qayğı</li>
-                    <li>Müasir Texnologiyalar</li>
-                    <li>Əlverişli Qəbul Vaxtları</li>
+                    <li>Индивидуальные планы лечения</li>
+                    <li>Бережный уход для детей и взрослых</li>
+                    <li>Современные технологии</li>
+                    <li>Удобное время приема</li>
                   </ul>
 
                   <a
@@ -323,6 +384,7 @@
             </div>
           </div>
         </section>
+
         <section class="py-5" id="main-gallery-section">
           <div class="container">
             <!-- <h2 class="text-center mb-5">Our Laboratory Gallery</h2> -->
@@ -336,13 +398,13 @@
                     <div class="relative">
                       <img
                         id="gallery-photo-img"
-                        src="images/placeholder.jpg"
+                        src="../images/placeholder.jpg"
                         class="rounded-1 w-100"
                         alt="Laboratoriya Şəkilləri"
                       />
                     </div>
                     <div class="pt-4">
-                      <h4 class="mb-3">Laboratoriyamızın Şəkilləri</h4>
+                      <h4 class="mb-3">Фотографии</h4>
                     </div>
                   </div>
                 </a>
@@ -357,13 +419,13 @@
                     <div class="relative">
                       <img
                         id="gallery-video-img"
-                        src="images/placeholder.jpg"
+                        src="../images/placeholder.jpg"
                         class="rounded-1 w-100"
                         alt="Laboratoriya Videoları"
                       />
                     </div>
                     <div class="pt-4">
-                      <h4 class="mb-3">Laboratoriyamızın Videoları</h4>
+                      <h4 class="mb-3">Видео</h4>
                     </div>
                   </div>
                 </a>
@@ -378,13 +440,13 @@
                     <div class="relative">
                       <img
                         id="gallery-certificate-img"
-                        src="images/placeholder.jpg"
+                        src="../images/placeholder.jpg"
                         class="rounded-1 w-100"
                         alt="Laboratoriya Sertifikatları"
                       />
                     </div>
                     <div class="pt-4">
-                      <h4 class="mb-3">Laboratoriyamızın Sertifikatları</h4>
+                      <h4 class="mb-3">Документы</h4>
                     </div>
                   </div>
                 </a>
@@ -397,13 +459,17 @@
         <div class="container">
           <div class="row gx-5">
             <div class="col-lg-4 col-sm-6">
-              <img src="images/beyazdis-logo.png" class="logo-footer" alt="" />
+              <img
+                src="../images/beyazdis-logo.png"
+                class="logo-footer"
+                alt=""
+              />
               <div class="spacer-20"></div>
               <p>
-                Ən müasir texniki vasitələrlə təchiz edilmiş klinika göstərilən
-                xidmətin yüksək keyfiyyətinə zəmanət verir. Klinikamız
-                əməliyyatxana da daxil olmaqla, yeni nəsil stomatoloji
-                qurğularla təchiz olunmuş 5 kabinetdən ibarətdir.
+                Клиника, оснащенная самыми современными техническими средствами,
+                гарантирует высокое качество предоставляемых услуг. Наша клиника
+                состоит из 5 кабинетов, включая операционную, оснащенных
+                стоматологическим оборудованием нового поколения.
               </p>
 
               <div class="social-icons mb-sm-30">
@@ -448,60 +514,60 @@
               <div class="row">
                 <div class="col-lg-6 col-sm-6">
                   <div class="widget">
-                    <h5>Klinika</h5>
+                    <h5>Клиника</h5>
                     <ul>
                       <li>
-                        <a href="index.html">Əsas səhifə</a>
+                        <a href="index.html">Главная страница</a>
                       </li>
                       <li>
-                        <a href="services.html">Xidmətlərimiz</a>
+                        <a href="services.html">Наши услуги</a>
                       </li>
                       <li>
-                        <a href="gallery.html">Qalereya</a>
+                        <a href="gallery.html">Галерея</a>
                       </li>
                       <li>
-                        <a href="about.html">Haqqımızda</a>
+                        <a href="about.html">О нас</a>
                       </li>
                       <li>
-                        <a href="blog.html">Bloq</a>
+                        <a href="blog.html">Блог</a>
                       </li>
                       <li>
-                        <a href="#">Əlaqə</a>
+                        <a href="#">Контакты</a>
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-6">
                   <div class="widget">
-                    <h5>Xidmətlərimiz</h5>
+                    <h5>Наши услуги</h5>
                     <ul>
                       <li>
                         <a href="service-surgical-dentistry.html"
-                          >Cərrahi stomatologiya</a
+                          >Хирургическая стоматология</a
                         >
                       </li>
                       <li>
                         <a href="service-aesthetic.html.html"
-                          >Estetik stomatologiya</a
+                          >Эстетическая стоматология</a
                         >
                       </li>
                       <li>
                         <a href="service-pediatric-dentistry.html"
-                          >Uşaq stomatologiyası</a
+                          >Детская стоматология</a
                         >
                       </li>
                       <li>
                         <a href="service-restorative-dentistry.html"
-                          >Terapevtik stomatologiya</a
+                          >Терапевтическая стоматология</a
                         >
                       </li>
                       <li>
                         <a href="service-preventive-dentistry.html"
-                          >Profilaktik stomatologiya</a
+                          >Профилактическая стоматология</a
                         >
                       </li>
                       <li>
-                        <a href="service-orthodontics.html">Ortodontiya</a>
+                        <a href="service-orthodontics.html">Ортодонтия</a>
                       </li>
                     </ul>
                   </div>
@@ -510,16 +576,16 @@
             </div>
             <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
               <div class="widget">
-                <h5>Bizimlə Əlaqə</h5>
+                <h5>Свяжитесь с Нами</h5>
                 <div class="fw-bold text-white">
-                  <i class="icofont-location-pin me-2 id-color"></i>Klinikanın
-                  Ünvanı
+                  <i class="icofont-location-pin me-2 id-color"></i>Адрес
+                  Клиники
                 </div>
-                Fatali Khan Khoyski/ Khasanoglu, Baku, Azerbaijan
+                Fatali Khan Khoyski/ Khasanoglu, Баку, Азербайджан
                 <div class="spacer-20"></div>
 
                 <div class="fw-bold text-white">
-                  <i class="icofont-phone me-2 id-color"></i>Zəng Edin
+                  <i class="icofont-phone me-2 id-color"></i>Позвоните нам
                 </div>
                 <a href="tel:+994105110801" class="btn-main fx-slide"
                   ><span>+994 10 511 08 01</span></a
@@ -528,7 +594,8 @@
                 <div class="spacer-20"></div>
 
                 <div class="fw-bold text-white">
-                  <i class="icofont-envelope me-2 id-color"></i>Mesaj Göndərin
+                  <i class="icofont-envelope me-2 id-color"></i>Отправить
+                  Сообщение
                 </div>
                 <a href="mailto:beyazdish1972@gmail.com"
                   >beyazdish1972@gmail.com</a
@@ -548,9 +615,9 @@
                   </div>
                   <ul class="menu-simple">
                     <li>
-                      <a href="#">Terms & Conditions</a>
+                      <a href="#">Условия и положения</a>
                     </li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
                   </ul>
                 </div>
               </div>
@@ -558,11 +625,11 @@
           </div>
         </div>
       </footer>
-      </div>
-    <script src="js/plugins.js"></script>
-    <script src="js/designesia.js"></script>
-    <script src="js/swiper.js"></script>
-    <script src="js/custom-swiper-1.js"></script>
+    </div>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/designesia.js"></script>
+    <script src="../js/swiper.js"></script>
+    <script src="../js/custom-swiper-1.js"></script>
     <script>
       /**
        * ─────────────────────────────────────────────────────────────────────────────

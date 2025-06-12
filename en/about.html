@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Bəyaz Diş - Стоматологическая клиника</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta
+      content="Diş Klinikası | Bəyaz diş - Stomatoloji Klinika"
+      name="description"
+    />
+    <meta content="" name="keywords" />
+    <meta content="" name="author" />
+    <!-- CSS Files
+    ================================================== -->
+    <link
+      href="../css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+      id="bootstrap"
+    />
+    <link href="../css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="../css/swiper.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <!-- color scheme -->
+    <link
+      id="colors"
+      href="../css/colors/scheme-01.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      .doctors-row {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 10px 0;
+        scroll-snap-type: x mandatory;
+      }
+
+      .doctor-card-link {
+        flex: 0 0 18%;
+        min-width: 180px;
+        box-sizing: border-box;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        scroll-snap-align: start;
+      }
+
+      .doctor-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: #fff;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .doctor-card img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        display: block;
+      }
+
+      .doctor-card h4,
+      .doctor-card p {
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+      .ramiz-f {
+        font-size: 56px;
+        color: #3b5998;
+        margin: 15px;
+      }
+
+      /* Responsive tweaks */
+      @media (max-width: 992px) {
+        .doctors-row {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .doctor-card-link {
+          flex: 0 0 45%;
+          margin-bottom: 20px;
+        }
+        .ramiz-f {
+          font-size: 48px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .doctor-card-link {
+          flex: 0 0 90%;
+        }
+      }
+
+      /* Scrollbar styling (optional) */
+      .doctors-row::-webkit-scrollbar {
+        height: 6px;
+      }
+      .doctors-row::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <a href="#" id="back-to-top"></a>
+
+      <!-- preloader begin -->
+      <div id="de-loader"></div>
+      <!-- preloader end -->
+
+      <!-- header begin -->
+      <header class="transparent header-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="de-flex sm-pt10">
+                <div class="de-flex-col">
+                  <div id="logo">
+                    <a href="index.html">
+                      <img
+                        class="logo-main"
+                        src="../images/beyazdis-logo.png"
+                        alt=""
+                      />
+                      <img
+                        class="logo-scroll"
+                        src="../images/beyazdis-logo.png"
+                        alt=""
+                      />
+                      <img
+                        class="logo-mobile"
+                        src="../images/beyazdis-logo.png"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div class="de-flex-col header-col-mid">
+                  <ul id="mainmenu" style="white-space: nowrap">
+                    <li>
+                      <a
+                        class="menu-item"
+                        style="margin-left: 5px"
+                        href="index.html"
+                        >Главная</a
+                      >
+                    </li>
+                    <li>
+                      <a class="menu-item" href="services.html">Услуги</a>
+                      <ul>
+                        <li>
+                          <a href="service-surgical-dentistry.html"
+                            >Хирургическая стоматология</a
+                          >
+                        </li>
+                        <li>
+                          <a href="service-aesthetic.html"
+                            >Эстетическая стоматология</a
+                          >
+                        </li>
+                        <li>
+                          <a href="service-pediatric-dentistry.html"
+                            >Детская стоматология</a
+                          >
+                        </li>
+                        <li>
+                          <a href="service-general-dentistry.html"
+                            >Терапевтическая стоматология</a
+                          >
+                        </li>
+                        <li>
+                          <a href="service-preventive-dentistry.html"
+                            >Профилактическая стоматология</a
+                          >
+                        </li>
+                        <li>
+                          <a href="service-orthodontics.html">Ортодонтия</a>
+                        </li>
+                        <li>
+                          <a href="services.html">Посмотреть все</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a class="menu-item" href="dentists.html">Наши врачи</a>
+                    </li>
+                    <li>
+                      <a class="menu-item" href="about.html">О нас</a>
+                    </li>
+                    <li>
+                      <a class="menu-item" href="blog.html">Блог</a>
+                    </li>
+                    <li>
+                      <a class="menu-item" href="packages.html"
+                        >Спец предложения</a
+                      >
+                    </li>
+                    <li>
+                      <a href="lobaratory.html" class="menu-item"
+                        >Лаборатория</a
+                      >
+                    </li>
+                    <li>
+                      <a class="menu-item" href="booking.html">Контакты</a>
+                    </li>
+                    <li class="language-switcher">
+                      <a href="#" class="menu-item language-current"> Ру </a>
+                      <ul class="language-options">
+                        <li><a href="../en/" data-lang="en"> English</a></li>
+                        <li><a href="../" data-lang="az"> Azərbaycan</a></li>
+                        <li><a href="#" data-lang="ru"> Русский</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="de-flex-col">
+                  <div class="menu_side_area">
+                    <a
+                      href="https://wa.me/+994105115108"
+                      class="btn-main fx-slide"
+                      target="_blank"
+                      rel="noopener"
+                      style="
+                        border: 1px solid white;
+                        box-shadow: 1px 1px 5px gray;
+                      "
+                    >
+                      <span>
+                        <i class="fa-brands fa-whatsapp"></i> +994 10 511 08
+                        01</span
+                      >
+                    </a>
+                    <span id="menu-btn"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- header end -->
+      <!-- content begin -->
+      <div class="no-bottom no-top" id="content">
+        <div id="top"></div>
+
+        <section id="subheader" class="bg-color-op-1 text-center">
+          <div class="container relative z-2">
+            <div class="row align-items-center">
+              <div class="col-lg-12">
+                <h1 class="wow fadeInUp">О нас</h1>
+                <div class="border-bottom my-3"></div>
+                <ul class="crumb wow fadeInDown">
+                  <li><a href="index.html">Главная страница</a></li>
+                  <li class="active">О нас</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="container">
+            <div class="row g-4 gx-5 align-items-center">
+              <div class="col-lg-4">
+                <div class="row g-4">
+                  <div class="col-12">
+                    <div class="row g-4">
+                      <div class="col-lg-12">
+                        <div class="rounded-1 overflow-hidden wow zoomIn">
+                          <img
+                            src="../images/team/ramiz_jalilov.webp"
+                            class="w-100 wow scaleIn"
+                            alt=""
+                          />
+                        </div>
+                        <div style="display: flex">
+                          <a
+                            href="https://www.facebook.com/ramiz.celilov?mibextid=wwXIfr&mibextid=wwXIfr"
+                            target="_blank"
+                            rel="noopener"
+                            class="ramiz-f"
+                          >
+                            <i class="fa-brands fa-facebook-f"></i>
+                          </a>
+                          <a
+                            href="https://www.instagram.com/ramizcelilov/"
+                            target="_blank"
+                            rel="noopener"
+                            class="ramiz-f instagram"
+                          >
+                            <i class="fa-brands fa-instagram"></i>
+                          </a>
+                        </div>
+                        <div
+                          style="
+                            display: flex;
+                            flex-direction: column;
+                            margin: 0;
+                          "
+                        >
+                          <a
+                            href="https://www.youtube.com/watch?v=BaD8xVyopTM&t=707s"
+                            style="font-size: 24px"
+                            target="_blank"
+                            rel="noopener"
+                            class="youtube"
+                          >
+                            <i class="fa-brands fa-youtube"></i>
+                            Международный Конгресс Bredent Академии
+                          </a>
+                          <a
+                            href="https://www.youtube.com/watch?v=8P-QswoGLLw"
+                            style="font-size: 24px"
+                            target="_blank"
+                            rel="noopener"
+                            class="youtube"
+                          >
+                            <i class="fa-brands fa-youtube"></i>
+                            Вебинар "Протезы на имплантатах" Bredent Group GMBH
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="me-lg-3">
+                  <div
+                    class="subtitle s2 mb-3 wow fadeInUp"
+                    data-wow-delay=".0s"
+                  >
+                    Основатель и Директор
+                  </div>
+                  <h2 class="wow fadeInUp" data-wow-delay=".2s">
+                    Рамиз Джалилов
+                  </h2>
+                  <p class="wow fadeInUp" data-wow-delay=".4s">
+                    Рамиз Джалилов окончил факультет ортопедической стоматологии
+                    Государственного медицинского колледжа в городе Кемерово
+                    (Россия) в 1992 году, получив квалификацию зубного техника.
+                    С 2001 года он является основателем и директором клиники
+                    «Bəyaz Diş».
+                    <br />
+                    <br />
+                    Обладая 33-летним профессиональным опытом, Рамиз Джалилов
+                    является сертифицированным системным консультантом известной
+                    немецкой компании Bredent. Руководимая им лаборатория
+                    признана официальной пилотной лабораторией и учебным центром
+                    компании Bredent.
+                    <br />
+                    <br />
+                    Благодаря богатому опыту, международному сотрудничеству и
+                    глубоким специализированным знаниям, Рамиз Джалилов
+                    продолжает вносить значительный вклад в развитие
+                    ортопедической стоматологии в Азербайджане.
+                  </p>
+                  <ul
+                    class="ul-check text-dark cols-2 fw-600 mb-4 wow fadeInUp"
+                    data-wow-delay=".6s"
+                  >
+                    <li>Индивидуальные планы лечения</li>
+                    <li>Бережный уход для детей и взрослых</li>
+                    <li>Современные технологии</li>
+                    <li>Удобное время приема</li>
+                  </ul>
+
+                  <a
+                    href="https://wa.me/+994105115108"
+                    class="btn-main fx-slide"
+                    target="_blank"
+                    rel="noopener"
+                    style="
+                      border: 1px solid white;
+                      box-shadow: 1px 1px 5px gray;
+                    "
+                  >
+                    <span>
+                      <i class="fa-brands fa-whatsapp"></i> +994 10 511 08
+                      01</span
+                    >
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-color-op-1">
+          <div class="container">
+            <div class="header text-center">
+              <div class="subtitle wow fadeInUp mb-3">Наша команда:</div>
+              <h2 class="wow fadeInUp" data-wow-delay=".2s">
+                Всегда к вашим услугам
+              </h2>
+              <p class="wow fadeInUp">
+                Каждый пациент дорог для нас, и мы понимаем, что он требует
+                абсолютно уникального подхода.
+              </p>
+              <div class="spacer-single"></div>
+            </div>
+        
+            <div class="doctors-row">
+              <a href="dentists.html#nijat" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="../images/team/nijat-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Др. Ниджат Аббасов</h4>
+                        <p class="mb-2">Стоматолог - Хирург</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="dentists.html#ilaha" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="../images/team/ilaha-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Др. Илаха Мамедли</h4>
+                        <p class="mb-2">Терапевт - Стоматолог</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+        
+              <a href="dentists.html#telman" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="../images/team/telman.webp"
+                        class="w-100 wow scaleIn"
+                        alt="New Doctor"
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Др. Тельман Гаджи</h4>
+                        <p class="mb-2">Стоматолог - Ортодонт</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="dentists.html#nihad" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="../images/team/nihad-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Др. Нихад Аббасов</h4>
+                        <p class="mb-2">Стоматолог - Ортопед</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+        
+              <a href="dentists.html#orkhan" class="doctor-card-link">
+                <div class="doctor-card">
+                  <div class="relative rounded-1 overflow-hidden">
+                    <div class="rounded-1 overflow-hidden wow fadeIn zoomIn">
+                      <img
+                        src="../images/team/orkhan-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="abs w-100 start-0 bottom-0 z-3">
+                      <div
+                        class="p-2 rounded-10 m-3 text-center bg-white wow fadeInDown"
+                      >
+                        <h4 class="mb-0">Др. Орхан Новрузов</h4>
+                        <p class="mb-2">Стоматолог - Терапевт</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            </div>
+        </section>
+        
+        <section>
+          <div class="container">
+            <div class="row gy-4 gx-5 align-items-center">
+              <div class="col-lg-6">
+                <div
+                  class="subtitle id-color wow fadeInUp"
+                  data-wow-delay=".0s"
+                >
+                  Почему Вы должны выбрать именно Нашу Стоматологическую Клинику
+                </div>
+                <h2 class="wow fadeInUp" data-wow-delay=".2s">
+                  Безупречный Сервис с Индивидуальным Подходом
+                </h2>
+                <p class="wow fadeInUp" data-wow-delay=".4s">
+                  Выбор правильного поставщика стоматологических услуг очень важен.
+                  Мы обеспечиваем профессиональный уход, современные технологии
+                  и теплую, комфортную атмосферу, чтобы каждый визит был удобным,
+                  эффективным и адаптированным под вас.
+                </p>
+        
+                <div class="border-bottom mb-4"></div>
+        
+                <div class="row g-4">
+                  <div class="col-sm-6">
+                    <div class="h-100">
+                      <div class="relative wow fadeInUp">
+                        <h5>Опытные Врачи</h5>
+                        <p class="mb-0">
+                          Услуги, основанные на многолетнем доверенном
+                          профессиональном стоматологическом опыте.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="col-sm-6">
+                    <div class="h-100">
+                      <div class="relative wow fadeInUp">
+                        <h5>Современные Технологии</h5>
+                        <p class="mb-0">
+                          Передовое оборудование для точного и эффективного лечения.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="col-sm-6">
+                    <div class="h-100">
+                      <div class="relative wow fadeInUp">
+                        <h5>Индивидуальные Планы Лечения</h5>
+                        <p class="mb-0">
+                          Специальные планы ухода, разработанные с учетом вашей
+                          улыбки и образа жизни.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="col-sm-6">
+                    <div class="h-100">
+                      <div class="relative wow fadeInUp">
+                        <h5>Подходит для Семьи</h5>
+                        <p class="mb-0">
+                          Дружелюбная атмосфера для детей, подростков, взрослых
+                          и пожилых людей.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="col-lg-6">
+                <div class="row g-4 align-items-center">
+                  <div class="col-6 text-end">
+                    <div
+                      class="w-80 rounded-1 overflow-hidden mb-25 wow zoomIn d-inline-block"
+                    >
+                      <img
+                        src="../images/misc/inner-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                    <div
+                      class="w-100 rounded-1 overflow-hidden mb-25 wow zoomIn d-inline-block"
+                    >
+                      <img
+                        src="../images/misc/team-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+        
+                  <div class="col-6">
+                    <div
+                      class="w-100 rounded-1 overflow-hidden mb-25 wow zoomIn d-inline-block"
+                    >
+                      <img
+                        src="../images/misc/outer-zip.webp"
+                        class="w-100 wow scaleIn"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- content end -->
+
+      <!-- footer begin -->
+      <footer class="section-dark">
+        <div class="container">
+          <div class="row gx-5">
+            <div class="col-lg-4 col-sm-6">
+              <img
+                src="../images/beyazdis-logo.png"
+                class="logo-footer"
+                alt=""
+              />
+              <div class="spacer-20"></div>
+              <p>
+                Клиника, оснащенная самыми современными техническими средствами,
+                гарантирует высокое качество предоставляемых услуг. Наша клиника
+                состоит из 5 кабинетов, включая операционную, оснащенных
+                стоматологическим оборудованием нового поколения.
+              </p>
+
+              <div class="social-icons mb-sm-30">
+                <a
+                  href="https://www.facebook.com/bayazdish"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a
+                  href="https://wa.me/+994105115108"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a
+                  href="https://www.instagram.com/beyaz.dish/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a
+                  href="https://www.youtube.com/@Beyaz_Dish"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a
+                  href="https://www.tiktok.com/@beyaz_dish_"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-brands fa-tiktok"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+              <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                  <div class="widget">
+                    <h5>Клиника</h5>
+                    <ul>
+                      <li>
+                        <a href="index.html">Главная страница</a>
+                      </li>
+                      <li>
+                        <a href="services.html">Наши услуги</a>
+                      </li>
+                      <li>
+                        <a href="gallery.html">Галерея</a>
+                      </li>
+                      <li>
+                        <a href="about.html">О нас</a>
+                      </li>
+                      <li>
+                        <a href="blog.html">Блог</a>
+                      </li>
+                      <li>
+                        <a href="#">Контакты</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                  <div class="widget">
+                    <h5>Наши услуги</h5>
+                    <ul>
+                      <li>
+                        <a href="service-surgical-dentistry.html"
+                          >Хирургическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-aesthetic.html.html"
+                          >Эстетическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-pediatric-dentistry.html"
+                          >Детская стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-restorative-dentistry.html"
+                          >Терапевтическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-preventive-dentistry.html"
+                          >Профилактическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-orthodontics.html">Ортодонтия</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
+              <div class="widget">
+                <h5>Свяжитесь с Нами</h5>
+                <div class="fw-bold text-white">
+                  <i class="icofont-location-pin me-2 id-color"></i>Адрес
+                  Клиники
+                </div>
+                Fatali Khan Khoyski/ Khasanoglu, Баку, Азербайджан
+                <div class="spacer-20"></div>
+
+                <div class="fw-bold text-white">
+                  <i class="icofont-phone me-2 id-color"></i>Позвоните нам
+                </div>
+                <a href="tel:+994105110801" class="btn-main fx-slide"
+                  ><span>+994 10 511 08 01</span></a
+                >
+
+                <div class="spacer-20"></div>
+
+                <div class="fw-bold text-white">
+                  <i class="icofont-envelope me-2 id-color"></i>Отправить
+                  Сообщение
+                </div>
+                <a href="mailto:beyazdish1972@gmail.com"
+                  >beyazdish1972@gmail.com</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subfooter">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="de-flex">
+                  <div class="de-flex-col">
+                    Copyright 2025 -
+                    <a href="https://www.archdigital.org/">Arch Digital </a>
+                  </div>
+                  <ul class="menu-simple">
+                    <li>
+                      <a href="#">Условия и положения</a>
+                    </li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>      <!-- footer end -->
+    </div>
+
+    <!-- overlay content begin -->
+
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="../js/plugins.js"></script>
+    <script src="../js/designesia.js"></script>
+    <script src="../js/swiper.js"></script>
+    <script src="../js/custom-swiper-1.js"></script>
+  </body>
+</html>

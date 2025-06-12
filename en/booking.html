@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Bəyaz Diş - Стоматологическая клиника</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta
+      content="Diş Klinikası | Bəyaz diş - Stomatoloji Klinika"
+      name="description"
+    />
+    <meta content="" name="keywords" />
+    <meta content="" name="author" />
+    <!-- CSS Files
+    ================================================== -->
+    <link
+      href="../css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+      id="bootstrap"
+    />
+    <link href="../css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="../css/swiper.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <!-- color scheme -->
+    <link
+      id="colors"
+      href="../css/colors/scheme-01.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/az.js"></script>
+    <style>
+      form .form-control {
+        width: 100%;
+        padding: 12px 14px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        appearance: none;
+        outline: none;
+        margin-bottom: 16px; /* 👈 Adds vertical spacing between elements */
+      }
+
+      form .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+      }
+
+      form select.form-control {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='%23666' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 16px;
+      }
+
+      form textarea.form-control {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      form input[type="submit"],
+      form .btn-main {
+        background-color: #007bff;
+        color: #fff;
+        font-weight: 600;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+      }
+
+      form input[type="submit"]:hover,
+      form .btn-main:hover {
+        background-color: #0056b3;
+      }
+
+      form .error,
+      form .success {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        display: none;
+      }
+
+      form .error {
+        background-color: #ffe5e5;
+        color: #c00;
+      }
+
+      form .success {
+        background-color: #e5ffe5;
+        color: #080;
+      }
+    </style>
+    <!-- Include Pikaday CSS and JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <a href="#" id="back-to-top"></a>
+
+      <!-- preloader begin -->
+      <div id="de-loader"></div>
+      <!-- preloader end -->
+
+      <!-- header begin -->
+      <header class="transparent header-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="de-flex sm-pt10">
+                <div class="de-flex-col">
+                  <div id="logo">
+                    <a href="index.html">
+                      <img
+                        class="logo-main"
+                        src="../images/beyazdis-logo.png"
+                        alt=""
+                      />
+                      <img
+                        class="logo-scroll"
+                        src="../images/beyazdis-logo.png"
+                        alt=""
+                      />
+                      <img
+                        class="logo-mobile"
+                        src="../images/beyazdis-logo.png"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div class="de-flex-col header-col-mid">
+                  <ul id="mainmenu" style="white-space: nowrap">
+                    <li>
+                      <a
+                        class="menu-item"
+                        style="margin-left: 5px"
+                        href="index.html"
+                        >Главная</a
+                      >
+                    </li>
+                    <li>
+                      <a class="menu-item" href="services.html">Услуги</a>
+                      <ul>
+                        <li>
+                          <a href="service-surgical-dentistry.html"
+                            >Хирургическая стоматология</a
+                          >
+                        </li>
+                        <li>
+                          <a href="service-aesthetic.html"
+                            >Эстетическая стоматология</a
+                          >
+                        </li>
+                        <li>
+                          <a href="service-pediatric-dentistry.html"
+                            >Детская стоматология</a
+                          >
+                        </li>
+                        <li>
+                          <a href="service-general-dentistry.html"
+                            >Терапевтическая стоматология</a
+                          >
+                        </li>
+                        <li>
+                          <a href="service-preventive-dentistry.html"
+                            >Профилактическая стоматология</a
+                          >
+                        </li>
+                        <li>
+                          <a href="service-orthodontics.html">Ортодонтия</a>
+                        </li>
+                        <li>
+                          <a href="services.html">Посмотреть все</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a class="menu-item" href="dentists.html">Наши врачи</a>
+                    </li>
+                    <li>
+                      <a class="menu-item" href="about.html">О нас</a>
+                    </li>
+                    <li>
+                      <a class="menu-item" href="blog.html">Блог</a>
+                    </li>
+                    <li>
+                      <a class="menu-item" href="packages.html"
+                        >Спец предложения</a
+                      >
+                    </li>
+                    <li>
+                      <a href="lobaratory.html" class="menu-item"
+                        >Лаборатория</a
+                      >
+                    </li>
+                    <li>
+                      <a class="menu-item" href="booking.html">Контакты</a>
+                    </li>
+                    <li class="language-switcher">
+                      <a href="#" class="menu-item language-current"> Ру </a>
+                      <ul class="language-options">
+                        <li><a href="../en/" data-lang="en"> English</a></li>
+                        <li><a href="../" data-lang="az"> Azərbaycan</a></li>
+                        <li><a href="#" data-lang="ru"> Русский</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="de-flex-col">
+                  <div class="menu_side_area">
+                    <a
+                      href="https://wa.me/+994105115108"
+                      class="btn-main fx-slide"
+                      target="_blank"
+                      rel="noopener"
+                      style="
+                        border: 1px solid white;
+                        box-shadow: 1px 1px 5px gray;
+                      "
+                    >
+                      <span>
+                        <i class="fa-brands fa-whatsapp"></i> +994 10 511 08
+                        01</span
+                      >
+                    </a>
+                    <span id="menu-btn"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- header end -->
+      <!-- content begin -->
+      <div class="no-bottom no-top" id="content">
+        <div id="top"></div>
+
+        <section id="subheader" class="bg-color-op-1 text-center">
+          <div class="container relative z-2">
+            <div class="row align-items-center">
+              <div class="col-lg-12">
+                <h1 class="wow fadeInUp">Контактная форма</h1>
+                <div class="border-bottom my-3"></div>
+                <ul class="crumb wow fadeInDown">
+                  <li><a href="index.html">Главная страница</a></li>
+                  <li class="active">Контактная форма</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section>
+          <div class="container relative z-2">
+            <div class="row g-4 gx-5 justify-content-between">
+              <div class="col-lg-6">
+                <div class="relative">
+                  <div id="success_message_col" class="success">
+                    <h3>Благодарим за Ваш заказ</h3>
+                    <p>
+                      Мы получили Ваш запрос и обработаем его в ближайшее время. Если
+                      Вы хотите отправить новый запрос, нажмите кнопку ниже.
+                    </p>
+                    <a class="btn-main" href="booking.html"
+                      >Отправить запрос снова</a
+                    >
+                  </div>
+        
+                  <form id="booking_form">
+                    <div class="row g-4">
+                      <div class="col-lg-12">
+                        <h3 class="mb-3">
+                          <i class="fa fa-envelope-o id-color me-2"></i>
+                          Записаться на прием в клинике
+                        </h3>
+                        <p>В любое удобное для вас время!</p>
+                        <div class="relative">
+                          <select name="service" required class="form-control">
+                            <option disabled selected value>
+                              Выберите услугу
+                            </option>
+                            <option value="Radioloji Müayinə">
+                              Рентгенологическое обследование
+                            </option>
+                            <option value="Profilaktik Stomatologiya">
+                              Профилактическая стоматология
+                            </option>
+                            <option value="Terapevtik Stomatologiya">
+                              Терапевтическая стоматология
+                            </option>
+                            <option value="Estetik Stomatologiya">
+                              Эстетическая стоматология
+                            </option>
+                            <option value="Ortodontiya">Ортодонтия</option>
+                            <option value="Cərrahi Stomatologiya">
+                              Хирургическая стоматология
+                            </option>
+                            <option value="İmplantologiya və Protez">
+                              Имплантология и протезирование
+                            </option>
+                            <option value="Uşaq Stomatologiyası">
+                              Детская стоматология
+                            </option>
+                            <option value="Parodontologiya">
+                              Пародонтология
+                            </option>
+                            <option value="Sinus Liftinq">Синус-лифтинг</option>
+                            <option value="Sedasiya">Седация</option>
+                          </select>
+        
+                          <input
+                            type="text"
+                            name="date"
+                            id="date"
+                            class="form-control"
+                            placeholder="Выберите дату"
+                            required
+                          />
+                          <select name="time" required class="form-control">
+                            <option disabled selected value>Выберите время</option>
+                            <option value="9:00">9:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                          </select>
+        
+                          <input
+                            name="name"
+                            placeholder="Имя Фамилия"
+                            class="form-control"
+                            required
+                          />
+                          <input
+                            name="email"
+                            placeholder="Электронная почта"
+                            class="form-control"
+                            type="email"
+                          />
+                          <input
+                            name="phone"
+                            placeholder="Телефон"
+                            class="form-control"
+                            required
+                          />
+                          <textarea
+                            name="message"
+                            placeholder="Дополнительные заметки"
+                            class="form-control"
+                          ></textarea>
+                        </div>
+                      </div>
+        
+                      <div class="col-lg-12">
+                        <input
+                          type="submit"
+                          value="Записаться на прием"
+                          class="btn-main"
+                        />
+                      </div>
+                    </div>
+        
+                    <div id="error_message" class="error">
+                      Извините, при отправке формы произошла ошибка.
+                    </div>
+                  </form>
+                </div>
+              </div>
+        
+              <div class="col-lg-6">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2575.41994863453!2d49.8604457752153!3d40.40257125650217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d68cedeed0b%3A0x64b431893d47d70c!2zQsmZeWF6IERpxZ8gS2xpbmlrYXPEsSAoT2ZmaWNpYWwp!5e1!3m2!1sen!2saz!4v1748760462895!5m2!1sen!2saz"
+                  style="border: 0; width: 100%; height: 100%"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- content end -->
+
+      <!-- footer begin -->
+      <footer class="section-dark">
+        <div class="container">
+          <div class="row gx-5">
+            <div class="col-lg-4 col-sm-6">
+              <img
+                src="../images/beyazdis-logo.png"
+                class="logo-footer"
+                alt=""
+              />
+              <div class="spacer-20"></div>
+              <p>
+                Клиника, оснащенная самыми современными техническими средствами,
+                гарантирует высокое качество предоставляемых услуг. Наша клиника
+                состоит из 5 кабинетов, включая операционную, оснащенных
+                стоматологическим оборудованием нового поколения.
+              </p>
+
+              <div class="social-icons mb-sm-30">
+                <a
+                  href="https://www.facebook.com/bayazdish"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a
+                  href="https://wa.me/+994105115108"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a
+                  href="https://www.instagram.com/beyaz.dish/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a
+                  href="https://www.youtube.com/@Beyaz_Dish"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a
+                  href="https://www.tiktok.com/@beyaz_dish_"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-brands fa-tiktok"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+              <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                  <div class="widget">
+                    <h5>Клиника</h5>
+                    <ul>
+                      <li>
+                        <a href="index.html">Главная страница</a>
+                      </li>
+                      <li>
+                        <a href="services.html">Наши услуги</a>
+                      </li>
+                      <li>
+                        <a href="gallery.html">Галерея</a>
+                      </li>
+                      <li>
+                        <a href="about.html">О нас</a>
+                      </li>
+                      <li>
+                        <a href="blog.html">Блог</a>
+                      </li>
+                      <li>
+                        <a href="#">Контакты</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                  <div class="widget">
+                    <h5>Наши услуги</h5>
+                    <ul>
+                      <li>
+                        <a href="service-surgical-dentistry.html"
+                          >Хирургическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-aesthetic.html.html"
+                          >Эстетическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-pediatric-dentistry.html"
+                          >Детская стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-restorative-dentistry.html"
+                          >Терапевтическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-preventive-dentistry.html"
+                          >Профилактическая стоматология</a
+                        >
+                      </li>
+                      <li>
+                        <a href="service-orthodontics.html">Ортодонтия</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
+              <div class="widget">
+                <h5>Свяжитесь с Нами</h5>
+                <div class="fw-bold text-white">
+                  <i class="icofont-location-pin me-2 id-color"></i>Адрес
+                  Клиники
+                </div>
+                Fatali Khan Khoyski/ Khasanoglu, Баку, Азербайджан
+                <div class="spacer-20"></div>
+
+                <div class="fw-bold text-white">
+                  <i class="icofont-phone me-2 id-color"></i>Позвоните нам
+                </div>
+                <a href="tel:+994105110801" class="btn-main fx-slide"
+                  ><span>+994 10 511 08 01</span></a
+                >
+
+                <div class="spacer-20"></div>
+
+                <div class="fw-bold text-white">
+                  <i class="icofont-envelope me-2 id-color"></i>Отправить
+                  Сообщение
+                </div>
+                <a href="mailto:beyazdish1972@gmail.com"
+                  >beyazdish1972@gmail.com</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subfooter">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="de-flex">
+                  <div class="de-flex-col">
+                    Copyright 2025 -
+                    <a href="https://www.archdigital.org/">Arch Digital </a>
+                  </div>
+                  <ul class="menu-simple">
+                    <li>
+                      <a href="#">Условия и положения</a>
+                    </li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>      <!-- footer end -->
+    </div>
+
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="../js/plugins.js"></script>
+    <script src="../js/designesia.js"></script>
+    <script src="../js/validation-booking.js"></script>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("nRcyaeC5DNxmJsVVB"); // Replace with your public EmailJS key
+      })();
+    </script>
+
+    <script>
+      document
+        .getElementById("booking_form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          emailjs.sendForm("service_lczv3ho", "template_0wsqnhd", this).then(
+            function () {
+              document.getElementById("success_message_col").style.display =
+                "block";
+              document.getElementById("booking_form").reset();
+            },
+            function (error) {
+              console.error("EmailJS Error:", error);
+              document.getElementById("error_message").style.display = "block";
+            }
+          );
+        });
+    </script>
+
+    <!-- datepicker -->
+    <script>
+      new Pikaday({
+        field: document.getElementById("date"),
+        format: "DD-MM-YYYY",
+        minDate: new Date(),
+        i18n: {
+          previousMonth: "Əvvəlki",
+          nextMonth: "Növbəti",
+          months: [
+            "Yanvar",
+            "Fevral",
+            "Mart",
+            "Aprel",
+            "May",
+            "İyun",
+            "İyul",
+            "Avqust",
+            "Sentyabr",
+            "Oktyabr",
+            "Noyabr",
+            "Dekabr",
+          ],
+          weekdays: [
+            "Bazar",
+            "Bazar ertəsi",
+            "Çərşənbə axşamı",
+            "Çərşənbə",
+            "Cümə axşamı",
+            "Cümə",
+            "Şənbə",
+          ],
+          weekdaysShort: ["Bz", "Be", "Ça", "Çə", "Ca", "Cü", "Şə"],
+        },
+        toString(date) {
+          const day = date.getDate().toString().padStart(2, "0");
+          const month = (date.getMonth() + 1).toString().padStart(2, "0");
+          const year = date.getFullYear();
+          return `${day}-${month}-${year}`;
+        },
+      });
+    </script>
+
+    <!-- datepicker close -->
+  </body>
+</html>

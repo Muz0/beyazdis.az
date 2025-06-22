@@ -267,6 +267,8 @@ Table of content:
 /* =========== */
 /* Custom WhatsApp code */
 /* WhatsApp Button Styles (repurposed from back-to-top) */
+
+/* WhatsApp Button Styles (no change here from previous) */
 #whatsapp-button {
   background: #25d366; /* WhatsApp green */
   position: fixed;
@@ -306,66 +308,114 @@ Table of content:
   top: 2px; /* Fine-tune vertical alignment */
 }
 
-/* WhatsApp Popup Styles */
+/* WhatsApp Popup Styles - Updated for Chat Look */
 #whatsapp-popup {
   display: none; /* Hidden by default */
   position: fixed;
   bottom: 90px; /* Position above the WhatsApp button */
   right: 20px;
   z-index: 1030; /* Higher than the button */
-  width: 300px; /* Adjust as needed */
-  background-color: #fff;
+  width: 320px; /* Slightly wider for chat feel */
+  background-color: #f7f7f7; /* Lighter background for chat area */
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
+  overflow: hidden; /* Important for border-radius on content */
   transition: all 0.3s ease-in-out;
+  font-family: Arial, sans-serif; /* A common chat font */
 }
 
 #whatsapp-popup.whatsapp-popup-show {
-  display: block; /* Show when active */
+  display: flex; /* Use flexbox for header, body, footer layout */
+  flex-direction: column;
 }
 
-.whatsapp-popup-content {
-  padding: 20px;
-  position: relative;
-  text-align: center;
+.whatsapp-popup-header {
+  background-color: #075e54; /* Dark WhatsApp header green */
+  color: #fff;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 8px; /* Match popup border-radius */
+  border-top-right-radius: 8px; /* Match popup border-radius */
+}
+
+.whatsapp-popup-header-title {
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .whatsapp-popup-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
   font-size: 24px;
   cursor: pointer;
-  color: #888;
+  color: #fff; /* White close button */
+  padding: 0 5px; /* Add some padding for easier click */
 }
 
 .whatsapp-popup-close:hover {
-  color: #333;
+  color: #ddd;
 }
 
-#whatsapp-popup h3 {
-  margin-top: 0;
-  color: #333;
-  font-size: 18px;
+.whatsapp-popup-body {
+  padding: 15px;
+  flex-grow: 1; /* Allows body to take available space */
+  overflow-y: auto; /* Enable scrolling if messages get too long */
+  max-height: 200px; /* Limit height of chat messages */
+  background-color: #ece5dd; /* WhatsApp chat background color */
+}
+
+.whatsapp-message-in {
+  background-color: #fff; /* White bubble for incoming message */
+  padding: 8px 12px;
+  border-radius: 10px;
   margin-bottom: 10px;
+  max-width: 85%; /* Don't take full width */
+  position: relative;
+  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13); /* Subtle bubble shadow */
+  align-self: flex-start; /* Align to the left in flex container (body) */
 }
 
-#whatsapp-popup p {
-  color: #555;
+.whatsapp-message-in p {
+  margin: 0;
   font-size: 14px;
-  margin-bottom: 20px;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* Arrow for message bubble (optional, but adds to chat feel) */
+.whatsapp-message-in::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px; /* Position the arrow */
+  border: 5px solid transparent;
+  border-right-color: #fff; /* Color of the arrow matching bubble */
+  border-top-color: #fff; /* Adjust if needed for top-left arrow */
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+.whatsapp-popup-footer {
+  background-color: #f0f0f0; /* Lighter gray for footer */
+  padding: 10px 15px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: flex; /* Use flex to center the button */
+  justify-content: center;
+  align-items: center;
 }
 
 .whatsapp-consultation-button {
-  display: inline-block;
-  background-color: #25d366;
+  display: flex; /* Use flex for icon and text alignment */
+  align-items: center;
+  background-color: #25d366; /* WhatsApp green */
   color: #fff !important;
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 20px; /* More rounded button */
   text-decoration: none;
   font-size: 15px;
   transition: background-color 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle button shadow */
 }
 
 .whatsapp-consultation-button:hover {
@@ -374,6 +424,7 @@ Table of content:
 
 .whatsapp-consultation-button i {
   margin-right: 8px;
+  font-size: 18px; /* Slightly larger icon in button */
 }
 
 /* Media query for mobile: show WhatsApp button always, hide popup initially */
@@ -388,6 +439,11 @@ Table of content:
     right: 10px;
     left: 10px;
     width: auto; /* Full width on mobile */
+    max-height: 80vh; /* Prevent popup from taking entire screen height */
+  }
+
+  .whatsapp-popup-body {
+    max-height: 60vh; /* Adjust body height for mobile */
   }
 }
 /* ================================================== */

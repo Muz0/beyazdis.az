@@ -1,38 +1,60 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var whatsappButton = document.getElementById("whatsapp-button");
   var whatsappPopup = document.getElementById("whatsapp-popup");
   var whatsappPopupClose = document.querySelector(".whatsapp-popup-close");
 
-  // Function to show/hide WhatsApp button on scroll
-  window.addEventListener("scroll", function() {
-      if (window.scrollY > 100) { // Adjust scroll threshold as needed
-          whatsappButton.classList.add("show");
-      } else {
-          whatsappButton.classList.remove("show");
-          // Optionally hide popup if button hides
-          whatsappPopup.classList.remove("whatsapp-popup-show");
-      }
+  var hasPopupAutoOpened = false;
+
+  var showPopupAtY = 500;
+
+  window.addEventListener("scroll", function () {
+    var currentScrollY = window.scrollY;
+
+    if (currentScrollY >= showPopupAtY && !hasPopupAutoOpened) {
+      whatsappPopup.classList.add("whatsapp-popup-show");
+      whatsappButton.classList.remove("show");
+      hasPopupAutoOpened = true;
+    } else if (currentScrollY < showPopupAtY && !hasPopupAutoOpened) {
+      whatsappButton.classList.remove("show");
+    }
   });
 
-  // On mobile, ensure the WhatsApp button is always visible on page load
   if (window.innerWidth <= 768) {
-      whatsappButton.classList.add("show");
+    whatsappButton.classList.add("show");
   }
 
-  // Toggle WhatsApp popup when the button is clicked
-  whatsappButton.addEventListener("click", function() {
-      whatsappPopup.classList.toggle("whatsapp-popup-show");
+  whatsappButton.addEventListener("click", function () {
+    whatsappPopup.classList.toggle("whatsapp-popup-show");
+    if (whatsappPopup.classList.contains("whatsapp-popup-show")) {
+      hasPopupAutoOpened = true;
+      whatsappButton.classList.remove("show");
+    } else {
+      whatsappButton.classList.add("show");
+    }
   });
 
-  // Hide WhatsApp popup when the close button is clicked
-  whatsappPopupClose.addEventListener("click", function() {
+  whatsappPopupClose.addEventListener("click", function () {
+    whatsappPopup.classList.remove("whatsapp-popup-show");
+    whatsappButton.classList.add("show");
+  });
+
+  window.addEventListener("click", function (event) {
+    if (
+      !whatsappPopup.contains(event.target) &&
+      !whatsappButton.contains(event.target) &&
+      whatsappPopup.classList.contains("whatsapp-popup-show")
+    ) {
       whatsappPopup.classList.remove("whatsapp-popup-show");
+      whatsappButton.classList.add("show");
+    }
   });
 
-  // Hide WhatsApp popup when clicking outside of it
-  window.addEventListener("click", function(event) {
-      if (!whatsappPopup.contains(event.target) && !whatsappButton.contains(event.target) && whatsappPopup.classList.contains("whatsapp-popup-show")) {
-          whatsappPopup.classList.remove("whatsapp-popup-show");
-      }
-  });
+  var initialScrollY = window.scrollY;
+  if (initialScrollY >= showPopupAtY && !hasPopupAutoOpened) {
+    whatsappPopup.classList.add("whatsapp-popup-show");
+    whatsappButton.classList.remove("show");
+    hasPopupAutoOpened = true;
+  } else {
+    whatsappButton.classList.remove("show");
+  }
 });

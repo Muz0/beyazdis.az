@@ -24,7 +24,7 @@
     />
     <link href="css/plugins.css" rel="stylesheet" type="text/css" />
     <link href="css/swiper.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css?ver=1.1" rel="stylesheet" type="text/css" />
+    <link href="css/style.css?ver=1.2" rel="stylesheet" type="text/css" />
     <!-- color scheme -->
     <link
       id="colors"
@@ -148,21 +148,33 @@
 
   <body>
     <div id="wrapper">
-
       <div id="whatsapp-button">
         <i class="fa-brands fa-whatsapp"></i>
-    </div>
-    
-    <div id="whatsapp-popup" class="whatsapp-popup-hidden">
-        <div class="whatsapp-popup-content">
-            <span class="whatsapp-popup-close">&times;</span>
-            <h3>Vialife Kliniğinə Xoş Gəldiniz</h3>
-            <p>Mərhəba, Randevu almaq istərsiniz?</p>
-            <a href="https://wa.me/994105110801" target="_blank" class="whatsapp-consultation-button">
-                <i class="fa-brands fa-whatsapp"></i> WhatsApp Danışmanlığına Başlayın
-            </a>
+      </div>
+
+      <div id="whatsapp-popup" class="whatsapp-popup-hidden">
+        <div class="whatsapp-popup-header">
+          <span class="whatsapp-popup-header-title">Bəyaz Diş</span>
+          <span class="whatsapp-popup-close">&times;</span>
         </div>
-    </div>
+        <div class="whatsapp-popup-body">
+          <div class="whatsapp-message-in">
+            <p>👋 Salam! Necə kömək edə bilərik?</p>
+          </div>
+          <div class="whatsapp-message-in">
+            <p>Qəbula yazılmaq və ya məlumat almaq istəyirsiniz?</p>
+          </div>
+        </div>
+        <div class="whatsapp-popup-footer">
+          <a
+            href="https://wa.me/994105110801"
+            target="_blank"
+            class="whatsapp-consultation-button"
+          >
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp-da Mesaj Göndər
+          </a>
+        </div>
+      </div>
       <!-- preloader begin -->
       <div id="de-loader"></div>
       <!-- preloader end -->
@@ -248,9 +260,7 @@
                       <a class="menu-item" href="blog.html">Blog</a>
                     </li>
                     <li>
-                      <a class="menu-item" href="packages.html"
-                        >Təkliflər</a
-                      >
+                      <a class="menu-item" href="packages.html">Təkliflər</a>
                     </li>
                     <li>
                       <a href="lobaratory.html" class="menu-item"
@@ -265,10 +275,11 @@
                       <ul class="language-options">
                         <li><a href="./en/" data-lang="en"> English</a></li>
                         <li><a href="#" data-lang="az"> Azərbaycan dili</a></li>
-                        <li><a href="./ru/" data-lang="ru"> Русский язык</a></li>
+                        <li>
+                          <a href="./ru/" data-lang="ru"> Русский язык</a>
+                        </li>
                       </ul>
                     </li>
-                  </ul>
                   </ul>
                   <!-- mainmenu end -->
                 </div>
@@ -456,7 +467,11 @@
                           </a>
                         </div>
                         <div
-                          style="display: flex; flex-direction: column; margin: 0"
+                          style="
+                            display: flex;
+                            flex-direction: column;
+                            margin: 0;
+                          "
                         >
                           <a
                             href="https://www.youtube.com/watch?v=BaD8xVyopTM&t=707s"
@@ -465,9 +480,7 @@
                             rel="noopener"
                             class="youtube"
                           >
-                            <i
-                              class="fa-brands fa-youtube"
-                            ></i>
+                            <i class="fa-brands fa-youtube"></i>
                             Beynəlxalq Konqres Bredent Akademiyası
                           </a>
                           <a
@@ -477,10 +490,9 @@
                             rel="noopener"
                             class="youtube"
                           >
-                            <i
-                              class="fa-brands fa-youtube"
-                            ></i>
-                            İmplant üzərində protezlər vebinar Bredent Group GMBH
+                            <i class="fa-brands fa-youtube"></i>
+                            İmplant üzərində protezlər vebinar Bredent Group
+                            GMBH
                           </a>
                         </div>
                       </div>
@@ -918,7 +930,6 @@
                   </div>
                 </div>
               </a>
-
 
               <a href="dentists.html#nihad" class="doctor-card-link">
                 <div class="doctor-card">

@@ -315,7 +315,8 @@ Table of content:
   bottom: 90px; /* Position above the WhatsApp button */
   right: 20px;
   z-index: 1030; /* Higher than the button */
-  width: 320px; /* Slightly wider for chat feel */
+  /* width: 320px; Slightly wider for chat feel */
+  
   background-color: #f7f7f7; /* Lighter background for chat area */
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);

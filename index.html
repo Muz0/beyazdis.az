@@ -143,12 +143,26 @@
         object-fit: contain; /* Keeps aspect ratio */
       }
     </style>
+    <script src="./js/whatsapp-popup.js"></script>
   </head>
 
   <body>
     <div id="wrapper">
-      <a href="#" id="back-to-top"></a>
 
+      <div id="whatsapp-button">
+        <i class="fa-brands fa-whatsapp"></i>
+    </div>
+    
+    <div id="whatsapp-popup" class="whatsapp-popup-hidden">
+        <div class="whatsapp-popup-content">
+            <span class="whatsapp-popup-close">&times;</span>
+            <h3>Vialife Kliniğinə Xoş Gəldiniz</h3>
+            <p>Mərhəba, Randevu almaq istərsiniz?</p>
+            <a href="https://wa.me/994105110801" target="_blank" class="whatsapp-consultation-button">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Danışmanlığına Başlayın
+            </a>
+        </div>
+    </div>
       <!-- preloader begin -->
       <div id="de-loader"></div>
       <!-- preloader end -->

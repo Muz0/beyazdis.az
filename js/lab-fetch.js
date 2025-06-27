@@ -1,6 +1,6 @@
 /**
  * ─────────────────────────────────────────────────────────────────────────────
- *  Configuration
+ * Configuration
  * ─────────────────────────────────────────────────────────────────────────────
  */
 const API_BASE = "https://faodhpwvhonpyxlughls.supabase.co/rest/v1";
@@ -9,7 +9,7 @@ const API_KEY =
 const TABLE_NAME = "laboratory";
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  Headers for Supabase REST calls
+//  Headers for Supabase REST calls
 // ─────────────────────────────────────────────────────────────────────────────
 const headers = {
   apikey: API_KEY,
@@ -18,13 +18,18 @@ const headers = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  Grab target container from the DOM
+//  Grab target container from the DOM
 // ─────────────────────────────────────────────────────────────────────────────
 const galleryContainer = document.getElementById("gallery");
 const filtersContainer = document.getElementById("filters");
 
+// --- Новые элементы для лоадера и основного контента ---
+const loaderWrapper = document.getElementById("loader-wrapper");
+const mainContent = document.getElementById("main-content");
+// -----------------------------------------------------
+
 // ─────────────────────────────────────────────────────────────────────────────
-//  1) Fetch fresh data from Supabase on every page load
+//  1) Fetch fresh data from Supabase on every page load
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchGalleryData() {
   const url = `${API_BASE}/${TABLE_NAME}?select=*`;
@@ -40,8 +45,8 @@ async function fetchGalleryData() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  2) Render the Gallery Grid (Bootstrap columns + cards)
-//     Each outer <div> gets “item” + its type (“image”, “video”, or “pdf”).
+//  2) Render the Gallery Grid (Bootstrap columns + cards)
+//     Each outer <div> gets “item” + its type (“image”, “video”, or “pdf”).
 // ─────────────────────────────────────────────────────────────────────────────
 function renderGallery(dataArray) {
   galleryContainer.innerHTML = ""; // Clear existing content
@@ -52,8 +57,9 @@ function renderGallery(dataArray) {
     return;
   }
 
+  const fragment = document.createDocumentFragment(); // Используем DocumentFragment для оптимизации
+
   dataArray.forEach((item) => {
-    // Outer <div class="col-lg-3 col-md-4 col-sm-6 col-12 item image|video|pdf">
     const col = document.createElement("div");
     col.classList.add(
       "col-lg-3",
@@ -61,19 +67,16 @@ function renderGallery(dataArray) {
       "col-sm-6",
       "col-12",
       "item",
-      item.type // “image”, “video”, or “pdf”
+      item.type
     );
-    col.style.minHeight = "1px";
 
-    // Card wrapper
     const card = document.createElement("div");
     card.classList.add("card", "h-100", "shadow-sm", "overflow-hidden");
 
     if (item.type === "image") {
-      // ─── IMAGE CARD ────────────────────────────────────────
       const link = document.createElement("a");
       link.href = item.url;
-      link.classList.add("glightbox");
+      link.classList.add("glightbox"); // Make sure this class is present for GLightbox
       link.setAttribute("data-gallery", "gallery");
       link.setAttribute("data-title", item.title || "Image");
 
@@ -95,11 +98,9 @@ function renderGallery(dataArray) {
         card.appendChild(body);
       }
     } else if (item.type === "video") {
-      // ─── VIDEO CARD ────────────────────────────────────────
       const videoWrapper = document.createElement("div");
       videoWrapper.style.position = "relative";
       videoWrapper.style.paddingTop = "56.25%"; // 16:9
-      // videoWrapper.style.overflow = "hidden";
 
       const video = document.createElement("video");
       video.setAttribute("controls", "controls");
@@ -127,7 +128,6 @@ function renderGallery(dataArray) {
         card.appendChild(body);
       }
     } else if (item.type === "pdf") {
-      // ─── PDF CARD ─────────────────────────────────────────
       const pdfWrapper = document.createElement("div");
       pdfWrapper.classList.add(
         "d-flex",
@@ -158,67 +158,89 @@ function renderGallery(dataArray) {
     }
 
     col.appendChild(card);
-    galleryContainer.appendChild(col);
+    fragment.appendChild(col);
   });
+
+  galleryContainer.appendChild(fragment);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  3) Initialize Glightbox
+//  3) Initialize Glightbox
 // ─────────────────────────────────────────────────────────────────────────────
 function initializeLightbox() {
+  // GLightbox should be initialized AFTER all .glightbox elements are in the DOM
   GLightbox({
-    selector: ".glightbox"
+    selector: ".glightbox",
+    // Add other GLightbox options here if needed
   });
 }
 
-
 // ─────────────────────────────────────────────────────────────────────────────
-//  4) Setup Filtering Logic
+//  4) Setup Filtering Logic
 // ─────────────────────────────────────────────────────────────────────────────
 function setupFilters() {
-  if (!filtersContainer) return; // Exit if filters container not found
+  if (!filtersContainer) return;
 
   filtersContainer.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
 
-      // Update active class for filters
       filtersContainer.querySelectorAll("a").forEach((el) => {
         el.classList.remove("selected");
       });
       link.classList.add("selected");
 
-      const filterValue = link.dataset.filter; // "*", ".image", ".video", or ".pdf"
+      const filterValue = link.dataset.filter;
 
       document.querySelectorAll("#gallery .item").forEach((item) => {
         if (filterValue === "*") {
-          item.style.display = ""; // Show all
+          item.style.display = "";
         } else {
           if (item.classList.contains(filterValue.substring(1))) {
-            item.style.display = ""; // Show if matches filter
+            item.style.display = "";
           } else {
-            item.style.display = "none"; // Hide if doesn't match
+            item.style.display = "none";
           }
         }
       });
+      // Re-initialize GLightbox if filtering breaks its functionality (e.g., if it loses track of hidden elements)
+      // If GLightbox works fine after filtering, keep this commented out for performance.
+      // initializeLightbox();
     });
   });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  5) Load Gallery on DOMContentLoaded
+//  5) Load Gallery ONLY after the entire page (including images, CSS, other scripts) has loaded
 // ─────────────────────────────────────────────────────────────────────────────
-document.addEventListener("DOMContentLoaded", async () => {
+window.addEventListener("load", async () => {
   try {
     const galleryData = await fetchGalleryData();
     renderGallery(galleryData);
-    initializeLightbox(); // Initialize after rendering all elements
-    setupFilters(); // Set up filters after the gallery is rendered
+    initializeLightbox();
+    setupFilters();
   } catch (error) {
-    galleryContainer.innerHTML = `
-            <div class="col-12 text-center">
-              <p class="text-danger">Error loading gallery: ${error.message}</p>
-            </div>`;
+    if (galleryContainer) {
+      galleryContainer.innerHTML = `
+        <div class="col-12 text-center">
+          <p class="text-danger">Error loading gallery: ${error.message}</p>
+        </div>`;
+    }
     console.error("Error loading gallery:", error);
+  } finally {
+    // --- Добавляем задержку в 1 секунду перед скрытием лоадера ---
+    setTimeout(() => {
+      if (loaderWrapper) {
+        loaderWrapper.classList.add("hidden");
+        // Remove loader from DOM after transition to avoid interference
+        loaderWrapper.addEventListener('transitionend', () => {
+            loaderWrapper.style.display = 'none';
+        }, { once: true });
+      }
+      if (mainContent) {
+        mainContent.style.display = ""; // Revert to its original display property (block, flex, etc.)
+      }
+    }, 2000); // 1000 миллисекунд = 1 секунда
+    // -------------------------------------------------------------------------
   }
 });

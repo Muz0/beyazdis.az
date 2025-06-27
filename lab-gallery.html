@@ -29,77 +29,359 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+    />
+    <style>
+      /* Temporary: Debugging Overflow */
 
+
+      /* Your existing card styles */
+      .card-img-top {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+      .card video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Loader styles */
+      #loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff; /* Or your preferred background color */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* Ensure it's on top */
+        transition: opacity 0.5s ease-out; /* Smooth fade out */
+      }
+      #loader-wrapper.hidden {
+        opacity: 0;
+        pointer-events: none; /* Allows clicks through after fade */
+      }
+      .spinner-border {
+        width: 3rem; /* Bootstrap spinner size */
+        height: 3rem;
+      }
+    </style>
   </head>
 
   <body>
-    <div id="wrapper">
-            <div id="whatsapp-button">
-        <i class="fa-brands fa-whatsapp"></i>
+    <div id="loader-wrapper">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
+    </div>
+    <div id="main-content" style="display: none">
+      <div id="wrapper">
+        <div id="whatsapp-button">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
 
-      <div id="whatsapp-popup" class="whatsapp-popup-hidden">
-        <div class="whatsapp-popup-header">
-          <span class="whatsapp-popup-header-title">Bəyaz Diş Stomatoloji klinika & laboratoriya</span>
-          <span class="whatsapp-popup-close">&times;</span>
-        </div>
-        <div class="whatsapp-popup-body">
-          <div class="whatsapp-message-in">
-            <p>👋 Salam! Necə kömək edə bilərik?</p>
+        <div id="whatsapp-popup" class="whatsapp-popup-hidden">
+          <div class="whatsapp-popup-header">
+            <span class="whatsapp-popup-header-title"
+              >Bəyaz Diş Stomatoloji klinika & laboratoriya</span
+            >
+            <span class="whatsapp-popup-close">×</span>
           </div>
-          <div class="whatsapp-message-in">
-            <p>Qəbula yazılmaq və ya məlumat almaq istəyirsiniz?</p>
+          <div class="whatsapp-popup-body">
+            <div class="whatsapp-message-in">
+              <p>👋 Salam! Necə kömək edə bilərik?</p>
+            </div>
+            <div class="whatsapp-message-in">
+              <p>Qəbula yazılmaq və ya məlumat almaq istəyirsiniz?</p>
+            </div>
+          </div>
+          <div class="whatsapp-popup-footer">
+            <a
+              href="https://wa.me/994105110801"
+              target="_blank"
+              class="whatsapp-consultation-button"
+            >
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp-da Mesaj Göndər
+            </a>
           </div>
         </div>
-        <div class="whatsapp-popup-footer">
-          <a
-            href="https://wa.me/994105110801"
-            target="_blank"
-            class="whatsapp-consultation-button"
-          >
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp-da Mesaj Göndər
-          </a>
-        </div>
-      </div>
 
-      <div id="de-loader"></div>
-      <header class="header-light">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="de-flex sm-pt10">
-                <div class="de-flex-col">
-                  <!-- logo begin -->
-                  <div id="logo">
-                    <a href="index.html">
-                      <img
-                        class="logo-main"
-                        src="images/beyazdis-logo.png"
-                        alt=""
-                      />
-                      <img
-                        class="logo-scroll"
-                        src="images/beyazdis-logo.png"
-                        alt=""
-                      />
-                      <img
-                        class="logo-mobile"
-                        src="images/beyazdis-logo.png"
-                        alt=""
-                      />
-                    </a>
+        <header class="header-light">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="de-flex sm-pt10">
+                  <div class="de-flex-col">
+                    <div id="logo">
+                      <a href="index.html">
+                        <img
+                          class="logo-main"
+                          src="images/beyazdis-logo.png"
+                          alt=""
+                        />
+                        <img
+                          class="logo-scroll"
+                          src="images/beyazdis-logo.png"
+                          alt=""
+                        />
+                        <img
+                          class="logo-mobile"
+                          src="images/beyazdis-logo.png"
+                          alt=""
+                        />
+                      </a>
+                    </div>
                   </div>
-                  <!-- logo end -->
+                  <div class="de-flex-col header-col-mid">
+                    <ul id="mainmenu">
+                      <li>
+                        <a class="menu-item" href="index.html">Əsas səhifə</a>
+                      </li>
+                      <li>
+                        <a class="menu-item" href="services.html">Xidmətlər</a>
+                        <ul>
+                          <li>
+                            <a href="service-surgical-dentistry.html"
+                              >Cərrahi stomatologiya</a
+                            >
+                          </li>
+                          <li>
+                            <a href="service-aesthetic.html.html"
+                              >Estetik stomatologiya</a
+                            >
+                          </li>
+                          <li>
+                            <a href="service-pediatric-dentistry.html"
+                              >Uşaq stomatologiyası
+                            </a>
+                          </li>
+                          <li>
+                            <a href="service-general-dentistry.html"
+                              >Terapevtik stomatologiya</a
+                            >
+                          </li>
+                          <li>
+                            <a href="service-preventive-dentistry.html"
+                              >Profilaktik stomatologiya</a
+                            >
+                          </li>
+                          <li>
+                            <a href="service-orthodontics.html">Ortodontiya</a>
+                          </li>
+                          <li>
+                            <a href="services.html">Hamısına bax</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a class="menu-item" href="dentists.html"
+                          >Həkimlərimiz</a
+                        >
+                      </li>
+                      <li>
+                        <a class="menu-item" href="about.html">Haqqımızda</a>
+                      </li>
+                      <li>
+                        <a class="menu-item" href="blog.html">Blog</a>
+                      </li>
+                      <li>
+                        <a class="menu-item" href="packages.html">Təkliflər</a>
+                      </li>
+                      <li>
+                        <a href="lobaratory.html" class="menu-item"
+                          >Laboratoriyamiz</a
+                        >
+                      </li>
+                      <li>
+                        <a class="menu-item" href="booking.html">Əlaqə</a>
+                      </li>
+                      <li class="language-switcher">
+                        <a href="#" class="menu-item language-current"> Az </a>
+                        <ul class="language-options">
+                          <li><a href="./en/" data-lang="en"> English</a></li>
+                          <li>
+                            <a href="#" data-lang="az"> Azərbaycan dili</a>
+                          </li>
+                          <li>
+                            <a href="./ru/" data-lang="ru"> Русский язык</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="de-flex-col">
+                    <div class="menu_side_area">
+                      <a href="tel:+994105110801" class="btn-main fx-slide"
+                        ><span>+994 10 511 08 01</span></a
+                      >
+                      <span id="menu-btn"></span>
+                    </div>
+                  </div>
                 </div>
-                <div class="de-flex-col header-col-mid">
-                  <!-- mainemenu begin -->
-                  <ul id="mainmenu">
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="no-bottom no-top" id="content">
+          <div id="top"></div>
+
+          <section id="subheader" class="bg-color-op-1 text-center">
+            <div class="container relative z-2">
+              <div class="row align-items-center">
+                <div class="col-lg-12">
+                  <h1 class="wow fadeInUp">Laboratoriyamiz</h1>
+                  <div class="border-bottom my-3"></div>
+                  <ul class="crumb wow fadeInDown">
+                    <li><a href="index.html">Əass səhifə</a></li>
+                    <li class="active">Sənədlər</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="section-gallery" class="bg-light">
+            <div class="container">
+              <div class="row mb-4">
+                <div class="col-12 text-center">
+                  <ul id="filters" class="fadeInUp" data-wow-delay="0s">
                     <li>
-                      <a class="menu-item" href="index.html">Əsas səhifə</a>
+                      <a
+                        href="#"
+                        style="text-transform: none; font-size: 22px"
+                        data-filter="*"
+                        class="selected"
+                        >Hamısı</a
+                      >
                     </li>
                     <li>
-                      <a class="menu-item" href="services.html">Xidmətlər</a>
+                      <a
+                        href="#"
+                        style="text-transform: none; font-size: 22px"
+                        data-filter=".image"
+                        >Şəkillər</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        style="text-transform: none; font-size: 22px"
+                        data-filter=".video"
+                        >Videolar</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        style="text-transform: none; font-size: 22px"
+                        data-filter=".pdf"
+                        >Sertifikatlarımız</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div id="gallery" class="row g-3"></div>
+            </div>
+          </section>
+        </div>
+        <footer class="section-dark">
+          <div class="container">
+            <div class="row gx-5">
+              <div class="col-lg-4 col-sm-6">
+                <img
+                  src="images/beyazdis-logo.png"
+                  class="logo-footer"
+                  alt=""
+                />
+                <div class="spacer-20"></div>
+                <p>
+                  Ən müasir texniki vasitələrlə təchiz edilmiş klinika
+                  göstərilən xidmətin yüksək keyfiyyətinə zəmanət verir.
+                  Klinikamız əməliyyatxana da daxil olmaqla, yeni nəsil
+                  stomatoloji qurğularla təchiz olunmuş 5 kabinetdən ibarətdir.
+                </p>
+
+                <div class="social-icons mb-sm-30">
+                  <a
+                    href="https://www.facebook.com/bayazdish"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </a>
+                  <a
+                    href="https://wa.me/+994105115108"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/beyaz.dish/"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@Beyaz_Dish"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <i class="fa-brands fa-youtube"></i>
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@beyaz_dish_"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <i class="fa-brands fa-tiktok"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+                <div class="row">
+                  <div class="col-lg-6 col-sm-6">
+                    <div class="widget">
+                      <h5>Klinika</h5>
+                      <ul>
+                        <li>
+                          <a href="index.html">Əsas səhifə</a>
+                        </li>
+                        <li>
+                          <a href="services.html">Xidmətlərimiz</a>
+                        </li>
+                        <li>
+                          <a href="gallery.html">Qalereya</a>
+                        </li>
+                        <li>
+                          <a href="about.html">Haqqımızda</a>
+                        </li>
+                        <li>
+                          <a href="blog.html">Bloq</a>
+                        </li>
+                        <li>
+                          <a href="#">Əlaqə</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-sm-6">
+                    <div class="widget">
+                      <h5>Xidmətlərimiz</h5>
                       <ul>
                         <li>
                           <a href="service-surgical-dentistry.html"
@@ -113,11 +395,11 @@
                         </li>
                         <li>
                           <a href="service-pediatric-dentistry.html"
-                            >Uşaq stomatologiyası
-                          </a>
+                            >Uşaq stomatologiyası</a
+                          >
                         </li>
                         <li>
-                          <a href="service-general-dentistry.html"
+                          <a href="service-restorative-dentistry.html"
                             >Terapevtik stomatologiya</a
                           >
                         </li>
@@ -129,301 +411,72 @@
                         <li>
                           <a href="service-orthodontics.html">Ortodontiya</a>
                         </li>
-                        <li>
-                          <a href="services.html">Hamısına bax</a>
-                        </li>
                       </ul>
-                    </li>
-                    <li>
-                      <a class="menu-item" href="dentists.html">Həkimlərimiz</a>
-                    </li>
-                    <li>
-                      <a class="menu-item" href="about.html">Haqqımızda</a>
-                    </li>
-                    <li>
-                      <a class="menu-item" href="blog.html">Blog</a>
-                    </li>
-                    <li>
-                      <a class="menu-item" href="packages.html"
-                        >Təkliflər</a
-                      >
-                    </li>
-                    <li>
-                      <a href="lobaratory.html" class="menu-item"
-                        >Laboratoriyamiz</a
-                      >
-                    </li>
-                    <li>
-                      <a class="menu-item" href="booking.html">Əlaqə</a>
-                    </li>
-                    <li class="language-switcher">
-                      <a href="#" class="menu-item language-current"> Az </a>
-                      <ul class="language-options">
-                        <li><a href="./en/" data-lang="en"> English</a></li>
-                        <li><a href="#" data-lang="az"> Azərbaycan dili</a></li>
-                        <li><a href="./ru/" data-lang="ru"> Русский язык</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                  </ul>
-                  <!-- mainmenu end -->
-                </div>
-                <div class="de-flex-col">
-                  <div class="menu_side_area">
-                    <a href="tel:+994105110801" class="btn-main fx-slide"
-                      ><span>+994 10 511 08 01</span></a
-                    >
-                    <span id="menu-btn"></span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </header>
-      <div class="no-bottom no-top" id="content">
-        <div id="top"></div>
+              <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
+                <div class="widget">
+                  <h5>Bizimlə Əlaqə</h5>
+                  <div class="fw-bold text-white">
+                    <i class="icofont-location-pin me-2 id-color"></i>Klinikanın
+                    Ünvanı
+                  </div>
+                  Fatali Khan Khoyski/ Khasanoglu, Baku, Azerbaijan
+                  <div class="spacer-20"></div>
 
-        <section id="subheader" class="bg-color-op-1 text-center">
-          <div class="container relative z-2">
-            <div class="row align-items-center">
-              <div class="col-lg-12">
-                <h1 class="wow fadeInUp">Laboratoriyamiz</h1>
-                <div class="border-bottom my-3"></div>
-                <ul class="crumb wow fadeInDown">
-                  <li><a href="index.html">Əass səhifə</a></li>
-                  <li class="active">Sənədlər</li>
-                </ul>
+                  <div class="fw-bold text-white">
+                    <i class="icofont-phone me-2 id-color"></i>Zəng Edin
+                  </div>
+                  <a href="tel:+994105110801" class="btn-main fx-slide"
+                    ><span>+994 10 511 08 01</span></a
+                  >
+
+                  <div class="spacer-20"></div>
+
+                  <div class="fw-bold text-white">
+                    <i class="icofont-envelope me-2 id-color"></i>Mesaj Göndərin
+                  </div>
+                  <a href="mailto:beyazdish1972@gmail.com"
+                    >beyazdish1972@gmail.com</a
+                  >
+                </div>
               </div>
             </div>
           </div>
-        </section>
-
-        <section id="section-gallery" class="bg-light">
-          <div class="container">
-            <div class="row mb-4">
-              <div class="col-12 text-center">
-                <ul id="filters" class="fadeInUp" data-wow-delay="0s">
-                  <li>
-                    <a
-                      href="#"
-                      style="text-transform: none; font-size: 22px"
-                      data-filter="*"
-                      class="selected"
-                      >Hamısı</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      style="text-transform: none; font-size: 22px"
-                      data-filter=".image"
-                      >Şəkillər</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      style="text-transform: none; font-size: 22px"
-                      data-filter=".video"
-                      >Videolar</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      style="text-transform: none; font-size: 22px"
-                      data-filter=".pdf"
-                      >Sertifikatlarımız</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div id="gallery" class="row g-3" ></div>
-          </div>
-        </section>
-      </div>
-      <footer class="section-dark">
-        <div class="container">
-          <div class="row gx-5">
-            <div class="col-lg-4 col-sm-6">
-              <img src="images/beyazdis-logo.png" class="logo-footer" alt="" />
-              <div class="spacer-20"></div>
-              <p>
-                Ən müasir texniki vasitələrlə təchiz edilmiş klinika göstərilən
-                xidmətin yüksək keyfiyyətinə zəmanət verir. Klinikamız
-                əməliyyatxana da daxil olmaqla, yeni nəsil stomatoloji
-                qurğularla təchiz olunmuş 5 kabinetdən ibarətdir.
-              </p>
-
-              <div class="social-icons mb-sm-30">
-                <a
-                  href="https://www.facebook.com/bayazdish"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <i class="fa-brands fa-facebook-f"></i>
-                </a>
-                <a
-                  href="https://wa.me/+994105115108"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <a
-                  href="https://www.instagram.com/beyaz.dish/"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a
-                  href="https://www.youtube.com/@Beyaz_Dish"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a
-                  href="https://www.tiktok.com/@beyaz_dish_"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <i class="fa-brands fa-tiktok"></i>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+          <div class="subfooter">
+            <div class="container">
               <div class="row">
-                <div class="col-lg-6 col-sm-6">
-                  <div class="widget">
-                    <h5>Klinika</h5>
-                    <ul>
+                <div class="col-md-12">
+                  <div class="de-flex">
+                    <div class="de-flex-col">
+                      Copyright 2025 -
+                      <a href="https://www.archdigital.org/">Arch Digital </a>
+                    </div>
+                    <ul class="menu-simple">
                       <li>
-                        <a href="index.html">Əsas səhifə</a>
+                        <a href="#">Terms & Conditions</a>
                       </li>
-                      <li>
-                        <a href="services.html">Xidmətlərimiz</a>
-                      </li>
-                      <li>
-                        <a href="gallery.html">Qalereya</a>
-                      </li>
-                      <li>
-                        <a href="about.html">Haqqımızda</a>
-                      </li>
-                      <li>
-                        <a href="blog.html">Bloq</a>
-                      </li>
-                      <li>
-                        <a href="#">Əlaqə</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-sm-6">
-                  <div class="widget">
-                    <h5>Xidmətlərimiz</h5>
-                    <ul>
-                      <li>
-                        <a href="service-surgical-dentistry.html"
-                          >Cərrahi stomatologiya</a
-                        >
-                      </li>
-                      <li>
-                        <a href="service-aesthetic.html.html"
-                          >Estetik stomatologiya</a
-                        >
-                      </li>
-                      <li>
-                        <a href="service-pediatric-dentistry.html"
-                          >Uşaq stomatologiyası</a
-                        >
-                      </li>
-                      <li>
-                        <a href="service-restorative-dentistry.html"
-                          >Terapevtik stomatologiya</a
-                        >
-                      </li>
-                      <li>
-                        <a href="service-preventive-dentistry.html"
-                          >Profilaktik stomatologiya</a
-                        >
-                      </li>
-                      <li>
-                        <a href="service-orthodontics.html">Ortodontiya</a>
-                      </li>
+                      <li><a href="#">Privacy Policy</a></li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
-              <div class="widget">
-                <h5>Bizimlə Əlaqə</h5>
-                <div class="fw-bold text-white">
-                  <i class="icofont-location-pin me-2 id-color"></i>Klinikanın
-                  Ünvanı
-                </div>
-                Fatali Khan Khoyski/ Khasanoglu, Baku, Azerbaijan
-                <div class="spacer-20"></div>
-
-                <div class="fw-bold text-white">
-                  <i class="icofont-phone me-2 id-color"></i>Zəng Edin
-                </div>
-                <a href="tel:+994105110801" class="btn-main fx-slide"
-                  ><span>+994 10 511 08 01</span></a
-                >
-
-                <div class="spacer-20"></div>
-
-                <div class="fw-bold text-white">
-                  <i class="icofont-envelope me-2 id-color"></i>Mesaj Göndərin
-                </div>
-                <a href="mailto:beyazdish1972@gmail.com"
-                  >beyazdish1972@gmail.com</a
-                >
-              </div>
-            </div>
           </div>
-        </div>
-        <div class="subfooter">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="de-flex">
-                  <div class="de-flex-col">
-                    Copyright 2025 -
-                    <a href="https://www.archdigital.org/">Arch Digital </a>
-                  </div>
-                  <ul class="menu-simple">
-                    <li>
-                      <a href="#">Terms & Conditions</a>
-                    </lfi>
-                    <li><a href="#">Privacy Policy</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
 
+    <script src="js/lab-fetch.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/whatsapp-popup.js"></script>
-    <script src="js/designesia.js"></script>
     <script src="js/swiper.js"></script>
     <script src="js/custom-swiper-1.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
-    />
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-
+    <!-- <script src="js/designesia.js"></script> -->
   </body>
-  <script src="js/lab-fetch.js"></script>
 </html>

@@ -39,7 +39,12 @@
     />
     <style>
       /* Temporary: Debugging Overflow */
-
+      /* CSS to hide #mainmenu on mobile */
+      @media (max-width: 991px) {
+        #mainmenu {
+          display: none !important; /* Use !important to override any conflicting inline or plugin styles */
+        }
+      }
 
       /* Your existing card styles */
       .card-img-top {

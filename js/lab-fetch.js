@@ -9,7 +9,7 @@ const API_KEY =
 const TABLE_NAME = "laboratory";
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  Headers for Supabase REST calls
+//   Headers for Supabase REST calls
 // ─────────────────────────────────────────────────────────────────────────────
 const headers = {
   apikey: API_KEY,
@@ -18,18 +18,21 @@ const headers = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  Grab target container from the DOM
+//   Grab target container from the DOM
 // ─────────────────────────────────────────────────────────────────────────────
 const galleryContainer = document.getElementById("gallery");
 const filtersContainer = document.getElementById("filters");
 
-// --- Новые элементы для лоадера и основного контента ---
+// --- Loader and main content elements ---
 const loaderWrapper = document.getElementById("loader-wrapper");
 const mainContent = document.getElementById("main-content");
 // -----------------------------------------------------
 
+// Global IntersectionObserver instance for lazy loading
+let lazyImageObserver;
+
 // ─────────────────────────────────────────────────────────────────────────────
-//  1) Fetch fresh data from Supabase on every page load
+//   1) Fetch fresh data from Supabase on every page load
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchGalleryData() {
   const url = `${API_BASE}/${TABLE_NAME}?select=*`;
@@ -45,8 +48,8 @@ async function fetchGalleryData() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  2) Render the Gallery Grid (Bootstrap columns + cards)
-//     Each outer <div> gets “item” + its type (“image”, “video”, or “pdf”).
+//   2) Render the Gallery Grid (Bootstrap columns + cards)
+//      Each outer <div> gets “item” + its type (“image”, “video”, or “pdf”).
 // ─────────────────────────────────────────────────────────────────────────────
 function renderGallery(dataArray) {
   galleryContainer.innerHTML = ""; // Clear existing content
@@ -57,7 +60,7 @@ function renderGallery(dataArray) {
     return;
   }
 
-  const fragment = document.createDocumentFragment(); // Используем DocumentFragment для оптимизации
+  const fragment = document.createDocumentFragment(); // Use DocumentFragment for optimization
 
   dataArray.forEach((item) => {
     const col = document.createElement("div");
@@ -81,8 +84,10 @@ function renderGallery(dataArray) {
       link.setAttribute("data-title", item.title || "Image");
 
       const img = document.createElement("img");
-      img.src = item.url;
-      img.classList.add("card-img-top");
+      // --- LAZY LOADING CHANGES HERE ---
+      img.dataset.src = item.url; // Store the actual URL in data-src
+      img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="; // Tiny transparent placeholder GIF
+      img.classList.add("card-img-top", "lazy-load"); // Add lazy-load class for observer
       img.alt = item.title || "Image";
 
       link.appendChild(img);
@@ -98,9 +103,13 @@ function renderGallery(dataArray) {
         card.appendChild(body);
       }
     } else if (item.type === "video") {
+      // For videos, often you lazy-load the poster image first
+      // and load the full video only on play or interaction.
+      // For simplicity, keeping direct video load as before, but
+      // this could also be optimized for large video galleries.
       const videoWrapper = document.createElement("div");
       videoWrapper.style.position = "relative";
-      videoWrapper.style.paddingTop = "56.25%"; // 16:9
+      videoWrapper.style.paddingTop = "56.25%"; // 16:9 aspect ratio
 
       const video = document.createElement("video");
       video.setAttribute("controls", "controls");
@@ -112,7 +121,7 @@ function renderGallery(dataArray) {
 
       const source = document.createElement("source");
       source.src = item.url;
-      source.type = "video/mp4";
+      source.type = "video/mp4"; // Ensure correct video type
       video.appendChild(source);
 
       videoWrapper.appendChild(video);
@@ -136,6 +145,9 @@ function renderGallery(dataArray) {
         "justify-content-center",
         "p-4"
       );
+      // Ensure PDF wrapper has a defined height or minimum height
+      // so the stretched-link has something to anchor to visually before content loads
+      pdfWrapper.style.minHeight = "150px"; // Adjust as needed
 
       const icon = document.createElement("i");
       icon.classList.add("fas", "fa-file-pdf", "fa-3x", "text-danger");
@@ -147,14 +159,16 @@ function renderGallery(dataArray) {
 
       const link = document.createElement("a");
       link.href = item.url;
-      link.target = "_blank";
-      link.classList.add("stretched-link");
+      link.target = "_blank"; // Open PDF in new tab
+      link.classList.add("stretched-link"); // Makes the whole card clickable for PDF
 
       pdfWrapper.appendChild(icon);
       pdfWrapper.appendChild(title);
 
       card.appendChild(pdfWrapper);
-      card.appendChild(link);
+      // The stretched-link is positioned absolutely, so it can be directly in the card.
+      // It needs to be a direct child of a relatively positioned parent (the card itself).
+      // Ensure your .card class has 'position: relative;' in your CSS for stretched-link to work correctly.
     }
 
     col.appendChild(card);
@@ -165,18 +179,22 @@ function renderGallery(dataArray) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  3) Initialize Glightbox
+//   3) Initialize Glightbox
 // ─────────────────────────────────────────────────────────────────────────────
 function initializeLightbox() {
   // GLightbox should be initialized AFTER all .glightbox elements are in the DOM
-  GLightbox({
+  // Disconnect existing GLightbox instance if re-initializing to avoid duplicates
+  if (window.GLightboxInstance) {
+    window.GLightboxInstance.destroy();
+  }
+  window.GLightboxInstance = GLightbox({
     selector: ".glightbox",
     // Add other GLightbox options here if needed
   });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  4) Setup Filtering Logic
+//   4) Setup Filtering Logic
 // ─────────────────────────────────────────────────────────────────────────────
 function setupFilters() {
   if (!filtersContainer) return;
@@ -194,31 +212,82 @@ function setupFilters() {
 
       document.querySelectorAll("#gallery .item").forEach((item) => {
         if (filterValue === "*") {
-          item.style.display = "";
+          item.style.display = ""; // Show all
         } else {
           if (item.classList.contains(filterValue.substring(1))) {
-            item.style.display = "";
+            item.style.display = ""; // Show matching type
           } else {
-            item.style.display = "none";
+            item.style.display = "none"; // Hide non-matching
           }
         }
       });
-      // Re-initialize GLightbox if filtering breaks its functionality (e.g., if it loses track of hidden elements)
-      // If GLightbox works fine after filtering, keep this commented out for performance.
-      // initializeLightbox();
+      // IMPORTANT: Re-run lazy loading after filtering if new images become visible
+      // AND you are re-using previously observed elements.
+      // If filtering simply hides/shows existing DOM elements,
+      // and they are still the same objects observed by IO, it might not be needed.
+      // However, if your filtering recreates elements or loads new ones, re-init.
+      // For this simple hide/show, it's generally not required to re-initialize the observer,
+      // but it doesn't hurt to ensure newly visible images (if they were never observed before) get picked up.
+      // However, the current setup observes ALL .lazy-load elements once.
+      // If elements are just hidden/shown, the observer *still observes them*.
+      // So, you don't need to call setupLazyLoading() again here.
     });
   });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  5) Load Gallery ONLY after the entire page (including images, CSS, other scripts) has loaded
+//   NEW: Setup Lazy Loading for images using Intersection Observer
+// ─────────────────────────────────────────────────────────────────────────────
+function setupLazyLoading() {
+  // Disconnect existing observer if it was previously set up
+  if (lazyImageObserver) {
+    lazyImageObserver.disconnect();
+  }
+
+  const lazyImages = document.querySelectorAll(".lazy-load");
+
+  if ("IntersectionObserver" in window) {
+    lazyImageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          // Load the actual image
+          lazyImage.src = lazyImage.dataset.src;
+          // Optional: Add a class for loaded state (e.g., to fade in)
+          // lazyImage.classList.add("loaded");
+          lazyImage.classList.remove("lazy-load"); // Remove lazy-load class
+          observer.unobserve(lazyImage); // Stop observing once loaded
+        }
+      });
+    }, {
+      rootMargin: "0px 0px 200px 0px" // Load images when they are 200px from the bottom/top of the viewport
+    });
+
+    lazyImages.forEach((lazyImage) => {
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Fallback for browsers that do not support Intersection Observer (older browsers)
+    // In this case, load all images immediately.
+    console.warn("IntersectionObserver not supported. Loading all images immediately.");
+    lazyImages.forEach(lazyImage => {
+      lazyImage.src = lazyImage.dataset.src;
+      lazyImage.classList.remove("lazy-load");
+    });
+  }
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//   5) Load Gallery ONLY after the entire page (including images, CSS, other scripts) has loaded
 // ─────────────────────────────────────────────────────────────────────────────
 window.addEventListener("load", async () => {
   try {
     const galleryData = await fetchGalleryData();
     renderGallery(galleryData);
-    initializeLightbox();
+    initializeLightbox(); // Re-initialize GLightbox after new elements are in DOM
     setupFilters();
+    setupLazyLoading(); // --- Call the new lazy loading setup here ---
   } catch (error) {
     if (galleryContainer) {
       galleryContainer.innerHTML = `
@@ -228,7 +297,7 @@ window.addEventListener("load", async () => {
     }
     console.error("Error loading gallery:", error);
   } finally {
-    // --- Добавляем задержку в 1 секунду перед скрытием лоадера ---
+    // --- The 2-second delay for the loader ---
     setTimeout(() => {
       if (loaderWrapper) {
         loaderWrapper.classList.add("hidden");
@@ -238,9 +307,8 @@ window.addEventListener("load", async () => {
         }, { once: true });
       }
       if (mainContent) {
-        mainContent.style.display = ""; // Revert to its original display property (block, flex, etc.)
+        mainContent.style.display = ""; // Revert to its original display property
       }
-    }, 2000); // 1000 миллисекунд = 1 секунда
-    // -------------------------------------------------------------------------
+    }, 1000); // 1000 milliseconds = 1 second
   }
 });

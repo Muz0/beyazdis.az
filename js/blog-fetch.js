@@ -89,11 +89,12 @@ function renderBlogCards(blogs) {
     const createdDate = new Date(blog.created_at);
     const day = createdDate.getDate();
     const month = createdDate.toLocaleString("en-US", { month: "short" });
-    const year = createdDate.getFullYear(); // Get the full year
+    const year = createdDate.getFullYear();
 
     const tags =
       blog.tags && blog.tags.length ? blog.tags.join(", ") : "No tags";
-    const coverImage = blog.cover_image || "images/blog/default.webp";
+    // *** IMPORTANT CHANGE HERE ***
+    const coverImage = blog.cover_image_url || "images/blog/default.webp";
 
     const cardHTML = `
       <div class="col-lg-4 col-md-6 col-sm-12">

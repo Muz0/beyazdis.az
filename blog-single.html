@@ -14,8 +14,6 @@
     />
     <meta content="" name="keywords" />
     <meta content="" name="author" />
-    <!-- CSS Files
-    ================================================== -->
     <link
       href="css/bootstrap.min.css"
       rel="stylesheet"
@@ -24,8 +22,7 @@
     />
     <link href="css/plugins.css" rel="stylesheet" type="text/css" />
     <link href="css/swiper.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css?ver=1.3" rel="stylesheet" type="text/css" />
-    <!-- color scheme -->
+    <link href="css/style.css?ver=1.4" rel="stylesheet" type="text/css" />
     <link
       id="colors"
       href="css/colors/scheme-01.css"
@@ -33,7 +30,6 @@
       type="text/css"
     />
     <style>
-      /* === Blog Main Cover Image === */
       .blog-read .post-text img {
         width: 100%;
         max-height: 400px;
@@ -42,15 +38,13 @@
         margin-bottom: 1rem;
         display: block;
       }
-    
-      /* === Popular Posts List Container === */
+
       .widget-post ul.de-bloglist-type-1 {
         list-style: none;
         padding: 0;
         margin: 0;
       }
-    
-      /* === Popular Post List Item === */
+
       .widget-post ul.de-bloglist-type-1 li {
         display: flex;
         align-items: center;
@@ -59,14 +53,13 @@
         padding-bottom: 1.25rem;
         border-bottom: 1px solid #eaeaea;
       }
-    
+
       .widget-post ul.de-bloglist-type-1 li:last-child {
         margin-bottom: 0;
         padding-bottom: 0;
         border-bottom: none;
       }
-    
-      /* === Image Container === */
+
       .widget-post .d-image {
         width: 100px;
         height: 75px;
@@ -74,20 +67,19 @@
         border-radius: 6px;
         overflow: hidden;
       }
-    
+
       .widget-post .d-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
       }
-    
-      /* === Content Area === */
+
       .widget-post .d-content {
         flex: 1;
         overflow: hidden;
       }
-    
+
       .widget-post .d-content h4 {
         font-size: 1rem;
         font-weight: 600;
@@ -98,28 +90,134 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
-    
+
       .widget-post .d-content h4 a {
         color: inherit;
         text-decoration: none;
       }
-    
+
       .widget-post .d-content h4 a:hover {
         text-decoration: underline;
       }
     </style>
-    
+    <style>
+      /* Custom video container for direct video files with play/pause buttons */
+      .video-container-custom {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100) */
+        height: 0;
+        overflow: hidden;
+        background-color: black; /* To ensure background is black before video loads */
+        border-radius: 0.25rem; /* Added based on your JS for Bootstrap's rounded-1 */
+      }
+
+      .video-container-custom .blog-video-player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures video covers the area without distortion */
+        cursor: pointer; /* Indicates it's clickable */
+      }
+
+      /* Play and Pause button shared styles */
+      .play-button-overlay,
+      .pause-button-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.7
+        ); /* Semi-transparent black background */
+        border-radius: 50%; /* Make it circular */
+        width: 80px; /* Size of the button */
+        height: 80px;
+        display: flex; /* Use flexbox for centering the icon */
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: opacity 0.3s ease; /* Smooth fade in/out */
+        z-index: 10; /* Ensure it's above the video */
+      }
+
+      .play-button-overlay i,
+      .pause-button-overlay i {
+        color: white; /* Color of the icon */
+        font-size: 32px; /* Size of the icon */
+        line-height: 1; /* Helps with vertical alignment */
+      }
+
+      .play-button-overlay i {
+        margin-left: 5px; /* Adjust for icofont-play triangle visual centering */
+      }
+
+      /* Pause button specific styles */
+      .pause-button-overlay {
+        opacity: 0; /* Initially hidden */
+        pointer-events: none; /* Disables clicks when hidden */
+        /* The `display: none;` property is handled by JavaScript, but `opacity` and `pointer-events`
+       will be managed by JS for the hover effect on desktop. */
+      }
+
+      /* Desktop Hover effect for the pause button when video is playing */
+      @media (min-width: 768px) {
+        .video-container-custom:hover .pause-button-overlay {
+          background-color: rgba(0, 0, 0, 0.85); /* Slightly darker on hover */
+          opacity: 1; /* Show on hover */
+          pointer-events: auto; /* Enable clicks on hover */
+        }
+        /* Ensure play button hides on hover when video is playing (JS handles this more directly) */
+        .video-container-custom:hover .play-button-overlay {
+          opacity: 0; /* Hide play button on hover, for visual consistency */
+          pointer-events: none; /* Disable clicks */
+        }
+      }
+
+      /* Mobile: Override desktop hover to ensure pause button can be clicked */
+      @media (max-width: 767px) {
+        .pause-button-overlay {
+          /* On mobile, JS will set `display: flex;` when video is playing,
+         so ensure it's fully visible and clickable without hover */
+          opacity: 1 !important; /* Force visibility, overriding desktop hover rules */
+          pointer-events: auto !important; /* Force clicks, overriding desktop hover rules */
+        }
+      }
+
+      /* Ensure original video-container for iframes still works */
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100) */
+        height: 0;
+        overflow: hidden;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
 
   <body>
     <div id="wrapper">
-            <div id="whatsapp-button">
+      <div id="whatsapp-button">
         <i class="fa-brands fa-whatsapp"></i>
       </div>
 
       <div id="whatsapp-popup" class="whatsapp-popup-hidden">
         <div class="whatsapp-popup-header">
-          <span class="whatsapp-popup-header-title">Bəyaz Diş Stomatoloji klinika & laboratoriya</span>
+          <span class="whatsapp-popup-header-title"
+            >Bəyaz Diş Stomatoloji klinika & laboratoriya</span
+          >
           <span class="whatsapp-popup-close">&times;</span>
         </div>
         <div class="whatsapp-popup-body">
@@ -141,18 +239,14 @@
         </div>
       </div>
 
-      <!-- preloader begin -->
       <div id="de-loader"></div>
-      <!-- preloader end -->
 
-      <!-- header begin -->
       <header class="transparent header-light">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
               <div class="de-flex sm-pt10">
                 <div class="de-flex-col">
-                  <!-- logo begin -->
                   <div id="logo">
                     <a href="index.html">
                       <img
@@ -172,10 +266,8 @@
                       />
                     </a>
                   </div>
-                  <!-- logo end -->
                 </div>
                 <div class="de-flex-col header-col-mid">
-                  <!-- mainemenu begin -->
                   <ul id="mainmenu">
                     <li>
                       <a class="menu-item" href="index.html">Əsas səhifə</a>
@@ -226,9 +318,7 @@
                       <a class="menu-item" href="blog.html">Blog</a>
                     </li>
                     <li>
-                      <a class="menu-item" href="packages.html"
-                        >Təkliflər</a
-                      >
+                      <a class="menu-item" href="packages.html">Təkliflər</a>
                     </li>
                     <li>
                       <a href="lobaratory.html" class="menu-item"
@@ -243,12 +333,12 @@
                       <ul class="language-options">
                         <li><a href="./en/" data-lang="en"> English</a></li>
                         <li><a href="#" data-lang="az"> Azərbaycan dili</a></li>
-                        <li><a href="./ru/" data-lang="ru"> Русский язык</a></li>
+                        <li>
+                          <a href="./ru/" data-lang="ru"> Русский язык</a>
+                        </li>
                       </ul>
                     </li>
                   </ul>
-                  </ul>
-                  <!-- mainmenu end -->
                 </div>
                 <div class="de-flex-col">
                   <div class="menu_side_area">
@@ -263,8 +353,6 @@
           </div>
         </div>
       </header>
-      <!-- header end -->
-      <!-- content begin -->
       <div class="no-bottom no-top" id="content">
         <div id="top"></div>
 
@@ -291,212 +379,23 @@
             <div class="row gx-5">
               <div class="col-lg-8">
                 <div class="blog-read">
-                  <div class="post-text">
-                    <!-- this is the short, or the excerp -->
-
-                  </div>
+                  <div class="post-text"></div>
                 </div>
 
                 <div class="spacer-single"></div>
               </div>
-              <!-- <div id="blog-comment">
-                <h4>Comments (5)</h4>
-
-                <div class="spacer-half"></div>
-
-                <ol>
-                  <li>
-                    <div class="avatar">
-                      <img src="images/testimonial/1.webp" alt="" />
-                    </div>
-                    <div class="comment-info">
-                      <span class="c_name">Merrill Rayos</span>
-                      <span class="c_date id-color">2 days ago</span>
-                      <span class="c_reply"><a href="#">Reply</a></span>
-                      <div class="clearfix"></div>
-                    </div>
-
-                    <div class="comment">
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium doloremque laudantium, totam rem
-                      aperiam, eaque ipsa quae ab illo inventore veritatis et
-                      quasi architecto beatae vitae dicta sunt explicabo.
-                    </div>
-                    <ol>
-                      <li>
-                        <div class="avatar">
-                          <img src="images/testimonial/2.webp" alt="" />
-                        </div>
-                        <div class="comment-info">
-                          <span class="c_name">Jackqueline Sprang</span>
-                          <span class="c_date id-color">2 days ago</span>
-                          <span class="c_reply"><a href="#">Reply</a></span>
-                          <div class="clearfix"></div>
-                        </div>
-                        <div class="comment">
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta
-                          sunt explicabo.
-                        </div>
-                      </li>
-                    </ol>
-                  </li>
-
-                  <li>
-                    <div class="avatar">
-                      <img src="images/testimonial/3.webp" alt="" />
-                    </div>
-                    <div class="comment-info">
-                      <span class="c_name">Sanford Crowley</span>
-                      <span class="c_date id-color">2 days ago</span>
-                      <span class="c_reply"><a href="#">Reply</a></span>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="comment">
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium doloremque laudantium, totam rem
-                      aperiam, eaque ipsa quae ab illo inventore veritatis et
-                      quasi architecto beatae vitae dicta sunt explicabo.
-                    </div>
-                    <ol>
-                      <li>
-                        <div class="avatar">
-                          <img src="images/testimonial/4.webp" alt="" />
-                        </div>
-                        <div class="comment-info">
-                          <span class="c_name">Lyndon Pocekay</span>
-                          <span class="c_date id-color">2 days ago</span>
-                          <span class="c_reply"><a href="#">Reply</a></span>
-                          <div class="clearfix"></div>
-                        </div>
-                        <div class="comment">
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta
-                          sunt explicabo.
-                        </div>
-                      </li>
-                    </ol>
-                  </li>
-
-                  <li>
-                    <div class="avatar">
-                      <img src="images/testimonial/5.webp" alt="" />
-                    </div>
-                    <div class="comment-info">
-                      <span class="c_name">Aleen Crigger</span>
-                      <span class="c_date id-color">2 days ago</span>
-                      <span class="c_reply"><a href="#">Reply</a></span>
-
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="comment">
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium doloremque laudantium, totam rem
-                      aperiam, eaque ipsa quae ab illo inventore veritatis et
-                      quasi architecto beatae vitae dicta sunt explicabo.
-                    </div>
-                  </li>
-                </ol>
-
-                <div class="spacer-single"></div>
-
-                <div id="comment-form-wrapper">
-                  <h4>Leave a Comment</h4>
-                  <div class="comment_form_holder">
-                    <form
-                      id="contact_form"
-                      name="form1"
-                      class="form-border"
-                      method="post"
-                      action="#"
-                    >
-                      <label>Name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        class="form-control"
-                      />
-
-                      <label>Email <span class="req">*</span></label>
-                      <input
-                        type="text"
-                        name="email"
-                        id="email"
-                        class="form-control"
-                      />
-                      <div id="error_email" class="error">
-                        Please check your email
-                      </div>
-
-                      <label>Message <span class="req">*</span></label>
-                      <textarea
-                        cols="10"
-                        rows="10"
-                        name="message"
-                        id="message"
-                        class="form-control"
-                      ></textarea>
-                      <div id="error_message" class="error">
-                        Please check your message
-                      </div>
-                      <div id="mail_success" class="success">
-                        Thank you. Your message has been sent.
-                      </div>
-                      <div id="mail_failed" class="error">
-                        Error, email not sent
-                      </div>
-
-                      <p id="btnsubmit">
-                        <input
-                          type="submit"
-                          id="send"
-                          value="Send"
-                          class="btn-main"
-                        />
-                      </p>
-                    </form>
-                  </div>
-                </div>
-              </div> -->
 
               <div class="col-lg-4">
                 <div class="widget widget-post">
                   <h4>Digər postlar</h4>
-                  <ul class="de-bloglist-type-1">
-                  
-                  </ul>
+                  <ul class="de-bloglist-type-1"></ul>
                 </div>
-
-                <!-- <div class="widget widget_tags">
-                  <h4>Popular Tags</h4>
-                  <ul class="ul-tags">
-                    <li><a href="#link">Art</a></li>
-                    <li><a href="#link">Application</a></li>
-                    <li><a href="#link">Design</a></li>
-                    <li><a href="#link">Entertainment</a></li>
-                    <li><a href="#link">Internet</a></li>
-                    <li><a href="#link">Marketing</a></li>
-                    <li><a href="#link">Multipurpose</a></li>
-                    <li><a href="#link">Music</a></li>
-                    <li><a href="#link">Print</a></li>
-                    <li><a href="#link">Programming</a></li>
-                    <li><a href="#link">Responsive</a></li>
-                    <li><a href="#link">Website</a></li>
-                  </ul>
-                </div> -->
               </div>
             </div>
           </div>
         </section>
       </div>
-      <!-- content end -->
 
-      <!-- footer begin -->
       <footer class="section-dark">
         <div class="container">
           <div class="row gx-5">
@@ -518,9 +417,6 @@
                 >
                   <i class="fa-brands fa-facebook-f"></i>
                 </a>
-                <!-- <a href="https://twitter.com" target="_blank" rel="noopener">
-                  <i class="fa-brands fa-x-twitter"></i>
-                </a> -->
                 <a
                   href="https://wa.me/+994105115108"
                   target="_blank"
@@ -582,7 +478,7 @@
                   <div class="widget">
                     <h5>Xidmətlərimiz</h5>
                     <ul>
-                                            <li>
+                      <li>
                         <a href="service-surgical-dentistry.html"
                           >Cərrahi stomatologiya</a
                         >
@@ -637,7 +533,9 @@
                 <div class="fw-bold text-white">
                   <i class="icofont-envelope me-2 id-color"></i>Mesaj Göndərin
                 </div>
-                <a href="mailto:beyazdish1972@gmail.com">beyazdish1972@gmail.com</a>
+                <a href="mailto:beyazdish1972@gmail.com"
+                  >beyazdish1972@gmail.com</a
+                >
               </div>
             </div>
           </div>
@@ -663,123 +561,9 @@
           </div>
         </div>
       </footer>
-      <!-- footer end -->
     </div>
 
-    <script>
-      // Utility to get URL query params
-      function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-      }
-
-      function formatDate(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-
-      function renderMainBlog(blog) {
-        // Update the page header title in subheader section
-        const headerTitle = document.querySelector("#subheader h2");
-        if (headerTitle) headerTitle.textContent = blog.title;
-
-        // Update breadcrumbs if needed (optional)
-        // Example: document.querySelector('.crumb .active').textContent = blog.title;
-
-        // Fill main blog content
-        const postTextDiv = document.querySelector(".blog-read .post-text");
-        if (!postTextDiv) return;
-
-        postTextDiv.innerHTML = `
-          <p>${blog.excerpt || ""}</p>
-          <img src="${
-            blog.cover_image || "images/blog/default.webp"
-          }" class="w-100 mb-4 rounded-1" alt="${blog.title}">
-          <p>${blog.content || ""}</p>
-        `;
-      }
-
-      function renderPopularPosts(blogs, currentSlug) {
-        const popularList = document.querySelector(
-          ".widget-post ul.de-bloglist-type-1"
-        );
-        if (!popularList) return;
-
-        // Clear old posts
-        popularList.innerHTML = "";
-
-        // Filter out current blog and take up to 4
-        const popularBlogs = blogs
-          .filter((b) => b.slug !== currentSlug)
-          .slice(0, 4);
-
-        popularBlogs.forEach((blog) => {
-          const postDate = formatDate(blog.created_at);
-          const cover =
-            blog.cover_image || "images/blog-thumbnail/default.webp";
-
-          const li = document.createElement("li");
-          li.innerHTML = `
-            <div class="d-image">
-              <img src="${cover}" alt="${blog.title}" />
-            </div>
-            <div class="d-content">
-              <a href="blog-single.html?slug=${encodeURIComponent(blog.slug)}">
-                <h4>${blog.title}</h4>
-              </a>
-              <div class="d-date">${postDate}</div>
-            </div>
-          `;
-          popularList.appendChild(li);
-        });
-      }
-
-      function showError(message) {
-        const postTextDiv = document.querySelector(".blog-read .post-text");
-        if (postTextDiv) {
-          postTextDiv.innerHTML = `<p class="text-danger">${message}</p>`;
-        }
-      }
-
-      // Main logic on page load
-      window.addEventListener("DOMContentLoaded", () => {
-        const slug = getQueryParam("slug");
-        if (!slug) {
-          showError("No blog specified.");
-          return;
-        }
-
-        const blogsJSON = localStorage.getItem("blogsData");
-        if (!blogsJSON) {
-          showError("No blog data found in local storage.");
-          return;
-        }
-
-        let blogs;
-        try {
-          blogs = JSON.parse(blogsJSON);
-        } catch {
-          showError("Failed to parse blog data.");
-          return;
-        }
-
-        const blog = blogs.find((b) => b.slug === slug);
-        if (!blog) {
-          showError("Blog not found.");
-          return;
-        }
-
-        renderMainBlog(blog);
-        renderPopularPosts(blogs, slug);
-      });
-    </script>
-
-    <!-- Javascript Files
-    ================================================== -->
+    <script src="js/single-blog.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/whatsapp-popup.js"></script>
     <script src="js/designesia.js"></script>

@@ -175,10 +175,7 @@ function renderPopularPosts(blogs, currentSlug) {
 
     const li = document.createElement("li");
     li.innerHTML = `
-      <div class="d-image">
-        <img src="${cover}" alt="${blog.title}" />
-      </div>
-      <div class="d-content">
+      <div>
         <a href="blog-single.html?slug=${encodeURIComponent(blog.slug)}">
           <h4>${blog.title}</h4>
         </a>

@@ -49,7 +49,6 @@ async function fetchCoverImagesData() {
 async function populateGalleryCoverImages() {
   try {
     const coverImagesData = await fetchCoverImagesData();
-    console.log("Fetched data from Supabase:", coverImagesData);
 
     const imageUrlsByCategory = {};
     coverImagesData.forEach((item) => {
@@ -57,7 +56,6 @@ async function populateGalleryCoverImages() {
         imageUrlsByCategory[item.category] = item.image_url;
       }
     });
-    console.log("Mapped Image URLs by category:", imageUrlsByCategory);
 
     // Select the image elements using their new IDs
     const photoCardImg = document.getElementById("gallery-photo-img");
@@ -70,7 +68,6 @@ async function populateGalleryCoverImages() {
     if (photoCardImg && imageUrlsByCategory.image) {
       photoCardImg.src = imageUrlsByCategory.image;
       photoCardImg.alt = "Laboratoriya Şəkilləri";
-      console.log("Updated photo card image:", photoCardImg.src);
     } else {
       console.warn(
         "Could not update photo card. Element found:",
@@ -84,7 +81,6 @@ async function populateGalleryCoverImages() {
     if (videoCardImg && imageUrlsByCategory.video) {
       videoCardImg.src = imageUrlsByCategory.video;
       videoCardImg.alt = "Laboratoriya Videoları";
-      console.log("Updated video card image:", videoCardImg.src);
     } else {
       console.warn(
         "Could not update video card. Element found:",
@@ -98,7 +94,6 @@ async function populateGalleryCoverImages() {
     if (certificateCardImg && imageUrlsByCategory.pdf) {
       certificateCardImg.src = imageUrlsByCategory.pdf;
       certificateCardImg.alt = "Laboratoriya Sertifikatları";
-      console.log("Updated certificate card image:", certificateCardImg.src);
     } else {
       console.warn(
         "Could not update certificate card. Element found:",

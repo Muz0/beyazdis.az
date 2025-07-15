@@ -119,6 +119,11 @@ Table of content:
 /* variables */
 /* ================================================== */
 * {
+  /* color-scheme */
+  --primary-color: #48ac14;
+  --primary-color-rgb: 72, 172, 20;
+  --secondary-color: #EAA638;
+  --secondary-color-rgb: 59, 157, 31;
   /* body font */
   --body-font: "Inter", Helvetica, Arial, sans-serif;
   /* --body-font: 'Circe Rounded', Helvetica, Arial, sans-serif; */
@@ -250,10 +255,6 @@ Table of content:
   background: -moz-linear-gradient(var(--bg-gradient-1)) !important;
   background: -webkit-linear-gradient(var(--bg-gradient-1)) !important;
   background: linear-gradient(var(--bg-gradient-1)) !important;
-}
-/* base color */
-.id-color {
-  /* color: var(--primary-color); */
 }
 .rounded-1 {
   border-radius: var(--rounded-1) !important;
@@ -668,10 +669,6 @@ header.header-center #logo {
   display: none;
 }
 
-header.smaller div#logo,
-header.s2 div#logo {
-}
-
 header.smaller .logo-init {
   display: none;
 }
@@ -832,10 +829,6 @@ header.header-float.header-light .header-inner {
 
 #subheader.dark {
   background-color: #1a1c26;
-}
-
-#subheader h1 {
-  /* margin: 0; */
 }
 
 #subheader.dark h1 {
@@ -2339,9 +2332,6 @@ header.header-light .h-phone span {
   position: absolute;
 }
 
-#blog-comment li li .comment {
-}
-
 .comment-info {
   margin-left: 85px;
   margin-bottom: 5px;
@@ -2350,9 +2340,6 @@ header.header-light .h-phone span {
 .rtl .comment-info {
   margin-left: 0;
   margin-right: 85px;
-}
-
-.comment-info span {
 }
 
 .comment-info .c_name {
@@ -2382,9 +2369,6 @@ header.header-light .h-phone span {
 
 .blog-list h4 {
   color: #333;
-}
-
-.blog-list .post-wrapper {
 }
 
 .blog-read h4 {
@@ -2688,10 +2672,6 @@ header.header-light .h-phone span {
 
 .error img {
   vertical-align: top;
-}
-
-#contact_form textarea {
-  /*height: calc(100% - 20px);*/
 }
 
 #contact_form .radio-img input[type="radio"] + label,
@@ -5288,9 +5268,6 @@ ol.ol-style-1.c2 li::before {
 
 .text-light .de_tab.tab_style_2 .de_tab_content {
   border-top: solid 1px rgba(255, 255, 255, 0.1);
-}
-
-.de_light .de_tab.tab_style_2 .de_nav {
 }
 
 .de_light .de_tab.tab_style_2 .de_nav li {
@@ -10493,9 +10470,6 @@ p.intro {
   background: #f6f6f6;
 }
 
-.no-bottom .col-md-12 {
-}
-
 .no-bottom {
   padding-bottom: 0 !important;
 }
@@ -12317,9 +12291,6 @@ img.anim-up-down {
 .dropdown ul.d-col-3 li {
   width: 33.3%;
   float: left;
-}
-
-.dropdown ul.d-col-3 li span {
 }
 
 .text-light .dropdown {

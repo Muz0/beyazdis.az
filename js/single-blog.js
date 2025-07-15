@@ -133,7 +133,8 @@ function renderMainBlog(blog) {
       });
 
       // Handle hover for desktop for pause button
-      if (window.matchMedia("(min-width: 768px)").matches) { // Desktop breakpoint
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        // Desktop breakpoint
         videoContainer.addEventListener("mouseenter", () => {
           if (!videoPlayer.paused) {
             pauseButton.style.opacity = "1";
@@ -147,7 +148,8 @@ function renderMainBlog(blog) {
             pauseButton.style.pointerEvents = "none";
           }
         });
-      } else { // Mobile: pause button visible on click only
+      } else {
+        // Mobile: pause button visible on click only
         // The click handler for pauseButton already covers mobile behavior
       }
     }

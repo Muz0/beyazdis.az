@@ -247,21 +247,24 @@ function setupLazyLoading() {
   const lazyImages = document.querySelectorAll(".lazy-load");
 
   if ("IntersectionObserver" in window) {
-    lazyImageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          let lazyImage = entry.target;
-          // Load the actual image
-          lazyImage.src = lazyImage.dataset.src;
-          // Optional: Add a class for loaded state (e.g., to fade in)
-          // lazyImage.classList.add("loaded");
-          lazyImage.classList.remove("lazy-load"); // Remove lazy-load class
-          observer.unobserve(lazyImage); // Stop observing once loaded
-        }
-      });
-    }, {
-      rootMargin: "0px 0px 200px 0px" // Load images when they are 200px from the bottom/top of the viewport
-    });
+    lazyImageObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            let lazyImage = entry.target;
+            // Load the actual image
+            lazyImage.src = lazyImage.dataset.src;
+            // Optional: Add a class for loaded state (e.g., to fade in)
+            // lazyImage.classList.add("loaded");
+            lazyImage.classList.remove("lazy-load"); // Remove lazy-load class
+            observer.unobserve(lazyImage); // Stop observing once loaded
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px 200px 0px", // Load images when they are 200px from the bottom/top of the viewport
+      }
+    );
 
     lazyImages.forEach((lazyImage) => {
       lazyImageObserver.observe(lazyImage);
@@ -269,14 +272,15 @@ function setupLazyLoading() {
   } else {
     // Fallback for browsers that do not support Intersection Observer (older browsers)
     // In this case, load all images immediately.
-    console.warn("IntersectionObserver not supported. Loading all images immediately.");
-    lazyImages.forEach(lazyImage => {
+    console.warn(
+      "IntersectionObserver not supported. Loading all images immediately."
+    );
+    lazyImages.forEach((lazyImage) => {
       lazyImage.src = lazyImage.dataset.src;
       lazyImage.classList.remove("lazy-load");
     });
   }
 }
-
 
 // ─────────────────────────────────────────────────────────────────────────────
 //   5) Load Gallery ONLY after the entire page (including images, CSS, other scripts) has loaded
@@ -302,9 +306,13 @@ window.addEventListener("load", async () => {
       if (loaderWrapper) {
         loaderWrapper.classList.add("hidden");
         // Remove loader from DOM after transition to avoid interference
-        loaderWrapper.addEventListener('transitionend', () => {
-            loaderWrapper.style.display = 'none';
-        }, { once: true });
+        loaderWrapper.addEventListener(
+          "transitionend",
+          () => {
+            loaderWrapper.style.display = "none";
+          },
+          { once: true }
+        );
       }
       if (mainContent) {
         mainContent.style.display = ""; // Revert to its original display property

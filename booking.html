@@ -1,52 +1,69 @@
 <!DOCTYPE html>
 <html lang="az">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Randevu | Bəyaz Diş - Stomatoloji Klinika</title>
+    <meta
+      name="description"
+      content="Bəyaz Diş klinikasında peşəkar stomatoloji xidmətlər üçün randevu alın."
+    />
+    <meta name="keywords" content="randevu, stomatoloji randevu, diş klinikası, Bəyaz Diş" />
+    <meta name="author" content="Bəyaz Diş Klinika" />
+  
+    <link rel="canonical" href="https://beyazdis.az/booking.html" />
+    <link rel="alternate" hreflang="az" href="https://beyazdis.az/booking.html" />
+    <link rel="alternate" hreflang="en" href="https://beyazdis.az/en/booking.html" />
+    <link rel="alternate" hreflang="ru" href="https://beyazdis.az/ru/booking.html" />
+    <link rel="alternate" hreflang="x-default" href="https://beyazdis.az/en/booking.html" />
+  
+    <!-- Open Graph -->
+    <meta property="og:title" content="Randevu | Bəyaz Diş - Stomatoloji Klinika" />
+    <meta
+      property="og:description"
+      content="Bəyaz Diş klinikasında peşəkar stomatoloji xidmətlər üçün randevu alın."
+    />
+    <meta property="og:url" content="https://beyazdis.az/booking.html" />
+    <meta property="og:type" content="website" />
+    <!-- <meta property="og:image" content="https://beyazdis.az/images/og-booking.jpg" /> -->
+  
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Randevu | Bəyaz Diş - Stomatoloji Klinika" />
+    <meta
+      name="twitter:description"
+      content="Bəyaz Diş klinikasında peşəkar stomatoloji xidmətlər üçün randevu alın."
+    />
+    <!-- <meta name="twitter:image" content="https://beyazdis.az/images/og-booking.jpg" /> -->
+  
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17373033237"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'AW-17373033237');
     </script>
-    <title>Diş Klinikası | Bəyaz diş - Stomatoloji Klinika</title>
+  
+    <!-- Favicons and manifest -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta
-      content="Diş Klinikası | Bəyaz diş - Stomatoloji Klinika"
-      name="description"
-    />
-    <meta content="" name="keywords" />
-    <meta content="" name="author" />
-    <!-- CSS Files
-    ================================================== -->
-    <link
-      href="css/bootstrap.min.css"
-      rel="stylesheet"
-      type="text/css"
-      id="bootstrap"
-    />
+  
+    <!-- CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap" />
     <link href="css/plugins.css" rel="stylesheet" type="text/css" />
     <link href="css/swiper.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css?ver=1.5" rel="stylesheet" type="text/css" />
-    <!-- color scheme -->
-    <!-- <link
-      id="colors"
-      href="css/colors/scheme-01.css"
-      rel="stylesheet"
-      type="text/css"
-    /> -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-    />
+  
+    <!-- Flatpickr CSS and JS for datepicker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/az.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/az.js"></script>
+  
+    <!-- Inline styles for form -->
     <style>
       form .form-control {
         width: 100%;
@@ -58,26 +75,26 @@
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
         appearance: none;
         outline: none;
-        margin-bottom: 16px; /* 👈 Adds vertical spacing between elements */
+        margin-bottom: 16px;
       }
-
+  
       form .form-control:focus {
         border-color: #007bff;
         box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
       }
-
+  
       form select.form-control {
         background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='%23666' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: right 12px center;
         background-size: 16px;
       }
-
+  
       form textarea.form-control {
         resize: vertical;
         min-height: 100px;
       }
-
+  
       form input[type="submit"],
       form .btn-main {
         background-color: #007bff;
@@ -90,12 +107,12 @@
         transition: background-color 0.3s ease;
         margin-top: 10px;
       }
-
+  
       form input[type="submit"]:hover,
       form .btn-main:hover {
         background-color: #0056b3;
       }
-
+  
       form .error,
       form .success {
         margin-top: 20px;
@@ -104,24 +121,25 @@
         font-size: 14px;
         display: none;
       }
-
+  
       form .error {
         background-color: #ffe5e5;
         color: #c00;
       }
-
+  
       form .success {
         background-color: #e5ffe5;
         color: #080;
       }
     </style>
-    <!-- Include Pikaday CSS and JS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"
-    />
+  
+    <!-- Pikaday CSS and JS (optional alternative datepicker) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css" />
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
-  </head>
+  <script>
+      gtag('event', 'conversion', {'send_to': 'AW-17373033237/1NzRCMKRmPQaEJXmjdxA'});
+    </script>
+  </head>  
 
   <body>
     <div id="wrapper">
@@ -243,7 +261,7 @@
                       <a class="menu-item" href="#">Təkliflər</a>
                     </li>
                     <li>
-                      <a href="lobaratory.html" class="menu-item"
+                      <a href="laboratory.html" class="menu-item"
                         >Laboratoriyamiz</a
                       >
                     </li>

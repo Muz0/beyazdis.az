@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html lang="az">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17373033237"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <!-- Prevent indexing this dynamic blog page -->
+    <meta name="robots" content="noindex, nofollow" />
 
-      gtag('config', 'AW-17373033237');
-    </script>
-    <title>Diş Klinikası | Bəyaz diş - Stomatoloji Klinika</title>
+    <!-- Encoding & viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title -->
+    <title>Diş Klinikası | Bəyaz Diş - Blog Yazısı</title>
+
+    <!-- Favicon & Manifest -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <!-- SEO Meta Tags -->
     <meta
-      content="Diş Klinikası | Bəyaz diş - Stomatoloji Klinika"
       name="description"
+      content="Bu səhifə dinamik blog yazısı üçündür və axtarış nəticələrində görünməməlidir."
     />
-    <meta content="" name="keywords" />
-    <meta content="" name="author" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Bəyaz Diş" />
+
+    <!-- CSS Stylesheets -->
     <link
-      href="css/bootstrap.min.css"
+      href="/css/bootstrap.min.css"
       rel="stylesheet"
       type="text/css"
       id="bootstrap"
     />
-    <link href="css/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="css/swiper.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css?ver=1.5" rel="stylesheet" type="text/css" />
-    <!-- <link
-      id="colors"
-      href="css/colors/scheme-01.css"
-      rel="stylesheet"
-      type="text/css"
-    /> -->
+    <link href="/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="/css/swiper.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css?ver=1.5" rel="stylesheet" type="text/css" />
+
+    <!-- Optional Theme Color -->
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Open Graph (optional, skip if dynamic content) -->
+    <!-- 
+    <meta property="og:title" content="Blog Yazısı Başlığı">
+    <meta property="og:description" content="Qısa təsviri buraya yazın">
+    <meta property="og:image" content="https://beyazdis.az/images/blog-og.jpg">
+    <meta property="og:url" content="https://beyazdis.az/blog/some-post">
+    <meta property="og:type" content="article">
+    -->
+
+    <!-- Google Tag Manager (leave as-is) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17373033237"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-17373033237");
+    </script>
     <style>
       .blog-read .post-text img {
         width: 100%;
@@ -214,6 +237,9 @@
         height: 100%;
       }
     </style>
+  <script>
+      gtag('event', 'conversion', {'send_to': 'AW-17373033237/1NzRCMKRmPQaEJXmjdxA'});
+    </script>
   </head>
 
   <body>
@@ -330,7 +356,7 @@
                       <a class="menu-item" href="#">Təkliflər</a>
                     </li>
                     <li>
-                      <a href="lobaratory.html" class="menu-item"
+                      <a href="laboratory.html" class="menu-item"
                         >Laboratoriyamiz</a
                       >
                     </li>

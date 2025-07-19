@@ -166,6 +166,7 @@ function renderGallery(dataArray) {
       pdfWrapper.appendChild(title);
 
       card.appendChild(pdfWrapper);
+      card.appendChild(link);
       // The stretched-link is positioned absolutely, so it can be directly in the card.
       // It needs to be a direct child of a relatively positioned parent (the card itself).
       // Ensure your .card class has 'position: relative;' in your CSS for stretched-link to work correctly.

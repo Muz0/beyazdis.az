@@ -66,21 +66,20 @@
     <link rel="manifest" href="/site.webmanifest" />
     <!-- CSS Files
     ================================================== -->
-    <link
-      href="css/bootstrap.min.css"
-      rel="stylesheet"
-      type="text/css"
-      id="bootstrap"
-    />
-    <link href="css/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="css/swiper.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css?ver=1.5" rel="stylesheet" type="text/css" />
+    <!-- Preload critical image -->
     <link
       rel="preload"
       as="image"
       href="images/slider/inner-zip.webp"
       fetchpriority="high"
     />
+    <!-- Core CSS files (load order matters) -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/plugins.css" rel="stylesheet" />
+    <link href="css/swiper.css" rel="stylesheet" />
+    <!-- Main custom CSS -->
+    <link rel="stylesheet" href="css/style.min.css?ver=1.0" />
+
     <style>
       #main_services {
         .row.g-4 {

@@ -75,6 +75,18 @@
     <link href="css/plugins.css" rel="stylesheet" type="text/css" />
     <link href="css/swiper.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css?ver=1.5" rel="stylesheet" type="text/css" />
+    <link
+      rel="preload"
+      as="image"
+      href="images/slider/inner-zip.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="images/slider/director-zip.webp"
+      fetchpriority="high"
+    />
     <style>
       #main_services {
         .row.g-4 {
@@ -186,8 +198,10 @@
       }
     </style>
     <!-- <script src="./js/whatsapp-popup.js"></script> -->
-  <script>
-      gtag('event', 'conversion', {'send_to': 'AW-17373033237/1NzRCMKRmPQaEJXmjdxA'});
+    <script>
+      gtag("event", "conversion", {
+        send_to: "AW-17373033237/1NzRCMKRmPQaEJXmjdxA",
+      });
     </script>
   </head>
 
@@ -402,6 +416,7 @@
                   <div class="swiper-slide">
                     <div
                       class="swiper-inner"
+                      fetch
                       data-bgimage="url(images/slider/inner-zip.webp) center"
                     >
                       <div class="sw-overlay op-5"></div>

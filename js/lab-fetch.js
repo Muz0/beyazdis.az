@@ -79,20 +79,22 @@ function renderGallery(dataArray) {
     if (item.type === "image") {
       const link = document.createElement("a");
       link.href = item.url;
-      link.classList.add("glightbox"); // Make sure this class is present for GLightbox
+      link.classList.add("glightbox");
       link.setAttribute("data-gallery", "gallery");
-      link.setAttribute("data-title", item.title || "Image");
+      // link.setAttribute("data-title", item.title || "Image");
 
       const img = document.createElement("img");
-      // --- LAZY LOADING CHANGES HERE ---
-      img.dataset.src = item.url; // Store the actual URL in data-src
-      img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="; // Tiny transparent placeholder GIF
-      img.classList.add("card-img-top", "lazy-load"); // Add lazy-load class for observer
-      img.alt = item.title || "Image";
+      img.dataset.src = item.url;
+      img.src =
+        "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+      img.classList.add("card-img-top", "lazy-load");
+      // img.alt = item.title || "Image";
 
       link.appendChild(img);
       card.appendChild(link);
 
+      // ───── Title for IMAGE (commented out) ─────
+      /*
       if (item.title) {
         const body = document.createElement("div");
         body.classList.add("card-body", "py-2", "px-2");
@@ -102,11 +104,8 @@ function renderGallery(dataArray) {
         body.appendChild(title);
         card.appendChild(body);
       }
+      */
     } else if (item.type === "video") {
-      // For videos, often you lazy-load the poster image first
-      // and load the full video only on play or interaction.
-      // For simplicity, keeping direct video load as before, but
-      // this could also be optimized for large video galleries.
       const videoWrapper = document.createElement("div");
       videoWrapper.style.position = "relative";
       videoWrapper.style.paddingTop = "56.25%"; // 16:9 aspect ratio
@@ -121,12 +120,14 @@ function renderGallery(dataArray) {
 
       const source = document.createElement("source");
       source.src = item.url;
-      source.type = "video/mp4"; // Ensure correct video type
+      source.type = "video/mp4";
       video.appendChild(source);
 
       videoWrapper.appendChild(video);
       card.appendChild(videoWrapper);
 
+      // ───── Title for VIDEO (commented out) ─────
+      /*
       if (item.title) {
         const body = document.createElement("div");
         body.classList.add("card-body", "py-2", "px-2");
@@ -136,6 +137,7 @@ function renderGallery(dataArray) {
         body.appendChild(title);
         card.appendChild(body);
       }
+      */
     } else if (item.type === "pdf") {
       const pdfWrapper = document.createElement("div");
       pdfWrapper.classList.add(
@@ -145,9 +147,7 @@ function renderGallery(dataArray) {
         "justify-content-center",
         "p-4"
       );
-      // Ensure PDF wrapper has a defined height or minimum height
-      // so the stretched-link has something to anchor to visually before content loads
-      pdfWrapper.style.minHeight = "150px"; // Adjust as needed
+      pdfWrapper.style.minHeight = "150px";
 
       const icon = document.createElement("i");
       icon.classList.add("fas", "fa-file-pdf", "fa-3x", "text-danger");
@@ -159,17 +159,14 @@ function renderGallery(dataArray) {
 
       const link = document.createElement("a");
       link.href = item.url;
-      link.target = "_blank"; // Open PDF in new tab
-      link.classList.add("stretched-link"); // Makes the whole card clickable for PDF
+      link.target = "_blank";
+      link.classList.add("stretched-link");
 
       pdfWrapper.appendChild(icon);
       pdfWrapper.appendChild(title);
 
       card.appendChild(pdfWrapper);
       card.appendChild(link);
-      // The stretched-link is positioned absolutely, so it can be directly in the card.
-      // It needs to be a direct child of a relatively positioned parent (the card itself).
-      // Ensure your .card class has 'position: relative;' in your CSS for stretched-link to work correctly.
     }
 
     col.appendChild(card);

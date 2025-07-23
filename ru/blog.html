@@ -2,18 +2,37 @@
 <html lang="ru">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17373033237"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17373033237"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'AW-17373033237');
+      gtag("config", "AW-17373033237");
     </script>
     <title>Bəyaz Diş - Стоматологическая клиника</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
     <link rel="manifest" href="./site.webmanifest" />
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -42,10 +61,53 @@
       type="text/css"
     /> -->
     <style>
+      /* Temporary: Debugging Overflow (keep if needed, otherwise remove) */
+
+      /* Loader styles */
+      #loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff; /* Or your preferred background color */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* Ensure it's on top of everything */
+        transition: opacity 0.5s ease-out; /* Smooth fade out */
+      }
+      #loader-wrapper.hidden {
+        opacity: 0;
+        pointer-events: none; /* Allows clicks through after fade */
+      }
+      .spinner-border {
+        width: 3rem; /* Bootstrap spinner size */
+        height: 3rem;
+      }
+
+      /* Your existing blog-grid styles */
       .blog-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 1.5rem; /* space between cards */
+      }
+
+      /* Important: With Bootstrap columns, you might not need `display: grid` on `.blog-grid`
+         unless you intend it to control column behavior in a different way.
+         If you're using `.row` and `.col-` classes, remove `display: grid` from `.blog-grid`.
+         For now, I'll assume you want the Bootstrap columns to handle the grid.
+         The `blog-container` now has `row g-4` in the HTML, so this `.blog-grid` style might
+         be redundant or conflicting if you're not careful.
+         I'll adjust `renderBlogCards` to use Bootstrap cols directly, making this CSS block mostly
+         decorative for card styling, not grid layout.
+      */
+
+      .blog-card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block; /* Make the entire card clickable */
+        height: 100%; /* Ensure link takes full height of column */
       }
 
       .blog-card {
@@ -55,6 +117,13 @@
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        height: 100%; /* Ensure cards in a column have equal height */
+      }
+
+      .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
       }
 
       /* Image wrapper with fixed aspect ratio */
@@ -72,12 +141,45 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .blog-card:hover .image-wrapper img {
+        transform: scale(1.05);
       }
 
       /* Content padding */
       .blog-card .content {
         padding: 1rem 1.25rem 1.5rem;
         flex-grow: 1; /* make content stretch if needed */
+        display: flex; /* For vertical alignment of title and meta */
+        flex-direction: column;
+      }
+
+      .blog-card .content h4 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        line-height: 1.4;
+        color: #333;
+        font-size: 1.3rem; /* Adjust if needed */
+      }
+
+      .blog-card .content > div {
+        /* This targets the div containing author and tags */
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: auto; /* Pushes this div to the bottom of the card content */
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      }
+
+      .blog-card .content div img {
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+        margin-right: 8px;
       }
 
       /* Date badge */
@@ -108,43 +210,44 @@
         letter-spacing: 0.05em;
       }
     </style>
-  <script>
-      gtag('event', 'conversion', {'send_to': 'AW-17373033237/1NzRCMKRmPQaEJXmjdxA'});
+    <script>
+      gtag("event", "conversion", {
+        send_to: "AW-17373033237/1NzRCMKRmPQaEJXmjdxA",
+      });
     </script>
   </head>
 
   <body>
     <div id="wrapper">
       <div id="whatsapp-button">
-  <i class="fa-brands fa-whatsapp"></i>
-</div>
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
 
-<div id="whatsapp-popup" class="whatsapp-popup-hidden">
-  <div class="whatsapp-popup-header">
-    <span class="whatsapp-popup-header-title">Стоматологическая клиника &
-лаборатория
-"Bəyaz Diş"</span>
-    <span class="whatsapp-popup-close">&times;</span>
-  </div>
-  <div class="whatsapp-popup-body">
-    <div class="whatsapp-message-in">
-      <p>👋 Здравствуйте! Чем мы можем помочь?</p>
-    </div>
-    <div class="whatsapp-message-in">
-      <p>Хотите записаться на приём или получить информацию?</p>
-    </div>
-  </div>
-  <div class="whatsapp-popup-footer">
-    <a
-      href="https://wa.me/994105110801"
-      target="_blank"
-      class="whatsapp-consultation-button"
-    >
-      <i class="fa-brands fa-whatsapp"></i> Написать в WhatsApp
-    </a>
-  </div>
-</div>
-
+      <div id="whatsapp-popup" class="whatsapp-popup-hidden">
+        <div class="whatsapp-popup-header">
+          <span class="whatsapp-popup-header-title"
+            >Стоматологическая клиника & лаборатория "Bəyaz Diş"</span
+          >
+          <span class="whatsapp-popup-close">&times;</span>
+        </div>
+        <div class="whatsapp-popup-body">
+          <div class="whatsapp-message-in">
+            <p>👋 Здравствуйте! Чем мы можем помочь?</p>
+          </div>
+          <div class="whatsapp-message-in">
+            <p>Хотите записаться на приём или получить информацию?</p>
+          </div>
+        </div>
+        <div class="whatsapp-popup-footer">
+          <a
+            href="https://wa.me/994105110801"
+            target="_blank"
+            class="whatsapp-consultation-button"
+          >
+            <i class="fa-brands fa-whatsapp"></i> Написать в WhatsApp
+          </a>
+        </div>
+      </div>
 
       <!-- preloader begin -->
       <div id="de-loader"></div>
@@ -249,7 +352,9 @@
                       <a href="#" class="menu-item language-current"> Ру </a>
                       <ul class="language-options">
                         <li><a href="../en/" data-lang="en"> English</a></li>
-                        <li><a href="../" data-lang="az"> Azərbaycan dili</a></li>
+                        <li>
+                          <a href="../" data-lang="az"> Azərbaycan dili</a>
+                        </li>
                         <li><a href="#" data-lang="ru"> Русский язык</a></li>
                       </ul>
                     </li>
@@ -302,7 +407,7 @@
 
         <section>
           <div class="container">
-            <div class="blog-grid" id="blog-container"></div>
+            <div class="row g-4" id="blog-container"></div>
           </div>
         </section>
       </div>
@@ -478,114 +583,13 @@
             </div>
           </div>
         </div>
-      </footer>      <!-- footer end -->
+      </footer>
+      <!-- footer end -->
     </div>
-
-    <script>
-      const API_BASE = "https://faodhpwvhonpyxlughls.supabase.co/rest/v1";
-      const API_KEY =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhb2RocHd2aG9ucHl4bHVnaGxzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg2OTI5MTEsImV4cCI6MjA2NDI2ODkxMX0.2yXQKif90Arr1yjVohA8PXj1zJ4Kxn3tj8aJtae3yic";
-
-      const headers = {
-        apikey: API_KEY,
-        Authorization: `Bearer ${API_KEY}`,
-        "Content-Type": "application/json",
-      };
-
-      async function fetchBlogs() {
-        const container = document.getElementById("blog-container");
-
-        try {
-          const response = await fetch(`${API_BASE}/blogs?select=*`, {
-            headers,
-          });
-
-          if (!response.ok) {
-            throw new Error(
-              `Failed to fetch blogs: ${response.status} ${response.statusText}`
-            );
-          }
-
-          const blogs = await response.json();
-
-          // Save to localStorage
-          localStorage.setItem("blogsData", JSON.stringify(blogs));
-
-          renderBlogCards(blogs);
-        } catch (error) {
-          console.error("Error fetching blogs:", error);
-
-          // Try to use cached data from localStorage
-          const cachedBlogs = localStorage.getItem("blogsData");
-
-          if (cachedBlogs) {
-            const blogs = JSON.parse(cachedBlogs);
-            renderBlogCards(blogs);
-
-            if (container) {
-              container.insertAdjacentHTML(
-                "beforebegin",
-                `<p class="text-warning">Showing cached data due to fetch error.</p>`
-              );
-            }
-          } else if (container) {
-            container.innerHTML = `<p class="text-danger">Error loading blogs: ${error.message}</p>`;
-          }
-        }
-      }
-
-      function renderBlogCards(blogs) {
-        const container = document.getElementById("blog-container");
-        if (!container) {
-          console.error('No container element found with id "blog-container"');
-          return;
-        }
-
-        container.innerHTML = ""; // Clear old cards if any
-
-        blogs.forEach((blog) => {
-          const createdDate = new Date(blog.created_at);
-          const day = createdDate.getDate();
-          const month = createdDate.toLocaleString("en-US", { month: "short" });
-
-          const tags =
-            blog.tags && blog.tags.length ? blog.tags.join(", ") : "No tags";
-          const coverImage = blog.cover_image || "images/blog/default.webp";
-
-          const cardHTML = `
-  <a href="blog-single.html?slug=${encodeURIComponent(
-    blog.slug
-  )}" class="blog-card-link">
-    <div class="blog-card">
-      <div class="image-wrapper">
-        <div class="date-badge">
-          <h4>${day}</h4>
-          <span>${month}</span>
-        </div>
-        <img src="${coverImage}" alt="${blog.title}">
-      </div>
-      <div class="content">
-        <h4>${blog.title}</h4>
-        <div>
-          <img src="../images/testimonial/1.webp" class="w-20px me-2 circle" alt="Author">
-          <span class="fs-14 me-3">Bəyaz Diş</span>
-          <span class="fs-14"><i class="icofont-tags id-color me-2"></i>${tags}</span>
-        </div>
-      </div>
-    </div>
-  </a>
-`;
-
-          container.insertAdjacentHTML("beforeend", cardHTML);
-        });
-      }
-
-      // Start fetching blogs on page load
-      fetchBlogs();
-    </script>
 
     <!-- Javascript Files
     ================================================== -->
+    <script src="../js/blog-fetch.js"></script>
     <script src="../js/plugins.js"></script>
     <script src="../js/whatsapp-popup.js"></script>
     <script src="../js/designesia.js"></script>

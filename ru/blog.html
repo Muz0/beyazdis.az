@@ -170,8 +170,10 @@
         align-items: center;
         font-size: 0.9rem;
         color: #666;
-        margin-top: auto; /* Pushes this div to the bottom of the card content */
+        /* margin-top: auto; Pushes this div to the bottom of the card content */
         flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        max-height: 300px;
+        overflow-y:hidden;
       }
 
       .blog-card .content div img {

@@ -108,7 +108,7 @@ function renderGallery(dataArray) {
     } else if (item.type === "video") {
       const videoWrapper = document.createElement("div");
       videoWrapper.style.position = "relative";
-      videoWrapper.style.paddingTop = "56.25%"; // 16:9 aspect ratio
+      videoWrapper.style.paddingTop = "75%"; // 16:9 aspect ratio
 
       const video = document.createElement("video");
       video.setAttribute("controls", "controls");
@@ -145,7 +145,8 @@ function renderGallery(dataArray) {
         "flex-column",
         "align-items-center",
         "justify-content-center",
-        "p-4"
+        "p-4",
+        "h-100"
       );
       pdfWrapper.style.minHeight = "150px";
 
